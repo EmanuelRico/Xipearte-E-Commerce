@@ -56,7 +56,7 @@
     
                     <li class="nav-item dropdown pt-1 pt-lg-0 d-flex align-items-center">
                         <a class="nav-link dropdown-toggle px-0 fa-solid fa-user fa-lg text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
                             @if (Route::has('login'))
                                 @auth
                                     <li><a href="{{ url('/dashboard') }}" class="text-muted dropdown-item">Dashboard</a></li>
