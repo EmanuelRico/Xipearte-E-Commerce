@@ -43,7 +43,7 @@
 <div class="container-fluid" style="overflow-x:scroll;">
     <div class="row flex-row flex-nowrap">
         <div class="col-3 d-flex justify-content-center">
-            <a href="">
+            <a href="/producto/1">
                 <div class="card shadow" style="width: 18rem;">
                     <img src="{{ asset('assets/vestido.png') }}" class="card-img-top" alt="...">
                     <div class="card-body">
