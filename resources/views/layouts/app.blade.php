@@ -22,7 +22,7 @@
         </title>
         
     </head>
-    <body class="font-sans antialiased bg-light">
+    <body class="font-sans antialiased bg-white">
         <div class="container-fluid d-flex">
             <img src="{{ asset('assets/logo.jpeg') }}" style="max-height: 60px;" alt="">
         </div>
