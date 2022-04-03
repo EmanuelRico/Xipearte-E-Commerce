@@ -133,3 +133,9 @@ $card-height:                       null;
 $card-color:                        null;
 $card-bg:                           $white;
 $card-img-overlay-padding:          $spacer;
+
+
+// Allows for customizing button radius independently from global border radius
+$btn-border-radius:           $border-radius;
+$btn-border-radius-sm:        $border-radius-sm;
+$btn-border-radius-lg:        $border-radius-lg;

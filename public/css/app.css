@@ -11298,6 +11298,20 @@ textarea.form-control-lg {
   border-color: black;
 }
 
+.btn-outline-dark:hover {
+  background-color: black;
+  color: white;
+}
+
+.btn-dark {
+  background-color: black;
+  color: white;
+}
+
+.btn-dark:hover {
+  color: #afafaf;
+}
+
 .navbar-dark .nav-link:hover {
   color: #afafaf !important;
 }
