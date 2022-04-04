@@ -24,11 +24,11 @@
     </head>
     <body class="font-sans antialiased bg-white">
         <div class="container-fluid d-flex">
-            <img src="{{ asset('assets/logo.jpeg') }}" style="max-height: 60px;" alt="">
+            <a href="/"><img src="{{ asset('assets/logo.jpeg') }}" style="max-height: 60px;" alt=""></a>
         </div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary py-3">
             <div class="container-fluid container-xxl">
-                <a class="navbar-brand title-hover text-white" href="#">Inicio</a>
+                <a class="navbar-brand title-hover text-white" href="/">Inicio</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -85,7 +85,7 @@
         {{-- <main class="container my-5">
              {{ $slot }} 
         </main> --}}
-        <div class="py-4">
+        <div>
             @yield('content')
         </div>
 
