@@ -26,7 +26,7 @@
         <div class="container-fluid d-flex">
             <a href="/"><img src="{{ asset('assets/logo.jpeg') }}" style="max-height: 60px;" alt=""></a>
         </div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary py-3">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary py-3 sticky-top">
             <div class="container-fluid container-xxl">
                 <a class="navbar-brand title-hover text-white" href="/">Inicio</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,7 +59,29 @@
                         <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
                             @if (Route::has('login'))
                                 @auth
-                                    <li><a href="{{ url('/dashboard') }}" class="text-muted dropdown-item">Dashboard</a></li>
+                                    <h6 class="dropdown-header small text-muted">
+                                        {{ __('Administración de cuenta') }}
+                                    </h6>
+        
+                                    <x-jet-dropdown-link href="{{ route('profile.show') }}">
+                                        {{ __('Mi Perfil') }}
+                                    </x-jet-dropdown-link>
+                                    @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
+                                        <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
+                                            {{ __('API Tokens') }}
+                                        </x-jet-dropdown-link>
+                                    @endif
+
+                                    <hr class="dropdown-divider">
+
+                                    <x-jet-dropdown-link href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                        {{ __('Cerrar sesión') }}
+                                    </x-jet-dropdown-link>
+                                    <form method="POST" id="logout-form" action="{{ route('logout') }}">
+                                        @csrf
+                                    </form>
                                 @else
                                     <li><a class="fs-6 me-1 dropdown-item" href="{{ route('login') }}">Inicia Sesión</a></li>
         
@@ -88,6 +110,17 @@
         <div>
             @yield('content')
         </div>
+
+        <footer class="footer mt-4 py-3 bg-primary text-white">
+            <div class="d-flex justify-content-around">
+                <div class="px-5 mx-1"></div>
+                <h2 class="fw-bolder m-0">XIPEARTE</h2>
+                <div>
+                    <a class="btn btn-primary" type="submit"><i class="title-hover fa-brands fa-xl fa-instagram"></i></a>
+                    <a class="btn btn-primary" type="submit"><i class="title-hover fa-brands fa-xl fa-facebook-square"></i></a>
+                </div>
+            </div>
+        </footer>
 
         @stack('modals')
 

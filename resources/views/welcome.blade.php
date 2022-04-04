@@ -40,68 +40,221 @@
 
 <h4 class="d-flex justify-content-center my-4 fw-bold">De Temporada</h4>
 
-<div class="container-fluid" style="overflow-x:scroll;">
+<div class=" mx-5 py-3 shadow-lg hscroll" style="overflow-x:scroll;">
     <div class="row flex-row flex-nowrap">
-        <div class="col-3 d-flex justify-content-center">
-            <a href="/producto/1">
+        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
+            <a href="/producto/1"  class="text-decoration-none">
                 <div class="card shadow" style="width: 18rem;">
-                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top" alt="...">
+                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top img-fluid" alt="...">
                     <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text d-flex justify-content-center fw-bold h5 ">Vestido en manta</p>
+                        <h3 class="d-flex justify-content-center">$000.00</h3>
                     </div>
                 </div>
             </a>
         </div>
-        <div class="col-3 d-flex justify-content-center">
-            <a href="">
+        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
+            <a href="" class="text-decoration-none">
                 <div class="card shadow" style="width: 18rem;">
                     <img src="{{ asset('assets/vestido.png') }}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text d-flex justify-content-center fw-bold h5 ">Vestido en manta</p>
+                        <h3 class="d-flex justify-content-center">$000.00</h3>
                     </div>
                 </div>
             </a>
         </div>
-        <div class="col-3 d-flex justify-content-center">
-            <a href="">
+        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
+            <a href="" class="text-decoration-none">
                 <div class="card shadow" style="width: 18rem;">
                     <img src="{{ asset('assets/vestido.png') }}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text d-flex justify-content-center fw-bold h5 ">Vestido en manta</p>
+                        <h3 class="d-flex justify-content-center">$000.00</h3>
                     </div>
                 </div>
             </a>
         </div>
-        <div class="col-3 d-flex justify-content-center">
-            <a href="">
+        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
+            <a href="" class="text-decoration-none">
                 <div class="card shadow" style="width: 18rem;">
                     <img src="{{ asset('assets/vestido.png') }}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text d-flex justify-content-center fw-bold h5 ">Vestido en manta</p>
+                        <h3 class="d-flex justify-content-center">$000.00</h3>
                     </div>
                 </div>
             </a>
         </div>
-        <div class="col-3 d-flex justify-content-center">
-            <a href="">
+        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
+            <a href="" class="text-decoration-none">
                 <div class="card shadow" style="width: 18rem;">
                     <img src="{{ asset('assets/vestido.png') }}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text d-flex justify-content-center fw-bold h5 ">Vestido en manta</p>
+                        <h3 class="d-flex justify-content-center">$000.00</h3>
                     </div>
                 </div>
             </a>
         </div>
-        <div class="col-3 d-flex justify-content-center">
-            <a href="">
+        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
+            <a href="" class="text-decoration-none">
                 <div class="card shadow" style="width: 18rem;">
                     <img src="{{ asset('assets/vestido.png') }}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <p class="card-text text-decoration-none">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text d-flex justify-content-center fw-bold h5  text-decoration-none">Vestido en manta</p>
+                        <h3 class="d-flex justify-content-center">$000.00</h3>
                     </div>
                 </div>
             </a>
         </div>
     </div>
 </div>
+
+<h4 class="d-flex justify-content-center my-4 fw-bold">Ofertas</h4>
+
+<div class=" mx-5 py-3 shadow-lg hscroll" style="overflow-x:scroll;">
+    <div class="row flex-row flex-nowrap">
+        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
+            <a href="/producto/1"  class="text-decoration-none">
+                <div class="card shadow" style="width: 18rem;">
+                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top img-fluid" alt="...">
+                    <div class="card-body">
+                        <p class="card-text d-flex justify-content-center fw-bold h5 ">Vestido en manta</p>
+                        <h3 class="d-flex justify-content-center">$000.00</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
+            <a href="" class="text-decoration-none">
+                <div class="card shadow" style="width: 18rem;">
+                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text d-flex justify-content-center fw-bold h5 ">Vestido en manta</p>
+                        <h3 class="d-flex justify-content-center">$000.00</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
+            <a href="" class="text-decoration-none">
+                <div class="card shadow" style="width: 18rem;">
+                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text d-flex justify-content-center fw-bold h5 ">Vestido en manta</p>
+                        <h3 class="d-flex justify-content-center">$000.00</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
+            <a href="" class="text-decoration-none">
+                <div class="card shadow" style="width: 18rem;">
+                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text d-flex justify-content-center fw-bold h5 ">Vestido en manta</p>
+                        <h3 class="d-flex justify-content-center">$000.00</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
+            <a href="" class="text-decoration-none">
+                <div class="card shadow" style="width: 18rem;">
+                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text d-flex justify-content-center fw-bold h5 ">Vestido en manta</p>
+                        <h3 class="d-flex justify-content-center">$000.00</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
+            <a href="" class="text-decoration-none">
+                <div class="card shadow" style="width: 18rem;">
+                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text d-flex justify-content-center fw-bold h5  text-decoration-none">Vestido en manta</p>
+                        <h3 class="d-flex justify-content-center">$000.00</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<h4 class="d-flex justify-content-center my-4 fw-bold">Recien Agregados</h4>
+
+<div class=" mx-5 py-3 shadow-lg hscroll" style="overflow-x:scroll;">
+    <div class="row flex-row flex-nowrap">
+        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
+            <a href="/producto/1"  class="text-decoration-none">
+                <div class="card shadow" style="width: 18rem;">
+                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top img-fluid" alt="...">
+                    <div class="card-body">
+                        <p class="card-text d-flex justify-content-center fw-bold h5 ">Vestido en manta</p>
+                        <h3 class="d-flex justify-content-center">$000.00</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
+            <a href="" class="text-decoration-none">
+                <div class="card shadow" style="width: 18rem;">
+                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text d-flex justify-content-center fw-bold h5 ">Vestido en manta</p>
+                        <h3 class="d-flex justify-content-center">$000.00</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
+            <a href="" class="text-decoration-none">
+                <div class="card shadow" style="width: 18rem;">
+                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text d-flex justify-content-center fw-bold h5 ">Vestido en manta</p>
+                        <h3 class="d-flex justify-content-center">$000.00</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
+            <a href="" class="text-decoration-none">
+                <div class="card shadow" style="width: 18rem;">
+                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text d-flex justify-content-center fw-bold h5 ">Vestido en manta</p>
+                        <h3 class="d-flex justify-content-center">$000.00</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
+            <a href="" class="text-decoration-none">
+                <div class="card shadow" style="width: 18rem;">
+                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text d-flex justify-content-center fw-bold h5 ">Vestido en manta</p>
+                        <h3 class="d-flex justify-content-center">$000.00</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
+            <a href="" class="text-decoration-none">
+                <div class="card shadow" style="width: 18rem;">
+                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text d-flex justify-content-center fw-bold h5  text-decoration-none">Vestido en manta</p>
+                        <h3 class="d-flex justify-content-center">$000.00</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
 @endsection

@@ -1,5 +1,43 @@
 // Custom style...
-.btn-light:hover {
+.hscroll::-webkit-scrollbar{
+  height: .5em;
+}
+
+.hscroll::-webkit-scrollbar-track{
+  background: transparent;
+  border-radius: 100vw;
+}
+
+.hscroll::-webkit-scrollbar-thumb{
+  background: hsl(1 100% 0% / 1);
+  border-radius: 100vw;
+}
+
+.hscroll::-webkit-scrollbar-thumb:hover{
+  background: hsl(1 0% 60% / 1);
+  border-radius: 100vw;
+}
+
+::-webkit-scrollbar{
+  width: .5em;
+}
+
+::-webkit-scrollbar-track{
+  background: transparent;
+  border-radius: 100vw;
+}
+
+::-webkit-scrollbar-thumb{
+  background: hsl(1 100% 0% / 1);
+  border-radius: 100vw;
+}
+
+::-webkit-scrollbar-thumb:hover{
+  background: hsl(1 0% 60% / 1);
+  border-radius: 100vw;
+}
+
+.btn-light:hover{
   color: rgb(0, 0, 0);
   background-color: rgb(175, 175, 175);
   border-color: black;

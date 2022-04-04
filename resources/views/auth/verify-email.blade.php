@@ -1,3 +1,9 @@
+@extends('layouts.app')
+
+@section('title',"Inicia Sesión")
+
+@section('content')
+
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
@@ -6,12 +12,12 @@
 
         <div class="card-body">
             <div class="mb-3 small text-muted">
-                {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
+                {{ __('Gracias por registrarte! Antes de continuar, te pedimos que verifiques tu cuenta haciendo click en el link que acabamos de enviar a tu correo. Si no recibiste el correo, con gusto te enviaremos otro.') }}
             </div>
 
             @if (session('status') == 'verification-link-sent')
                 <div class="alert alert-success" role="alert">
-                    {{ __('A new verification link has been sent to the email address you provided during registration.') }}
+                    {{ __('Un nuevo link de verificación ha sido enviado al correo electronico que nos proporcionaste durante tu registro.') }}
                 </div>
             @endif
 
@@ -21,7 +27,7 @@
 
                     <div>
                         <x-jet-button type="submit">
-                            {{ __('Resend Verification Email') }}
+                            {{ __('Reenviar correo de verificación') }}
                         </x-jet-button>
                     </div>
                 </form>
@@ -30,10 +36,13 @@
                     @csrf
 
                     <button type="submit" class="btn btn-link">
-                        {{ __('Log Out') }}
+                        {{ __('Cerrar sesión') }}
                     </button>
                 </form>
             </div>
         </div>
     </x-jet-authentication-card>
 </x-guest-layout>
+
+<script src="{{asset('js/app.js')}}"></script>
+@endsection

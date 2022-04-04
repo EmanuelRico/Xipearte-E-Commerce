@@ -67,7 +67,7 @@
                         </a>
 
                         <x-jet-button>
-                            {{ __('Register') }}
+                            {{ __('Registrar') }}
                         </x-jet-button>
                     </div>
                 </div>
