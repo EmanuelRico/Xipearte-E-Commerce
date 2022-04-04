@@ -11,20 +11,20 @@
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
     </div>
     <div class="carousel-inner">
-        <div class="carousel-item active img-fluid" style="max-height: 400px;" data-bs-interval="2000">
+        <div class="carousel-item active img-fluid" style="max-height: 400px;" data-bs-interval="3000">
             <img src="{{ asset('assets/carousel-1.jpeg') }}" class="d-block w-100" alt="...">
             {{-- <div class="carousel-caption d-none d-md-block">
                 <h5>First slide label</h5>
                 <p>Some representative placeholder content for the first slide.</p>
             </div> --}}
         </div>
-        <div class="carousel-item img-fluid" style="max-height: 400px;" data-bs-interval="2000">
+        <div class="carousel-item img-fluid" style="max-height: 400px;" data-bs-interval="3000">
             <img src="{{ asset('assets/carousel-2.jpeg') }}" class="d-block w-100" alt="...">
         </div>
-        <div class="carousel-item img-fluid" style="max-height: 400px;" data-bs-interval="2000">
+        <div class="carousel-item img-fluid" style="max-height: 400px;" data-bs-interval="3000">
             <img src="{{ asset('assets/carousel-3.jpeg') }}" class="d-block w-100" alt="...">
         </div>
-        <div class="carousel-item img-fluid" style="max-height: 400px;" data-bs-interval="2000">
+        <div class="carousel-item img-fluid" style="max-height: 400px;" data-bs-interval="3000">
             <img src="{{ asset('assets/carousel-4.jpeg') }}" class="d-block w-100" alt="...">
         </div>
     </div>
