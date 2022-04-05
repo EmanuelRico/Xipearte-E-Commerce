@@ -22,5 +22,14 @@ class ProductSeeder extends Seeder
         $p->origin = "Incididunt fugiat quis velit Lorem.";
         $p->save();
         unset($p);
+
+        $p = new Product();
+        $p->id = 2;
+        $p->name = "Vestido Rojo";
+        $p->description = "Vestido muy bonito, para dama, tela de manta, elaborado por artesanos profesionales 100 por ciento real no feik full hd 4k";
+        $p->price = 335.0;
+        $p->origin = "Chiapas";
+        $p->save();
+        unset($p);
     }
 }

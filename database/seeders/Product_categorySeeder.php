@@ -18,5 +18,11 @@ class Product_categorySeeder extends Seeder
         $p->product_id = 1;
         $p->category_id = 1;
         $p->save();
+        unset($p);
+
+        $p = new Product_category();
+        $p->product_id = 2;
+        $p->category_id = 2;
+        $p->save();
     }
 }
