@@ -37,5 +37,40 @@ class Product_sizeSeeder extends Seeder
         $p -> stock = 0;
         $p->save();
         unset($p);
+
+        $p = new Product_size();
+        $p -> product_id = 2;
+        $p -> size = "xl" ;
+        $p -> stock = 10;
+        $p->save();
+        unset($p);
+
+        $p = new Product_size();
+        $p -> product_id = 2;
+        $p -> size = "l" ;
+        $p -> stock = 7;
+        $p->save();
+        unset($p);
+
+        $p = new Product_size();
+        $p -> product_id = 2;
+        $p -> size = "s" ;
+        $p -> stock = 0;
+        $p->save();
+        unset($p);
+
+        $p = new Product_size();
+        $p -> product_id = 2;
+        $p -> size = "m" ;
+        $p -> stock = 5;
+        $p->save();
+        unset($p);
+
+        $p = new Product_size();
+        $p -> product_id = 2;
+        $p -> size = "xs" ;
+        $p -> stock = 4;
+        $p->save();
+        unset($p);
     }
 }

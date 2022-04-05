@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call(Saw_productSeeder::class);
         $this->call(SaleSeeder::class);
         $this->call(SoldProductSeeder::class);
+        $this->call(DirectionSeeder::class);
         // \App\Models\User::factory(10)->create();
     }
 }
