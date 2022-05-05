@@ -38,7 +38,7 @@
     </button>
 </div>
 
-<h4 class="d-flex justify-content-center my-4 fw-bold">Holi</h4>
+<h4 class="d-flex justify-content-center my-4 fw-bold">De Temporada</h4>
 
 <div class=" mx-5 py-3 shadow-lg hscroll" style="overflow-x:scroll;">
     <div class="row flex-row flex-nowrap">
