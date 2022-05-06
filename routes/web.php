@@ -19,7 +19,12 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+    if(Auth::user()->type==2){
+        return redirect('panelControl');
+    }
+    else{
+        return redirect('/') ;
+    }
 })->name('dashboard');
 
 Route::get('/producto', function () {
@@ -27,3 +32,12 @@ Route::get('/producto', function () {
 });
 
 Route::get('/producto/{product_id}', [HomeController::class, 'product']);
+
+Route::get('/panelControl',function(){
+    if(Auth::user()->type==2){
+        return view('panel');
+    }
+    if(Auth::user()->type!=2){
+        return redirect('/') ;
+    }
+});

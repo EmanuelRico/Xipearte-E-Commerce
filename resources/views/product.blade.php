@@ -77,7 +77,7 @@
         </div>
     </div>
 <div class="container mt-5">
-    <h3 class="fw-bold"> A otras personas también les interesó//Tus últimas visitas</h3>
+    <h3 class="fw-bold">Tus últimas visitas</h3>
     <div class="container-fluid" style="overflow-x:scroll;">
         <div class="row flex-row flex-nowrap">
             
