@@ -94,7 +94,7 @@
         </div>
         <div class="col-5">
             <button type="button" class="btn btn-dark col-12 d-block py-3 rounded-3 mt-3"> 
-                <h4 class="my-0 py-0">Ver ventas</h4>
+                <h4 class="my-0 py-0">Añadir categorias</h4>
             </button> 
         </div>
     </div>
