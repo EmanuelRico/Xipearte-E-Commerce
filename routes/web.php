@@ -41,3 +41,12 @@ Route::get('/panelControl',function(){
         return redirect('/') ;
     }
 });
+
+Route::get('/añadirProducto',function (){
+    if(Auth::user()->type==2){
+        return view('addProduct');
+    }
+    if(Auth::user()->type!=2){
+        return redirect('/') ;
+    }
+});
