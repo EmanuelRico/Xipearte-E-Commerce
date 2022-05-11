@@ -11292,6 +11292,10 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.container-100 {
+  min-height: calc(100vh - 72px - 70.39px - 60px);
+}
+
 .hscroll::-webkit-scrollbar {
   height: 0.5em;
 }
