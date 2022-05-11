@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\adminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,20 +34,6 @@ Route::get('/producto', function () {
 
 Route::get('/producto/{product_id}', [HomeController::class, 'product']);
 
-Route::get('/panelControl',function(){
-    if(Auth::user()->type==2){
-        return view('panel');
-    }
-    if(Auth::user()->type!=2){
-        return redirect('/') ;
-    }
-});
+Route::get('/panelControl', [adminController:: class, 'panelControl']);
 
-Route::get('/añadirProducto',function (){
-    if(Auth::user()->type==2){
-        return view('addProduct');
-    }
-    if(Auth::user()->type!=2){
-        return redirect('/') ;
-    }
-});
+Route::get('/añadirProducto', [adminController::class, 'pantallaNP']);
