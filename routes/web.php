@@ -28,6 +28,15 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     }
 })->name('dashboard');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
+    if(Auth::user()->type==2){
+        return redirect('panelControl');
+    }
+    else{
+        return redirect('/') ;
+    }
+})->name('dashboard');
+
 Route::get('/producto', function () {
     return view('producto');
 });
