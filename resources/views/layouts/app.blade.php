@@ -50,11 +50,20 @@
                         <form class="d-flex">
                             @csrf
                             <input class="form-control me-2 " type="search" placeholder="Buscar" aria-label="Buscar">
-                            <button class="btn btn-primary me-3" type="submit"><i class="title-hover fa-solid fa-lg fa-magnifying-glass text-white"></i></button>
+                            <button class="btn btn-primary" type="submit"><i class="title-hover fa-solid fa-lg fa-magnifying-glass text-white me-1"></i></button>
                         </form>
                     </div>
-    
-                    <li class="nav-item dropdown pt-1 pt-lg-0 d-flex align-items-center">
+
+                    @auth
+                    @guest
+                    @else
+                        @if(Auth::user()->type == 1)
+                            <a class="px-0 text-white" href="#"><i class="title-hover fa-lg fa-solid fa-cart-shopping me-3"></i></a>
+                        @endif
+                    @endif
+                    @endguest
+
+                    <li class="nav-item dropdown pt-1 pt-lg-0 d-flex align-items-center ms-1">
                         <a class="nav-link dropdown-toggle px-0 fa-solid fa-user fa-lg text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
                         <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
                             @if (Route::has('login'))
