@@ -49,4 +49,48 @@ class HomeController extends Controller
         }else
             return view("error_views/category_not_found");
     }
+
+    public function cart() {
+        return view('cart');
+    }
+
+    public function addToCart($id) {
+        $producto = Product::findOrFail($id);
+        $cart = session()->get('cart', []);
+
+        if (isset($cart[$id])) {
+            $cart[$id] ['cantidad']++;
+        } else {
+            $cart[$id] = [
+                "name" => $producto->name,
+                "quantity" => 1,
+                "price" => $producto->price
+            ];
+        }
+        
+        session()->put('cart', $cart);
+        return redirect()->back();
+    }
+
+    public function update(Request $request) {
+        if ($request->id && $request->quantity) {
+            $cart = session()->get('cart');
+            $cart[$request->id] ['quantity'] = $request->quantity;
+            session()->put('cart', $cart);
+        }
+    }
+
+    public function remove (Request $request) {
+        if ($request->id) {
+            $cart = session()->get('cart');
+            if(isset($cart[$request->id])) {
+                unset($cart[$request->id]);
+                session()->put('cart', $cart);
+            }
+        }
+    }
+
+    public function clearCarrito (){
+        $request->session()->forget('cart');
+    }
 }

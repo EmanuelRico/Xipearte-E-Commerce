@@ -19,23 +19,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    if(Auth::user()->type==2){
-        return redirect('panelControl');
-    }
-    else{
-        return redirect('/') ;
-    }
-})->name('dashboard');
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
-    if(Auth::user()->type==2){
-        return redirect('panelControl');
-    }
-    else{
-        return redirect('/') ;
-    }
-})->name('dashboard');
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     if(Auth::user()->type==2){
+//         return redirect('panelControl');
+//     }
+//     else{
+//         return redirect('/') ;
+//     }
+// })->name('dashboard');
+Route::get('/dashboard', [adminController::class, 'panelControl']);
+// Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
+//    if(Auth::user()->type==2){
+//          return redirect('panelControl');
+//      }
+//      else{
+//         return redirect('/') ;
+//      }
+//  })->name('dashboard');
 
 Route::get('/producto', function () {
     return view('producto');
@@ -46,3 +46,9 @@ Route::get('/producto/{product_id}', [HomeController::class, 'product']);
 Route::get('/panelControl', [adminController:: class, 'panelControl']);
 
 Route::get('/añadirProducto', [adminController::class, 'pantallaNP']);
+
+Route::get('cart', [HomeController::class, 'cart'])->name('cart');
+Route::get('add-to-cart', [HomeController::class, 'addToCart'])->name('add.to.cart');
+Route::patch('update-cart', [HomeController::class, 'update'])->name('update.cart');
+Route::delete('remove-from-cart', [HomeController::class, 'remove'])->name('remove.from.cart');
+Route::delete('olvidar', [HomeController::class, 'clearCarrito'])->name('clearCarrito.from.cart');
