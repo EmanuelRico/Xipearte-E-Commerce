@@ -11292,9 +11292,8 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-<<<<<<< HEAD
 .selectImage {
-  background-color: black;
+  background-color: black !important;
   color: white;
   margin: 5px 0px 5px 5px;
   padding: 7px 10px 5px 10px;
@@ -11303,6 +11302,7 @@ textarea.form-control-lg {
 
 .selectImage:hover {
   cursor: pointer;
+  background-color: #1c1f23 !important;
 }
 
 .selectImage2 {
@@ -11310,10 +11310,10 @@ textarea.form-control-lg {
   border: 2px solid black;
   margin: 5px 5px 5px 0px;
   padding: 5px 10px;
-=======
+}
+
 .container-100 {
   min-height: calc(100vh - 72px - 70.39px - 60px);
->>>>>>> c96542bb6675062056f33bd540d1cb021e976865
 }
 
 .hscroll::-webkit-scrollbar {
