@@ -11293,7 +11293,7 @@ textarea.form-control-lg {
   }
 }
 .selectImage {
-  background-color: black;
+  background-color: black !important;
   color: white;
   margin: 5px 0px 5px 5px;
   padding: 7px 10px 5px 10px;
@@ -11302,6 +11302,7 @@ textarea.form-control-lg {
 
 .selectImage:hover {
   cursor: pointer;
+  background-color: #1c1f23 !important;
 }
 
 .selectImage2 {
