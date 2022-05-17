@@ -91,7 +91,7 @@
         <div class="col-1"></div>
         <div class="col-5">
             <button type="button" class="btn btn-dark col-12 d-block py-3 rounded-3 mt-3"> 
-                <h4 class="my-0 py-0">Administrar pedidos</h4>
+                <h4 class="my-0 py-0">Administrar categorias</h4>
             </button>      
         </div>
         <div class="col-5">
@@ -102,5 +102,22 @@
             </a> 
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-5">
+            <button type="button" class="btn btn-dark col-12 d-block py-3 rounded-3 mt-3"> 
+                <h4 class="my-0 py-0">Administrar pedidos</h4>
+            </button>      
+        </div>
+        <div class="col-5">
+            <a href="/nuevaCategoria">
+            <button type="button" class="btn btn-dark col-12 d-block py-3 rounded-3 mt-3"> 
+                <h4 class="my-0 py-0"> a</h4>
+            </button>
+            </a> 
+        </div>
+    </div>
+
 </div>
 @endsection

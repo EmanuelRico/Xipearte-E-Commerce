@@ -6,11 +6,12 @@
 
 
 <div class="container">
-    <h2 class="fw-bold">Añadir nueva categoria</h2>
+
     <form action="/saveCategory" method="POST">
         @csrf
         <div class="row justify-content-md-center">
             <div class="col col-lg-8">
+            <h2 class="fw-bold pt-4 pb-4">Añadir nueva categoría</h2>
                 <div class="mb-3">
                     <label for="basic-url" class="form-label font-weight-normal">Nombre de la categoría</label>
                     <input id="categoryName" name="categoryName" required type="text" class="form-control border border-dark border-2" id="basic-url" aria-describedby="basic-addon3" placeholder="Nombre..." aria-label="Nombre...">
