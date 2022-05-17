@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,9 +47,12 @@ Route::get('/producto/{product_id}', [HomeController::class, 'product']);
 Route::get('/panelControl', [adminController:: class, 'panelControl']);
 
 Route::get('/añadirProducto', [adminController::class, 'pantallaNP']);
+Route::get('/addCategory', [adminController::class, 'addCategory']);
 
 Route::get('cart', [HomeController::class, 'cart'])->name('cart');
 Route::get('add-to-cart', [HomeController::class, 'addToCart'])->name('add.to.cart');
 Route::patch('update-cart', [HomeController::class, 'update'])->name('update.cart');
 Route::delete('remove-from-cart', [HomeController::class, 'remove'])->name('remove.from.cart');
 Route::delete('olvidar', [HomeController::class, 'clearCarrito'])->name('clearCarrito.from.cart');
+
+Route::post('/saveCategory',[CategoryController::class, 'saveCategory']);

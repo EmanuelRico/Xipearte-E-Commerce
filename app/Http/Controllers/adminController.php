@@ -23,4 +23,7 @@ class adminController extends Controller
     public function pantallaNP () {
         return view('addProduct');
     }
+    public function addCategory(){
+        return view('addCategory');
+    }
 }
