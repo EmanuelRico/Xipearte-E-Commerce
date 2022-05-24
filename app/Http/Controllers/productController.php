@@ -42,8 +42,8 @@ class ProductController extends Controller
             $product->save();
             foreach($request->file('images') as $file){
                 $imagen = new Image();
-                $name = $file->file('images')->getClientOriginalName();
-                $imagen->route = $file->file('images')->storeAs('img', $name,'public');
+                $name = $file->getClientOriginalName();
+                $imagen->route = $file->storeAs('img', $name,'public');
                 $imagen->product_id = $product->id;
                 $imagen->save();
             }
