@@ -20,10 +20,11 @@ class ProductController extends Controller
         $product->price = (float)$_POST['price'];
         $product->origin = $_POST['origin'];
         $product->save();
+
         foreach($request->file('images') as $file){
             $imagen = new Image();
-            $name = $request->file('images')->getClientOriginalName();
-            $imagen->route = $request->file('images')->storeAs('img', $name,'public');
+            $name = $file->getClientOriginalName();
+            $imagen->route = $file->storeAs('img', $name,'public');
             $imagen->product_id = $product->id;
             $imagen->save();
         }

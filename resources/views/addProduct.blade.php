@@ -7,7 +7,8 @@
 
 <div class="container">
     
-    <form action = "/dashboard" method="post">
+    <form action = "/nuevoProducto" method="post" enctype= "multipart/form-data">
+        @csrf
         <div class="row justify-content-md-center ">
             
             <div class="col col-lg-8">
@@ -33,7 +34,7 @@
                 <div class="mb-3">
                     <label for="formFileMultiple" class="form-label">Seleccionar imágenes a mostrar</label>
                     <div class="input-group" > 
-                        <input name="images" class="form-control" type="file" id="formFileMultiple" accept="image/*" multiple hidden required/>
+                        <input name="images[]" class="form-control" type="file" id="formFileMultiple" accept="image/*" multiple hidden required/>
                         <!-- our custom upload button -->
                         <label for="formFileMultiple" class="selectImage rounded-start col-4">Seleccionar imágenes
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-plus" viewBox="0 0 16 16">
@@ -51,7 +52,7 @@
                     <label for="exampleFormControlTextarea1">Acerca del lugar de origen</label>
                     <textarea name="origin" class="form-control border-dark border-2" id="exampleFormControlTextarea1" rows="6" required></textarea>
                 </div>
-                <button type="button" class="btn btn-dark col-12 d-block py-3 rounded-3 mt-3 mb-3"> <h4 class="my-0 py-0">Añadir producto
+                <button type="submit" class="btn btn-dark col-12 d-block py-3 rounded-3 mt-3 mb-3"> <h4 class="my-0 py-0">Añadir producto
                     
                 </h4></button>
 
