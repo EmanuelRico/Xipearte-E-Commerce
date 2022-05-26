@@ -125,8 +125,8 @@
                 <div class="px-5 mx-1"></div>
                 <h2 class="fw-bolder m-0">XIPEARTE</h2>
                 <div>
-                    <a class="btn btn-primary" type="submit"><i class="title-hover fa-brands fa-xl fa-instagram"></i></a>
-                    <a class="btn btn-primary" type="submit"><i class="title-hover fa-brands fa-xl fa-facebook-square"></i></a>
+                    <a href="https://www.instagram.com/xipearte" class="btn btn-primary" type="submit"><i class="title-hover fa-brands fa-xl fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/XipeArte" class="btn btn-primary" type="submit"><i class="title-hover fa-brands fa-xl fa-facebook-square"></i></a>
                 </div>
             </div>
         </footer>

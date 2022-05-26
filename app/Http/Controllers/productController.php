@@ -55,4 +55,18 @@ class ProductController extends Controller
             return view ('updateProduct',compact('msg'));
         }
     }
+
+    public function delete($id){
+        $product = Product::find($id);
+        
+        if($product){
+            $product->delete();
+            $msg = "Eliminado exitosamente";
+            return view ('dashboard',compact('msg'));
+        }
+        else{
+            $msg = "No se pudo eliminar";
+            return view ('deleteProduct',compact('msg'));
+        }
+    }
 }

@@ -59,3 +59,4 @@ Route::post('/saveCategory',[CategoryController::class, 'saveCategory']);
 Route::get('/nuevaCategoria',[CategoryController::class, 'pantallaNuevaCategoria']);
 
 Route::post('/nuevoProducto',[ProductController::class,'create']);
+Route::get('/eliminarProducto/{id}', [ProductController::class, 'delete']);
