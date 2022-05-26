@@ -52,9 +52,9 @@
             </div>
             <div class="col-12 col-md-6 mt-3 row justify-content-center">
                 <div class="col-10 col-md-9">
-                    <h4 id="placeOrigin"> Zinacantan, Chiapas</h4>
-                    <h1 id="nameProduct" class="fw-bold">Vestido en manta</h1>
-                    <h4 id ="descriptionProduct" class="fw-bold">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate pariatur excepturi unde voluptatem rem consectetur dolorem ut. Ullam officiis, ut dolore delectus perferendis asperiores! Assumenda omnis voluptatum atque nisi repudiandae.</h4>
+                    <h4 id="placeOrigin"> {{$producto->origin}}</h4>
+                    <h1 id="nameProduct" class="fw-bold">{{$producto->name}}</h1>
+                    <h4 id ="descriptionProduct" class="fw-bold">{{$producto->description}}</h4>
                     <div class="d-flex justify-content-between mt-3">
                         <!--<button type="button" class="btn btn-outline-dark col-2 d-block p-2"> <h3 class="my-0 py-0" >XS</h3></button>
                         <button type="button" class="btn btn-outline-dark col-2 d-block p-2"><h3 class="my-0 py-0">S</h3></button>
@@ -66,11 +66,11 @@
                              <button type="button" class="btn btn-outline-dark col-2 d-block p-2 rounded-3"> <h3 class="my-0 py-0">{{$s->size}}</h3></button>
                         @endforeach
                     </div>
-                    <h1 id="price"class="mt-3">$000.00</h1>
-                    <button type="button" class="btn btn-dark col-12 d-block py-3 rounded-3 mt-3"> <h4 class="my-0 py-0">Añadir al carrito</h4></button>
+                    <h1 id="price"class="mt-3">{{$producto->price}}</h1>
+                    <button type="button" class="btn btn-dark col-12 d-block py-3 rounded-3 mt-3" onclick="location.href='{{ route('add.to.cart', $producto->id) }}'"> <h4 class="my-0 py-0">Añadir al carrito</h4></button>
                     <div class=" border border-3 rounded-3 border-dark p-2 mt-5"> 
                         <p class="fw-bold" >Acerca del lugar de origen</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio impedit repellat amet blanditiis sint consectetur. Eos deserunt, quo eligendi, asperiores perspiciatis, animi porro eum ipsa sit accusantium fuga molestiae exercitationem.</p>
+                        <p>{{$producto->origin}}</p>
                     </div>
                 </div>
             </div>
