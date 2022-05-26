@@ -58,7 +58,43 @@
                     @guest
                     @else
                         @if(Auth::user()->type == 1)
-                            <a class="px-0 text-white" href="#"><i class="title-hover fa-lg fa-solid fa-cart-shopping me-3"></i></a>
+                            <div class="nav-item dropdown pt-1 pt-lg-0 d-flex align-items-center ms-1">
+                                <a lass="nav-link dropdown-toggle px-0 fa-solid fa-user fa-lg text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="title-hover fa-lg fa-solid fa-cart-shopping text-white me-3"></i></a>
+                                <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
+                                    <div class="row total-header-section">
+                                        <div class="col">
+                                        <a class="px-0 text-white"><i class="title-hover fa-lg fa-solid fa-cart-shopping me-3"></i></a> <span class="">{{ count((array) session('cart')) }}</span>
+                                        </div>
+                                        @php $total = 0 @endphp
+                                        @foreach((array) session('cart') as $id => $details)
+                                            @php $total += $details['price'] * $details['quantity'] @endphp
+                                        @endforeach
+                                        <div class="col text-right">
+                                            <p>Total: <span class="">$ {{ $total }}</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-divider"></div>
+                                    @if(session('cart'))
+                                        @foreach(session('cart') as $id => $details)
+                                            <div class="row my-3">
+                                                <div class="col">
+                                                    <div class="row">
+                                                        <p class="mb-1 col-8">{{ $details['name'] }}</p>
+                                                        <span class="col" id="valores"> ${{ $details['price'] }}</span> 
+                                                    </div>
+                                                    <span class="count"> Cantidad:  {{ $details['quantity'] }}</span>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    @endif
+                                    <div class="dropdown-divider"></div>
+                                    <div class="row">
+                                            <a href="{{ route('cart') }}" class="btn btn-primary m-auto" id="checkout">Checkout</a>
+                                    </div>
+                                </ul>
+                            </div>
+                            
+                            
                         @endif
                     @endif
                     @endguest

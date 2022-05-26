@@ -43,14 +43,14 @@ Route::get('/producto', function () {
     return view('producto');
 });
 
-Route::get('/producto/{product_id}', [HomeController::class, 'product']);
+Route::get('/producto/{product_id}', [HomeController::class, 'viewProduct']);
 
 Route::get('/panelControl', [adminController:: class, 'panelControl']);
 
 Route::get('/añadirProducto', [adminController::class, 'pantallaNP']);
 
-Route::get('cart', [HomeController::class, 'cart'])->name('cart');
-Route::get('add-to-cart', [HomeController::class, 'addToCart'])->name('add.to.cart');
+Route::get('/cart', [HomeController::class, 'cart'])->name('cart');
+Route::get('/add-to-cart/{id}', [HomeController::class, 'addToCart'])->name('add.to.cart');
 Route::patch('update-cart', [HomeController::class, 'update'])->name('update.cart');
 Route::delete('remove-from-cart', [HomeController::class, 'remove'])->name('remove.from.cart');
 Route::delete('olvidar', [HomeController::class, 'clearCarrito'])->name('clearCarrito.from.cart');
@@ -60,3 +60,5 @@ Route::get('/nuevaCategoria',[CategoryController::class, 'pantallaNuevaCategoria
 
 Route::post('/nuevoProducto',[ProductController::class,'create']);
 Route::get('/eliminarProducto/{id}', [ProductController::class, 'delete']);
+Route::delete('/remove-from-cart', [HomeController::class, 'remove'])->name('remove.from.cart');
+Route::delete('/olvidar', [HomeController::class, 'clearCarrito'])->name('clearCarrito.from.cart');

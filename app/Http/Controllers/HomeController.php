@@ -18,10 +18,11 @@ class HomeController extends Controller
     }
 
     //return product view
-    public function product($product_id){
-        if(isset($product_id)){
-            $product_id = intval($product_id);
-            $p = Product::where('id',$product_id)->first();
+    public function product($id){
+        if(isset($id)){
+            $product_id = intval($id);
+            $p = Product::find($product_id);
+            dd($p);
             if(!is_null($p)){ //verify if the product exist
                 $images = Image::where("product_id",$product_id)->get(); //obtain product images
                 $sizes = Product_size::where("product_id",$product_id)->get(); //otain product sizes info
@@ -54,20 +55,21 @@ class HomeController extends Controller
         return view('cart');
     }
 
-    public function addToCart($id) {
+    public function addToCart($id=null) {
         $producto = Product::findOrFail($id);
-        $cart = session()->get('cart', []);
+        if ($producto) {
+            $cart = session()->get('cart', []);
 
-        if (isset($cart[$id])) {
-            $cart[$id] ['cantidad']++;
-        } else {
-            $cart[$id] = [
-                "name" => $producto->name,
-                "quantity" => 1,
-                "price" => $producto->price
-            ];
+            if (isset($cart[$id])) {
+                $cart[$id] ['quantity']++;
+            } else {
+                $cart[$id] = [
+                    "name" => $producto->name,
+                    "quantity" => 1,
+                    "price" => $producto->price
+                ];
+            }
         }
-        
         session()->put('cart', $cart);
         return redirect()->back();
     }
@@ -92,5 +94,12 @@ class HomeController extends Controller
 
     public function clearCarrito (){
         $request->session()->forget('cart');
+    }
+
+    public function viewProduct($id) {
+        $product_id = intval($id);
+        $producto = Product::find($product_id);
+        $sizes = Product_size::where('product_id', $product_id)->get();
+        return view('product', compact('producto', 'sizes'));
     }
 }
