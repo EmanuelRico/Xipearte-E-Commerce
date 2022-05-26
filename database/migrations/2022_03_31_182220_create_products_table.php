@@ -20,9 +20,14 @@ class CreateProductsTable extends Migration
             $table->string("description");
             $table->float("price");
             $table->string("origin");
+            $table->integer("stock");
+
         });
     }
 
+
+
+    
     /**
      * Reverse the migrations.
      *
