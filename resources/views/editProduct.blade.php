@@ -7,33 +7,35 @@
 
 <div class="container">
     
-    <form action = "/dashboard" method="post">
+    <form action = "/nuevoProducto" method="put" enctype= "multipart/form-data">
+        @csrf
+        <input type="hidden" name="id" value="{{$p->id}}">
         <div class="row justify-content-md-center ">
             
             <div class="col col-lg-8">
                 <h2 class="fw-bold pt-4 pb-4">Añadir nuevo producto</h2>
                 <div class="mb-3">
                     <label for="basic-url" class="form-label font-weight-normal">Nombre del producto</label>
-                    <input name="name" type="text" class="form-control border-dark border-2" style="background-color: white" id="basic-url" aria-describedby="basic-addon3" placeholder="Nombre..." aria-label="Nombre..." required>
+                    <input value="{{$p->name}}" name="name" type="text" class="form-control border-dark border-2" style="background-color: white" id="basic-url" aria-describedby="basic-addon3" placeholder="Nombre..." aria-label="Nombre..." required>
                 </div>
                 <div class="form-group mb-3">
                     <label for="exampleFormControlTextarea1">Descripción del producto</label>
-                    <textarea  name="description" class="form-control border-dark border-2" style="background-color: white" id="exampleFormControlTextarea1" rows="6" required></textarea>
+                    <textarea value="{{$p->description}}" name="description" class="form-control border-dark border-2" style="background-color: white" id="exampleFormControlTextarea1" rows="6" required></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="basic-url" class="form-label">Precio</label>
-                    <input name="price" type="text" class="form-control border-dark border-2" style="background-color: white" id="basic-url" aria-describedby="basic-addon3" placeholder="" required>
+                    <input value="{{$p->price}}" name="price" type="text" class="form-control border-dark border-2" style="background-color: white" id="basic-url" aria-describedby="basic-addon3" placeholder="" required>
                 </div>
                 <div class="form-row mb-3">
                     <label for="basic-url" class="form-label">Stock disponible</label>
                     <div class="form-group">
-                        <input name="stock" type="text" class="form-control border-dark border-2 " style="background-color: white" id="basic-url" aria-describedby="basic-addon3" placeholder="" required>
+                        <input value="{{$p->stock}}" name="stock" type="text" class="form-control border-dark border-2 " style="background-color: white" id="basic-url" aria-describedby="basic-addon3" placeholder="" required>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="formFileMultiple" class="form-label">Seleccionar imágenes a mostrar</label>
                     <div class="input-group" > 
-                        <input name="images" class="form-control" type="file" id="formFileMultiple" accept="image/*" multiple hidden required/>
+                        <input  name="images[]" class="form-control" type="file" id="formFileMultiple" accept="image/*" multiple hidden required/>
                         <!-- our custom upload button -->
                         <label for="formFileMultiple" class="selectImage rounded-start col-4">Seleccionar imágenes
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-plus" viewBox="0 0 16 16">
@@ -49,9 +51,9 @@
                 </div>
                 <div class="form-group mb-3" >
                     <label for="exampleFormControlTextarea1">Acerca del lugar de origen</label>
-                    <textarea name="origin" class="form-control border-dark border-2" id="exampleFormControlTextarea1" rows="6" required></textarea>
+                    <textarea value="{{$p->origin}}" name="origin" class="form-control border-dark border-2" id="exampleFormControlTextarea1" rows="6" required></textarea>
                 </div>
-                <button type="button" class="btn btn-dark col-12 d-block py-3 rounded-3 mt-3 mb-3"> <h4 class="my-0 py-0">Añadir producto
+                <button type="submit" class="btn btn-dark col-12 d-block py-3 rounded-3 mt-3 mb-3"> <h4 class="my-0 py-0">Añadir producto
                     
                 </h4></button>
 
