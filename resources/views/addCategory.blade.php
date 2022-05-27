@@ -14,11 +14,11 @@
             <h2 class="fw-bold pt-4 pb-4">Añadir nueva categoría</h2>
                 <div class="mb-3">
                     <label for="basic-url" class="form-label font-weight-normal">Nombre de la categoría</label>
-                    <input id="categoryName" name="categoryName" required type="text" class="form-control border border-dark border-2" id="basic-url" aria-describedby="basic-addon3" placeholder="Nombre..." aria-label="Nombre...">
+                    <input id="categoryName" name="categoryName" required type="text" class="form-control border-dark border-2" id="basic-url" aria-describedby="basic-addon3" placeholder="Nombre..." aria-label="Nombre...">
                 </div>
                 <div class="form-group mb-3">
                     <label for="exampleFormControlTextarea1">Descripción de la categoria</label>
-                    <textarea  id="categoryDescription"  required name="categoryDescription" class="form-control border border-dark border-2" id="exampleFormControlTextarea1" rows="6"></textarea>
+                    <textarea  id="categoryDescription"  required name="categoryDescription" class="form-control border-dark border-2" id="exampleFormControlTextarea1" rows="6"></textarea>
                 </div>
                 
                 <button type="submit" class="btn btn-dark col-12 d-block py-3 rounded-3 mt-3 mb-3"> 

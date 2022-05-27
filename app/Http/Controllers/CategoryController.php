@@ -22,4 +22,32 @@ class CategoryController extends Controller
     {
         return view('addCategory');
     }
+
+    public function manageCategoriesScreen()
+    {
+        $category = Category::all();
+        return view('manageCategories', compact('category'));
+    }
+
+    public function viewCategoryEdit($id)
+    {
+        $c = Category::find($id);
+
+        return view('editCategory')->with('c', $c);
+    }
+
+    public function update(Request $request){
+        $c = Category::find((int)$request->id);
+        if($c){
+            $c->name = $request->name;
+            $c->description = $request->description;
+            $c->save();
+            $msg = "Actualizado exitosamente";
+            return redirect()->back()->with('msg', $msg);
+        }
+        else{
+            $msg = "No se pudo actualizar";
+            return view ('editCategory', compact('msg'));
+        }
+    }
 }

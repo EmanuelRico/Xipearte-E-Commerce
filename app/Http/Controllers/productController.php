@@ -62,11 +62,26 @@ class ProductController extends Controller
         if($product){
             $product->delete();
             $msg = "Eliminado exitosamente";
+
             return view ('dashboard',compact('msg'));
         }
         else{
             $msg = "No se pudo eliminar";
             return view ('deleteProduct',compact('msg'));
         }
+    }
+
+    public function manageProductsScreen()
+    {
+        $product = Product::all();
+
+        return view('manageProducts', compact('product'));
+    }
+
+    public function viewProductsEdit($id)
+    {
+        $p = Product::find($id);
+
+        return view('editProduct')->with('p', $p);
     }
 }

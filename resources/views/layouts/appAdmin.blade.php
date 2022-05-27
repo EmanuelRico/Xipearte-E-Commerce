@@ -99,7 +99,7 @@
         {{-- <main class="container my-5">
              {{ $slot }} 
         </main> --}}
-        <div>
+        <div class="container-100">
             @yield('content')
         </div>
 
