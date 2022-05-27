@@ -5,7 +5,7 @@ use App\Http\Controllers\adminController;
 use App\Http\Controllers\categoryController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
-use App\Models\Category;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,6 +53,8 @@ Route::patch('update-cart', [HomeController::class, 'update'])->name('update.car
 Route::delete('olvidar', [HomeController::class, 'clearCarrito'])->name('clearCarrito.from.cart');
 Route::delete('/remove-from-cart', [HomeController::class, 'remove'])->name('remove.from.cart');
 
+//ver categorias
+Route::get('/categoria/{id}',[CategoryController::class, 'viewCategories']);
 Route::post('/saveCategory',[CategoryController::class, 'saveCategory']);
 Route::get('/nuevaCategoria',[CategoryController::class, 'pantallaNuevaCategoria']);
 Route::get('/administrarCategorias',[CategoryController::class, 'manageCategoriesScreen']);
@@ -66,5 +68,3 @@ Route::get('/editarProducto/{id}', [ProductController::class, 'viewProductsEdit'
 Route::post('/actualizarProducto',[ProductController::class, 'update']);
 //Route::post('/eliminarProducto', [ProductController::class, 'delete']);
 Route::delete('/olvidar', [HomeController::class, 'clearCarrito'])->name('clearCarrito.from.cart');
-
-Route::get('/categoria/{categoria}', [categoryController::class, 'viewCategory']);
