@@ -17,10 +17,14 @@ use App\Models\Category;
 |
 */
 
+<<<<<<< HEAD
 Route::get('/', function () {
     $c_dropdown = Category::all();
     return view('welcome', compact('c_dropdown'));
 });
+=======
+Route::get('/', [HomeController::class, 'home']);
+>>>>>>> origin
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     if(Auth::user()->type==2){
@@ -53,7 +57,6 @@ Route::get('/añadirProducto', [adminController::class, 'pantallaNP']);
 Route::get('/cart', [HomeController::class, 'cart'])->name('cart');
 Route::get('/add-to-cart/{id}', [HomeController::class, 'addToCart'])->name('add.to.cart');
 Route::patch('update-cart', [HomeController::class, 'update'])->name('update.cart');
-Route::delete('remove-from-cart', [HomeController::class, 'remove'])->name('remove.from.cart');
 Route::delete('olvidar', [HomeController::class, 'clearCarrito'])->name('clearCarrito.from.cart');
 Route::delete('/remove-from-cart', [HomeController::class, 'remove'])->name('remove.from.cart');
 

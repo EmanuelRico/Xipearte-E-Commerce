@@ -52,9 +52,9 @@
                             <div class="custom-control custom-checkbox">
                                 <x-jet-checkbox id="terms" name="terms" />
                                 <label class="custom-control-label" for="terms">
-                                    {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                                'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'">'.__('Terms of Service').'</a>',
-                                                'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'">'.__('Privacy Policy').'</a>',
+                                    {!! __('De acuerdo con :terms_of_service y :privacy_policy', [
+                                                'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'">'.__('Terminos').'</a>',
+                                                'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'">'.__('Politica de privacidad').'</a>',
                                         ]) !!}
                                 </label>
                             </div>
