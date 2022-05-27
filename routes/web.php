@@ -17,14 +17,7 @@ use App\Models\Category;
 |
 */
 
-<<<<<<< HEAD
-Route::get('/', function () {
-    $c_dropdown = Category::all();
-    return view('welcome', compact('c_dropdown'));
-});
-=======
 Route::get('/', [HomeController::class, 'home']);
->>>>>>> origin
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     if(Auth::user()->type==2){
