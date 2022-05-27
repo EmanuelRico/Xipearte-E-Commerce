@@ -10,7 +10,8 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         @livewireStyles
 
         <!-- Scripts -->
@@ -59,11 +60,11 @@
                     @else
                         @if(Auth::user()->type == 1)
                             <div class="nav-item dropdown pt-1 pt-lg-0 d-flex align-items-center ms-1">
-                                <a lass="nav-link dropdown-toggle px-0 fa-solid fa-user fa-lg text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="title-hover fa-lg fa-solid fa-cart-shopping text-white me-3"></i></a>
+                                <a lass="nav-link dropdown-toggle px-0 fa-solid fa-user fa-lg text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="title-hover fa-lg fa-solid fa-cart-shopping text-white "></i></a><span class="text-white me-3 pt-2" style="font-size: 12px">{{ count((array) session('cart')) }}</span>
                                 <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
                                     <div class="row total-header-section">
                                         <div class="col">
-                                        <a class="px-0 text-white"><i class="title-hover fa-lg fa-solid fa-cart-shopping me-3"></i></a> <span class="">{{ count((array) session('cart')) }}</span>
+                                        <a class="px-0 text-white"><i class="title-hover fa-lg fa-solid fa-cart-shopping me-3"></i></a>
                                         </div>
                                         @php $total = 0 @endphp
                                         @foreach((array) session('cart') as $id => $details)
