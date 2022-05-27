@@ -50,11 +50,17 @@ $c_dropdown = Category::all();
                                 Categorías
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                               
+
                                 @foreach ($c_dropdown as $c)
-                                <li><a class="dropdown-item" href="/categoria/{{$c->id}}">{{$c->name}}</a></li>
+            
+                                    <li><a class="dropdown-item"
+                                            href="/categoria/{{ $c->id }}">{{ $c->name }}</a></li>
                                 @endforeach
 
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="/categorias">Todas las categorias</a></li>
                             </ul>
                         </div>
                     </li>
@@ -147,8 +153,9 @@ $c_dropdown = Category::all();
 
                                     <hr class="dropdown-divider">
 
-                                    <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                        document.getElementById('logout-form').submit();">
+                                    <x-jet-dropdown-link href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                                                document.getElementById('logout-form').submit();">
                                         {{ __('Cerrar sesión') }}
                                     </x-jet-dropdown-link>
                                     <form method="POST" id="logout-form" action="{{ route('logout') }}">

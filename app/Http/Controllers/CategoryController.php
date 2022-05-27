@@ -30,12 +30,17 @@ class CategoryController extends Controller
         return view('manageCategories', compact('category'));
     }
 
-    public function viewCategories($id)
+    public function viewCategory($id)
     {
         $category = Category::find($id);
         $products = Product::join('product_categories as pc', 'pc.product_id', 'products.id')->where('pc.category_id', $id)->get();
 
         return view('category_view', compact('category','products'));
+    }
+
+    public function viewCategories(){
+        $categories = Category::all();
+        return view('categories', compact('categories'));
     }
 
     public function viewCategoryEdit($id)
