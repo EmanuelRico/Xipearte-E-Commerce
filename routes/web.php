@@ -5,7 +5,7 @@ use App\Http\Controllers\adminController;
 use App\Http\Controllers\categoryController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
-
+use App\Models\Category;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,7 +18,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $c_dropdown = Category::all();
+    return view('welcome', compact('c_dropdown'));
 });
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -69,3 +70,5 @@ Route::get('/editarProducto/{id}', [ProductController::class, 'viewProductsEdit'
 Route::post('/actualizarProducto',[ProductController::class, 'update']);
 //Route::post('/eliminarProducto', [ProductController::class, 'delete']);
 Route::delete('/olvidar', [HomeController::class, 'clearCarrito'])->name('clearCarrito.from.cart');
+
+Route::get('/categoria/{categoria}', [categoryController::class, 'viewCategory']);

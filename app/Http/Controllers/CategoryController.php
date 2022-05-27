@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\Product_category;
 
@@ -30,11 +31,19 @@ class CategoryController extends Controller
         return view('manageCategories', compact('category'));
     }
 
+    public function viewCategory($id)
+    {
+        $category = Category::find($id);
+        $products = Product::join('product_categories as pc', 'pc.product_id', 'products.id')->where('pc.category_id', $id)->get();
+
+        return view('category_view', compact('category','products'));
+    }
+
     public function viewCategoryEdit($id)
     {
         $c = Category::find($id);
 
-        return view('editCategory')->with('c', $c);
+        return view('editCategory', compact('c'));
     }
 
     public function update(Request $request){
