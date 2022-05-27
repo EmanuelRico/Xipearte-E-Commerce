@@ -35,6 +35,7 @@ class ProductController extends Controller
 
     public function update(Request $request){
         $product = Product::find((int)$request->id);
+        //si encuentra el producto mandando por medio del id, crea un nuevo producto
         if($product){
             $product->name = $request->name;
             $product->description = $request->description;
@@ -42,6 +43,8 @@ class ProductController extends Controller
             $product->origin = $request->origin;
             $product->stock = $request->stock;
             $product->save();
+            //si se mandan imagenes, las sobreescribe
+            if($request->file('images')) Image::where('product_id', $product->id)->delete();
             foreach($request->file('images') as $file){
                 $imagen = new Image();
                 $name = $file->getClientOriginalName();
