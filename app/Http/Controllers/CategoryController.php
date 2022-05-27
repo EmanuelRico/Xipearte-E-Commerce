@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\Product_category;
 
 class CategoryController extends Controller
 {
@@ -52,9 +53,11 @@ class CategoryController extends Controller
     }
 
     public function delete(Request $request){
+        //cambiar la variable show a falso, solo se muestran las categorias con show = true
         $category = Category::find((int)$request->id);
         
         if($category){
+            Product_category::where('category_id', (int)$request->id)->delete();
             $category->delete();
             $msg = "Eliminado exitosamente";
 

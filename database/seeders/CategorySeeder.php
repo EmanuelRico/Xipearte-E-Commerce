@@ -18,7 +18,6 @@ class CategorySeeder extends Seeder
         $c->id = 1;
         $c -> name = "Duis veniam enim dolore duis id veniam pariatur.";
         $c -> description = "Duis veniam enim dolore duis id veniam pariatur.";
-        $c->show = true;
         $c ->save();
         unset($c);
 
@@ -26,7 +25,6 @@ class CategorySeeder extends Seeder
         $c->id = 2;
         $c -> name = "Vestidos de chiapas";
         $c -> description = "Duis veniam enim dolore duis id veniam pariatur.";
-        $c->show = true;
         $c ->save();
     }
 }
