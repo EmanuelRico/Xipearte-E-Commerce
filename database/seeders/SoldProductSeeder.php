@@ -17,6 +17,7 @@ class SoldProductSeeder extends Seeder
         $s = new Sold_product();
         $s->product_id = 1;
         $s->sale_id = 1;
+        $s->size_id = 1;
         $s->final_price = 100.0;
         $s->save();
     }
