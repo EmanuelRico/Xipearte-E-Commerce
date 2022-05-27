@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -24,7 +25,9 @@ class ProductController extends Controller
         foreach($request->file('images') as $file){
             $imagen = new Image();
             $name = $file->getClientOriginalName();
-            $imagen->route = $file->storeAs('img', $name,'public');
+            $dest = 'img';
+            $file->move($dest,$name);
+            $imagen->route = $dest.'/'.$name;
             $imagen->product_id = $product->id;
             $imagen->save();
         }

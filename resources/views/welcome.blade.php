@@ -43,72 +43,24 @@
 
 <div class=" mx-5 py-3 shadow-lg hscroll" style="overflow-x:scroll;">
     <div class="row flex-row flex-nowrap">
-        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
-            <a href="/producto/1"  class="text-decoration-none">
+
+    @foreach($productos as $p)
+    <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
+            <a href="/producto/{{$p->id}}"  class="text-decoration-none">
                 <div class="card shadow" style="width: 18rem;">
-                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top img-fluid" alt="...">
+                    @foreach($img as $i)
+                        @if($i->product_id === $p->id)
+                            <img src="{{ asset('assets/'.$i->route) }}" class="card-img-top img-fluid" width="500" height="600">
+                        @endif
+                    @endforeach
                     <div class="card-body">
-                        <p class="card-text d-flex justify-content-center fw-bold h5 ">Vestido en manta</p>
-                        <h3 class="d-flex justify-content-center">$000.00</h3>
+                        <p class="card-text d-flex justify-content-center fw-bold h5 ">{{$p->name}}</p>
+                        <h3 class="d-flex justify-content-center">${{$p->price}}.00</h3>
                     </div>
                 </div>
             </a>
         </div>
-        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
-            <a href="" class="text-decoration-none">
-                <div class="card shadow" style="width: 18rem;">
-                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text d-flex justify-content-center fw-bold h5 ">Vestido en manta</p>
-                        <h3 class="d-flex justify-content-center">$000.00</h3>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
-            <a href="" class="text-decoration-none">
-                <div class="card shadow" style="width: 18rem;">
-                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text d-flex justify-content-center fw-bold h5 ">Vestido en manta</p>
-                        <h3 class="d-flex justify-content-center">$000.00</h3>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
-            <a href="" class="text-decoration-none">
-                <div class="card shadow" style="width: 18rem;">
-                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text d-flex justify-content-center fw-bold h5 ">Vestido en manta</p>
-                        <h3 class="d-flex justify-content-center">$000.00</h3>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
-            <a href="" class="text-decoration-none">
-                <div class="card shadow" style="width: 18rem;">
-                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text d-flex justify-content-center fw-bold h5 ">Vestido en manta</p>
-                        <h3 class="d-flex justify-content-center">$000.00</h3>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
-            <a href="" class="text-decoration-none">
-                <div class="card shadow" style="width: 18rem;">
-                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text d-flex justify-content-center fw-bold h5  text-decoration-none">Vestido en manta</p>
-                        <h3 class="d-flex justify-content-center">$000.00</h3>
-                    </div>
-                </div>
-            </a>
-        </div>
+    @endforeach
     </div>
 </div>
 
@@ -116,72 +68,24 @@
 
 <div class=" mx-5 py-3 shadow-lg hscroll" style="overflow-x:scroll;">
     <div class="row flex-row flex-nowrap">
-        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
-            <a href="/producto/1"  class="text-decoration-none">
+
+    @foreach($productos as $p)
+    <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
+            <a href="/producto/{{$p->id}}"  class="text-decoration-none">
                 <div class="card shadow" style="width: 18rem;">
-                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top img-fluid" alt="...">
+                    @foreach($img as $i)
+                        @if($i->product_id === $p->id)
+                            <img src="{{ asset('assets/'.$i->route) }}" class="card-img-top img-fluid" width="500" height="600">
+                        @endif
+                    @endforeach
                     <div class="card-body">
-                        <p class="card-text d-flex justify-content-center fw-bold h5 ">Vestido en manta</p>
-                        <h3 class="d-flex justify-content-center">$000.00</h3>
+                        <p class="card-text d-flex justify-content-center fw-bold h5 ">{{$p->name}}</p>
+                        <h3 class="d-flex justify-content-center">${{$p->price}}.00</h3>
                     </div>
                 </div>
             </a>
         </div>
-        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
-            <a href="" class="text-decoration-none">
-                <div class="card shadow" style="width: 18rem;">
-                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text d-flex justify-content-center fw-bold h5 ">Vestido en manta</p>
-                        <h3 class="d-flex justify-content-center">$000.00</h3>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
-            <a href="" class="text-decoration-none">
-                <div class="card shadow" style="width: 18rem;">
-                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text d-flex justify-content-center fw-bold h5 ">Vestido en manta</p>
-                        <h3 class="d-flex justify-content-center">$000.00</h3>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
-            <a href="" class="text-decoration-none">
-                <div class="card shadow" style="width: 18rem;">
-                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text d-flex justify-content-center fw-bold h5 ">Vestido en manta</p>
-                        <h3 class="d-flex justify-content-center">$000.00</h3>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
-            <a href="" class="text-decoration-none">
-                <div class="card shadow" style="width: 18rem;">
-                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text d-flex justify-content-center fw-bold h5 ">Vestido en manta</p>
-                        <h3 class="d-flex justify-content-center">$000.00</h3>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
-            <a href="" class="text-decoration-none">
-                <div class="card shadow" style="width: 18rem;">
-                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text d-flex justify-content-center fw-bold h5  text-decoration-none">Vestido en manta</p>
-                        <h3 class="d-flex justify-content-center">$000.00</h3>
-                    </div>
-                </div>
-            </a>
-        </div>
+    @endforeach
     </div>
 </div>
 
@@ -189,72 +93,24 @@
 
 <div class=" mx-5 py-3 shadow-lg hscroll" style="overflow-x:scroll;">
     <div class="row flex-row flex-nowrap">
-        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
-            <a href="/producto/1"  class="text-decoration-none">
+
+    @foreach($productos as $p)
+    <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
+            <a href="/producto/{{$p->id}}"  class="text-decoration-none">
                 <div class="card shadow" style="width: 18rem;">
-                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top img-fluid" alt="...">
+                    @foreach($img as $i)
+                        @if($i->product_id === $p->id)
+                            <img src="{{ asset('assets/'.$i->route) }}" class="card-img-top img-fluid" width="500" height="600">
+                        @endif
+                    @endforeach
                     <div class="card-body">
-                        <p class="card-text d-flex justify-content-center fw-bold h5 ">Vestido en manta</p>
-                        <h3 class="d-flex justify-content-center">$000.00</h3>
+                        <p class="card-text d-flex justify-content-center fw-bold h5 ">{{$p->name}}</p>
+                        <h3 class="d-flex justify-content-center">${{$p->price}}.00</h3>
                     </div>
                 </div>
             </a>
         </div>
-        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
-            <a href="" class="text-decoration-none">
-                <div class="card shadow" style="width: 18rem;">
-                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text d-flex justify-content-center fw-bold h5 ">Vestido en manta</p>
-                        <h3 class="d-flex justify-content-center">$000.00</h3>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
-            <a href="" class="text-decoration-none">
-                <div class="card shadow" style="width: 18rem;">
-                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text d-flex justify-content-center fw-bold h5 ">Vestido en manta</p>
-                        <h3 class="d-flex justify-content-center">$000.00</h3>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
-            <a href="" class="text-decoration-none">
-                <div class="card shadow" style="width: 18rem;">
-                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text d-flex justify-content-center fw-bold h5 ">Vestido en manta</p>
-                        <h3 class="d-flex justify-content-center">$000.00</h3>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
-            <a href="" class="text-decoration-none">
-                <div class="card shadow" style="width: 18rem;">
-                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text d-flex justify-content-center fw-bold h5 ">Vestido en manta</p>
-                        <h3 class="d-flex justify-content-center">$000.00</h3>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
-            <a href="" class="text-decoration-none">
-                <div class="card shadow" style="width: 18rem;">
-                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text d-flex justify-content-center fw-bold h5  text-decoration-none">Vestido en manta</p>
-                        <h3 class="d-flex justify-content-center">$000.00</h3>
-                    </div>
-                </div>
-            </a>
-        </div>
+    @endforeach
     </div>
 </div>
 
