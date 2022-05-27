@@ -15,10 +15,11 @@ class ProductController extends Controller
 
     public function create(Request $request){
         $product = New Product();
-        $product->name = $_POST['name'];
-        $product->description = $_POST['description'];
-        $product->price = (float)$_POST['price'];
-        $product->origin = $_POST['origin'];
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->origin = $request->origin;
+        $product->stock = $request->stock;
         $product->save();
 
         foreach($request->file('images') as $file){
@@ -29,7 +30,7 @@ class ProductController extends Controller
             $imagen->save();
         }
         $msg = "Creado exitosamente";
-        return view('dashboard',compact('msg'));
+        return redirect('panelControl')->with('msg', $msg);
     }
 
     public function update(Request $request){
@@ -39,6 +40,7 @@ class ProductController extends Controller
             $product->description = $request->description;
             $product->price = (float)$request->price;
             $product->origin = $request->origin;
+            $product->stock = $request->stock;
             $product->save();
             foreach($request->file('images') as $file){
                 $imagen = new Image();
@@ -48,11 +50,11 @@ class ProductController extends Controller
                 $imagen->save();
             }
             $msg = "Actualizado exitosamente";
-            return view ('dashboard',compact('msg'));
+            return redirect('administrarProductos')->with('msg', $msg);
         }
         else{
             $msg = "No se pudo actualizar";
-            return view ('updateProduct',compact('msg'));
+            return view ('updateProduct', compact('msg'));
         }
     }
 
@@ -63,7 +65,7 @@ class ProductController extends Controller
             $product->delete();
             $msg = "Eliminado exitosamente";
 
-            return view ('dashboard',compact('msg'));
+            return redirect('panelControl')->with('msg', $msg);
         }
         else{
             $msg = "No se pudo eliminar";

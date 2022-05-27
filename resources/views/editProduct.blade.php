@@ -4,7 +4,6 @@
 
 @section('content')
 
-
     <div class="container">
         <form action="/actualizarProducto" method="POST" enctype="multipart/form-data">
             @csrf
@@ -21,20 +20,19 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="exampleFormControlTextarea1">Descripción del producto</label>
-                        <textarea value="{{ $p->description }}" name="description" class="form-control border-dark border-2"
-                            style="background-color: white" id="exampleFormControlTextarea1" rows="6"
-                            required></textarea>
+                        <textarea name="description" class="form-control border-dark border-2" style="background-color: white"
+                            id="exampleFormControlTextarea1" rows="6" required>{{ $p->description }}</textarea>
                     </div>
                     <div class="mb-3">
                         <label for="basic-url" class="form-label">Precio</label>
-                        <input value="{{ $p->price }}" name="price" type="text"
+                        <input value="{{ $p->price }}" name="price" type="number" step="0.01"
                             class="form-control border-dark border-2" style="background-color: white" id="basic-url"
                             aria-describedby="basic-addon3" placeholder="" required>
                     </div>
                     <div class="form-row mb-3">
                         <label for="basic-url" class="form-label">Stock disponible</label>
                         <div class="form-group">
-                            <input value="{{ $p->stock }}" name="stock" type="text"
+                            <input value="{{ $p->stock }}" name="stock" type="number"
                                 class="form-control border-dark border-2 " style="background-color: white" id="basic-url"
                                 aria-describedby="basic-addon3" placeholder="" required>
                         </div>
@@ -57,20 +55,16 @@
 
                             <!-- name of file chosen -->
                             <span id="file-chosen" class="selectImage2 rounded-end col">Imágenes no seleccionadas</span>
-
                         </div>
                     </div>
                     <div class="form-group mb-3">
                         <label for="exampleFormControlTextarea1">Acerca del lugar de origen</label>
-                        <textarea value="{{ $p->origin }}" name="origin" class="form-control border-dark border-2"
-                            id="exampleFormControlTextarea1" rows="6" required></textarea>
+                        <textarea name="origin" class="form-control border-dark border-2" id="exampleFormControlTextarea1" rows="6"
+                            required>{{ $p->origin }}</textarea>
                     </div>
                     <button type="submit" class="btn btn-dark col-12 d-block py-3 rounded-3 mt-3 mb-3">
-                        <h4 class="my-0 py-0">Añadir producto
-
-                        </h4>
+                        <h4 class="my-0 py-0">Editar producto</h4>
                     </button>
-
                 </div>
             </div>
         </form>

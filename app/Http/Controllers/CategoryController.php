@@ -43,11 +43,26 @@ class CategoryController extends Controller
             $c->description = $request->description;
             $c->save();
             $msg = "Actualizado exitosamente";
-            return redirect()->back()->with('msg', $msg);
+            return redirect('administrarCategorias')->with('msg', $msg);
         }
         else{
             $msg = "No se pudo actualizar";
             return view ('editCategory', compact('msg'));
+        }
+    }
+
+    public function delete(Request $request){
+        $category = Category::find((int)$request->id);
+        
+        if($category){
+            $category->delete();
+            $msg = "Eliminado exitosamente";
+
+            return redirect('panelControl')->with('msg', $msg);
+        }
+        else{
+            $msg = "No se pudo eliminar";
+            return view ('deleteCategory',compact('msg'));
         }
     }
 }
