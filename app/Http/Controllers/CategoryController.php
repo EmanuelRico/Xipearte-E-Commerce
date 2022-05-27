@@ -16,7 +16,6 @@ class CategoryController extends Controller
         $cat->description = $request->categoryDescription;
         $cat->save();
         return redirect('/panelControl');
-
     }
 
     public function pantallaNuevaCategoria()

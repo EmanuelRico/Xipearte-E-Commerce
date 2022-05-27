@@ -8,13 +8,26 @@ use App\Models\Product;
 use App\Models\Product_category;
 use App\Models\Product_size;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Arr;
 
 use function PHPUnit\Framework\isNull;
 
 class HomeController extends Controller
 {
     public function home(){
-        return view("welcome");
+        $productos = DB::table('products')
+        ->orderBy('id', 'asc')
+        ->take(6)
+        ->get();
+        $images = [];
+        foreach($productos as $p){
+            $img = DB::table('images')
+            ->where('product_id',$p->id)->first();
+            $images = Arr::add($images,$p->id,$img);
+        }
+        
+        return view("welcome")->with('productos',$productos)->with('img',$images);
     }
 
     //return product view
