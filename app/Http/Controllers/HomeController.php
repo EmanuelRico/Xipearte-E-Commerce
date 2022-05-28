@@ -123,4 +123,18 @@ class HomeController extends Controller
         $sizes = Product_size::where('product_id', $product_id)->get();
         return view('product', compact('producto', 'sizes'));
     }
+
+    public function viewCategories()
+    {
+        $category = Category::all();
+        return view('categories', compact('category'));
+    }
+    //Ver categoria en especifico
+    public function viewCategory($id)
+    {
+        $category = Category::find($id);
+        $products = Product::join('product_categories as pc', 'pc.product_id', 'products.id')->where('pc.category_id', $id)->get();
+
+        return view('category_view', compact('category','products'));
+    }
 }

@@ -8,7 +8,7 @@ use App\Models\Product_category;
 
 class CategoryController extends Controller
 {
-    //
+    //Agregar categoria
     public function saveCategory(Request $request)
     {
         
@@ -19,30 +19,19 @@ class CategoryController extends Controller
         return redirect('/panelControl');
     }
 
+    //pantalla para agregar categoria
     public function pantallaNuevaCategoria()
     {
         return view('addCategory');
     }
-
+    //pantalla administrador para Ver todas las categorias y editarlas
     public function manageCategoriesScreen()
     {
         $category = Category::all();
         return view('manageCategories', compact('category'));
     }
 
-    public function viewCategory($id)
-    {
-        $category = Category::find($id);
-        $products = Product::join('product_categories as pc', 'pc.product_id', 'products.id')->where('pc.category_id', $id)->get();
-
-        return view('category_view', compact('category','products'));
-    }
-
-    public function viewCategories(){
-        $categories = Category::all();
-        return view('categories', compact('categories'));
-    }
-
+    //Pantalla para editar la categoria
     public function viewCategoryEdit($id)
     {
         $c = Category::find($id);
@@ -50,6 +39,7 @@ class CategoryController extends Controller
         return view('editCategory', compact('c'));
     }
 
+    //Actualizar categoria
     public function update(Request $request){
         $c = Category::find((int)$request->id);
         if($c){
@@ -65,6 +55,7 @@ class CategoryController extends Controller
         }
     }
 
+    //Eliminar categoria
     public function delete(Request $request){
         //cambiar la variable show a falso, solo se muestran las categorias con show = true
         $category = Category::find((int)$request->id);

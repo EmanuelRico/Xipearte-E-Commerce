@@ -53,9 +53,9 @@ Route::patch('update-cart', [HomeController::class, 'update'])->name('update.car
 Route::delete('olvidar', [HomeController::class, 'clearCarrito'])->name('clearCarrito.from.cart');
 Route::delete('/remove-from-cart', [HomeController::class, 'remove'])->name('remove.from.cart');
 
-//ver categorias
-Route::get('/categoria/{id}',[CategoryController::class, 'viewCategory']);
-Route::get('/categorias',[CategoryController::class, 'viewCategories']);
+//ver categorias usuario comun
+Route::get('/categoria/{id}',[HomeController::class, 'viewCategory']);
+Route::get('/categorias',[HomeController::class, 'viewCategories']);
 
 Route::post('/saveCategory',[CategoryController::class, 'saveCategory']);
 Route::get('/nuevaCategoria',[CategoryController::class, 'pantallaNuevaCategoria']);
