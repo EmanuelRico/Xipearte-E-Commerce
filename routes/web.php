@@ -62,7 +62,7 @@ Route::get('/nuevaCategoria',[CategoryController::class, 'pantallaNuevaCategoria
 Route::get('/administrarCategorias',[CategoryController::class, 'manageCategoriesScreen']);
 Route::get('/editarCategoria/{id}', [CategoryController::class, 'viewCategoryEdit']);
 Route::post('/actualizarCategoria',[CategoryController::class, 'update']);
-//Route::post('/eliminarCategoria',[CategoryController::class, 'delete']);
+Route::post('/eliminarCategoria',[CategoryController::class, 'delete']);
 
 //rutas productos
 Route::post('/nuevoProducto',[ProductController::class,'create']);
