@@ -64,9 +64,10 @@ Route::get('/editarCategoria/{id}', [CategoryController::class, 'viewCategoryEdi
 Route::post('/actualizarCategoria',[CategoryController::class, 'update']);
 //Route::post('/eliminarCategoria',[CategoryController::class, 'delete']);
 
+//rutas productos
 Route::post('/nuevoProducto',[ProductController::class,'create']);
 Route::get('/administrarProductos',[ProductController::class, 'manageProductsScreen']);
 Route::get('/editarProducto/{id}', [ProductController::class, 'viewProductsEdit']);
 Route::post('/actualizarProducto',[ProductController::class, 'update']);
-//Route::post('/eliminarProducto', [ProductController::class, 'delete']);
+Route::post('/eliminarProducto', [ProductController::class, 'delete']);
 Route::delete('/olvidar', [HomeController::class, 'clearCarrito'])->name('clearCarrito.from.cart');
