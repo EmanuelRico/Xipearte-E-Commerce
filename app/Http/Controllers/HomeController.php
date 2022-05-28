@@ -132,8 +132,8 @@ class HomeController extends Controller
     public function viewCategory($id)
     {
         $category = Category::find($id);
-        $products = Product::join('product_categories as pc', 'pc.product_id', 'products.id')->where('pc.category_id', $id)->get();
-
+        $products = Product::join('product_categories as pc', 'pc.product_id', 'products.id')->where('pc.category_id', $id)->join('images', 'products.id', 'images.product_id')->get();
+        
         return view('category_view', compact('category','products'));
     }
 }

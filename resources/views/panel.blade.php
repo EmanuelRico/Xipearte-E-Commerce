@@ -14,7 +14,7 @@
 
     <div class="row">
         <div class="col-1"></div>
-        <h4 class="col-9 d-flex  my-4 fw-bold">Ultimos pedidos</h4>
+        <h4 class="col-9 d-flex  my-4 fw-bold">Últimos pedidos</h4>
     </div>
 
     <div class=" mx-5 py-3 shadow-lg  border border-3 rounded-3 border-dark p-2 hscroll" style="overflow-x:scroll;">
@@ -94,14 +94,14 @@
         <div class="col-5">
             <a href="/administrarCategorias">
                 <button type="button" class="btn btn-dark col-12 d-block py-3 rounded-3 mt-3"> 
-                    <h4 class="my-0 py-0">Administrar categorias</h4>
+                    <h4 class="my-0 py-0">Administrar categorías</h4>
                 </button>
             </a> 
         </div>
         <div class="col-5">
             <a href="/nuevaCategoria">
             <button type="button" class="btn btn-dark col-12 d-block py-3 rounded-3 mt-3"> 
-                <h4 class="my-0 py-0">Añadir categorias</h4>
+                <h4 class="my-0 py-0">Añadir categorías</h4>
             </button>
             </a> 
         </div>
@@ -117,7 +117,7 @@
         <div class="col-5">
             <a href="/nuevaCategoria">
             <button type="button" class="btn btn-dark col-12 d-block py-3 rounded-3 mt-3"> 
-                <h4 class="my-0 py-0"> a</h4>
+                <h4 class="my-0 py-0">Añadir nueva categoría</h4>
             </button>
             </a> 
         </div>
