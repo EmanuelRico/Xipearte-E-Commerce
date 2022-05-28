@@ -14,28 +14,36 @@
                     <p class="card-text mb-5">Descripción: {{ $c->description }}</p>
                     <div class="position-absolute bottom-0 mb-2">
                         <a href="/editarCategoria/{{ $c->id }}" class="btn btn-primary">Editar</a>
-                        <button type="button" class="btn " style="background-color: rgb(192, 192, 192)" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="button" class="btn " style="background-color: rgb(192, 192, 192)"
+                            data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Eliminar
+                        </button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{$c->id}}">
+                          Launch demo modal
                         </button>
                     </div>
                 </div>
             </div>
-        @endforeach
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            {{-- modal --}}
+            <div class="modal fade" id="exampleModal{{$c->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel"> ¿Estás seguro de eliminar la categoría?</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"> ¿Estás seguro de eliminar la categoría?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <a href="/eliminarcategoria/{{$c->id}}"><button type="button" class="btn btn-primary" >Sí</button></a>
+                        
+                    </div>
                 </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                  <button type="button" class="btn btn-primary">Sí</button>
-                </div>
-              </div>
             </div>
-          </div>
+        </div>
+        @endforeach
+        
     </div>
 @endsection
