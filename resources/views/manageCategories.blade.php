@@ -30,8 +30,13 @@
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                      <a href="/eliminarcategoria/{{$c->id}}"><button type="button" class="btn btn-primary" >Sí</button></a>
-                  </div>
+                      <form action="/eliminarCategoria" method="post">
+                        @csrf
+                        <input type="hidden" name="id" value="{{ $c->id }}">
+                        <button type="submit" class="btn btn-primary">Sí</button>
+                    </form>
+                      
+                    </div>
                 </div>
             </div>
         </div>

@@ -6,6 +6,8 @@ use App\Models\Product;
 use App\Models\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Product_size;
+
 
 class ProductController extends Controller
 {
@@ -64,13 +66,13 @@ class ProductController extends Controller
         }
     }
 
-    public function delete($id){
-        $product = Product::find($id);
+    public function delete(Request $request){
+        $product = Product::find($request->id);
         
         if($product){
-            Image::where('product_id',$id)->delete();
-            Product_size::where('product_id',$id)->delete();
-            Product_category::where('product_id',$id)->delete();
+            Image::where('product_id',$request->id)->delete();
+            Product_size::where('product_id',$request->id)->delete();
+            Product_category::where('product_id',$request->id)->delete();
             $product->delete();
             $msg = "Eliminado exitosamente";
 
