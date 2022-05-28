@@ -55,13 +55,13 @@
                             </label>
 
                             <!-- name of file chosen -->
-                            <span id="file-chosen" class="selectImage2 rounded-end col">Imágenes no seleccionadas</span>
+                            <span id="file-chosen" class="selectImage2 rounded-end col me-0">Imágenes no seleccionadas</span>
 
                         </div>
                     </div>
                     <div class="form-group mb-3">
                         <label for="exampleFormControlTextarea1">Acerca del lugar de origen</label>
-                        <textarea name="origin" class="form-control border-dark border-2" id="exampleFormControlTextarea1" rows="6"
+                        <textarea name="origin" class="form-control border-dark border-2" id="exampleFormControlTextarea1" rows="6" style="background-color: white"
                             required></textarea>
                     </div>
                     <button type="submit" class="btn btn-dark col-12 d-block py-3 rounded-3 mt-3 mb-3">
