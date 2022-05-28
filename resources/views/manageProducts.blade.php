@@ -12,7 +12,7 @@
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">Producto: {{ $p->name }}</h5>
-                    <h6 class="card-subtitle">Price: {{ $p->price }}</h5>
+                    <h6 class="card-subtitle">Precio: {{ $p->price }}</h5>
                     <p class="card-text mb-5">Descripción: {{ $p->description }}</p>
                     <div class="position-absolute bottom-0 mb-2">
                         <a href="/editarProducto/{{ $p->id }}" class="btn btn-primary">Editar</a>
