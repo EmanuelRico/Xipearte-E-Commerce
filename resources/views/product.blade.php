@@ -7,46 +7,20 @@
         <div class="row  " >
             <div class="col-12 col-md-6 mt-3">
                 <div>
-                    <img class="w-100 float-end"  src="{{ asset('assets/vestido.png') }}" >
+                    <img class="w-100 float-end"  src="{{ asset('assets/'.$images[0]->route) }}" >
                 </div>
                 
                 <div class="container-fluid pt-4" style="overflow-x:scroll;">
                     <div class="row flex-row flex-nowrap">
+                        @foreach($images as $i)
                         <div class="col-4 col-md-5 col-lg-3 col-xl-4 col-xxl-3 d-flex justify-content-center ">
-                            <a href="">
+                            <a href="#">
                                 <div class="card" >
-                                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top rounded-0 img-fluid" alt="...">
+                                    <img src="{{ asset('assets/'.$i->route) }}" class="card-img-top rounded-0 img-fluid" alt="..." width="120" heigth="120">
                                 </div>
                             </a>
                         </div>
-                        <div class="col-4 col-md-5 col-lg-3 col-xl-4 col-xxl-3 d-flex justify-content-center ">
-                            <a href="">
-                                <div class="card" >
-                                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top rounded-0 img-fluid" alt="...">
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-4 col-md-5 col-lg-3 col-xl-4 col-xxl-3 d-flex justify-content-center ">
-                            <a href="">
-                                <div class="card" >
-                                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top rounded-0 img-fluid" alt="...">
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-4 col-md-5 col-lg-3 col-xl-4 col-xxl-3 d-flex justify-content-center ">
-                            <a href="">
-                                <div class="card" >
-                                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top rounded-0 img-fluid" alt="...">
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-4 col-md-5 col-lg-3 col-xl-4 col-xxl-3  d-flex justify-content-center ">
-                            <a href="">
-                                <div class="card" >
-                                    <img src="{{ asset('assets/vestido.png') }}" class="card-img-top rounded-0 img-fluid" alt="...">
-                                </div>
-                            </a>
-                        </div>
+                        @endforeach
                     </div>
                 </div> 
             </div>
@@ -80,63 +54,23 @@
     <h3 class="fw-bold">Tus últimas visitas</h3>
     <div class="container-fluid" style="overflow-x:scroll;">
         <div class="row flex-row flex-nowrap">
-            
+            @foreach($productos as $lastView)
             <div class="col-4 col-md-5 col-lg-3 d-flex justify-content-center ">
-                <a href="">
+                <a href="/producto/{{$lastView->id}}">
                     <div class="card" >
-                        <img src="{{ asset('assets/vestido.png') }}" class="card-img-top rounded-0 img-fluid" alt="...">
+                        @foreach($imgAdd as $ia)
+                            @if($ia->product_id === $lastView->id)
+                                <img src="{{ asset('assets/'.$ia->route) }}" class="card-img-top rounded-0 img-fluid" alt="...">
+                            @endif
+                        @endforeach
                         <div class="card-body">
-                        <h5 class="fw-bold card-text text-center" >Vestido en manta</h5>
-                        <h4 class="fw-bold card-text text-center" > $000.00 </h4>
+                        <h5 class="fw-bold card-text text-center" >{{$lastView->name}}</h5>
+                        <h4 class="fw-bold card-text text-center" > ${{$lastView->price}}.00 </h4>
                         </div>
                     </div>
                 </a>
             </div>
-            <div class="col-4 col-md-5 col-lg-3 d-flex justify-content-center ">
-                <a href="">
-                    <div class="card" >
-                        <img src="{{ asset('assets/vestido.png') }}" class="card-img-top rounded-0 img-fluid" alt="...">
-                        <div class="card-body">
-                        <h5 class="fw-bold card-text text-center" >Vestido en manta</h5>
-                        <h4 class="fw-bold card-text text-center" > $000.00 </h4>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-4 col-md-5 col-lg-3  d-flex justify-content-center ">
-                <a href="">
-                    <div class="card" >
-                        <img src="{{ asset('assets/vestido.png') }}" class="card-img-top rounded-0 img-fluid" alt="...">
-                        <div class="card-body">
-                        <h5 class="fw-bold card-text text-center" >Vestido en manta</h5>
-                        <h4 class="fw-bold card-text text-center" > $000.00 </h4>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-4 col-md-5 col-lg-3 d-flex justify-content-center ">
-                <a href="">
-                    <div class="card" >
-                        <img src="{{ asset('assets/vestido.png') }}" class="card-img-top rounded-0 img-fluid" alt="...">
-                        <div class="card-body">
-                        <h5 class="fw-bold card-text text-center" >Vestido en manta</h5>
-                        <h4 class="fw-bold card-text text-center" > $000.00 </h4>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-4 col-md-5 col-lg-3 d-flex justify-content-center ">
-                <a href="">
-                    <div class="card" >
-                        <img src="{{ asset('assets/vestido.png') }}" class="card-img-top rounded-0 img-fluid" alt="...">
-                        <div class="card-body">
-                        <h5 class="fw-bold card-text text-center" >Vestido en manta</h5>
-                        <h4 class="fw-bold card-text text-center" > $000.00 </h4>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            
+            @endforeach
         </div>
     </div>
 </div>
