@@ -17,9 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'home']);
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     if(Auth::user()->type==2){
@@ -52,9 +50,12 @@ Route::get('/añadirProducto', [adminController::class, 'pantallaNP']);
 Route::get('/cart', [HomeController::class, 'cart'])->name('cart');
 Route::get('/add-to-cart/{id}', [HomeController::class, 'addToCart'])->name('add.to.cart');
 Route::patch('update-cart', [HomeController::class, 'update'])->name('update.cart');
-Route::delete('remove-from-cart', [HomeController::class, 'remove'])->name('remove.from.cart');
 Route::delete('olvidar', [HomeController::class, 'clearCarrito'])->name('clearCarrito.from.cart');
 Route::delete('/remove-from-cart', [HomeController::class, 'remove'])->name('remove.from.cart');
+
+//ver categorias usuario comun
+Route::get('/categoria/{id}',[HomeController::class, 'viewCategory']);
+Route::get('/categorias',[HomeController::class, 'viewCategories']);
 
 Route::post('/saveCategory',[CategoryController::class, 'saveCategory']);
 Route::get('/nuevaCategoria',[CategoryController::class, 'pantallaNuevaCategoria']);
