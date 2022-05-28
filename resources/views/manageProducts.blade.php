@@ -8,11 +8,11 @@
         @foreach ($product as $p)
             <div class="card mt-3 border border-dark border-2" style="width: 18rem;">
                 <div class="d-flex justify-content-center">
-                    <img src="{{ asset('assets/vestido.png') }}" class="img-fluid mt-1" style="max-width: 200px; max-height: 207px" alt="...">
+                    <img src='{{ asset("assets/$p->route") }}' class="img-fluid mt-1" style="max-width: 200px; max-height: 207px" alt="...">
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">Producto: {{ $p->name }}</h5>
-                    <h6 class="card-subtitle">Price: {{ $p->price }}</h5>
+                    <h6 class="card-subtitle">Precio: {{ $p->price }}</h5>
                     <p class="card-text mb-5">Descripción: {{ $p->description }}</p>
                     <div class="position-absolute bottom-0 mb-2">
                         <a href="/editarProducto/{{ $p->id }}" class="btn btn-primary">Editar</a>
