@@ -64,13 +64,13 @@ class ProductController extends Controller
         }
     }
 
-    public function delete($Request request){
+    public function delete(Request $request){
         $product = Product::find($request->id);
         
         if($product){
-            Image::where('product_id',$request->id).>delete();
-            Product_size::where('product_id',$request->id).>delete();
-            Product_category::where('product_id',$request->id).>delete();
+            Image::where('product_id',$request->id)->delete();
+            Product_size::where('product_id',$request->id)->delete();
+            Product_category::where('product_id',$request->id)->delete();
             $product->delete();
             $msg = "Eliminado exitosamente";
 
