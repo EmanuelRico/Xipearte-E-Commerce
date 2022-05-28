@@ -45,7 +45,7 @@ $c_dropdown = Category::all();
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Categorías
                             </button>
@@ -190,7 +190,7 @@ $c_dropdown = Category::all();
                 @yield('content')
             </div>
 
-            <footer class="footer py-3 bg-primary text-white">
+            <footer class="footer py-3 mt-3 bg-primary text-white">
                 <div class="d-flex justify-content-around">
                     <div class="px-5 mx-1"></div>
                     <h2 class="fw-bolder m-0">XIPEARTE</h2>
