@@ -8,7 +8,7 @@
         @foreach ($product as $p)
             <div class="card mt-3 border border-dark border-2" style="width: 18rem;">
                 <div class="d-flex justify-content-center">
-                    <img src="{{ asset('assets/vestido.png') }}" class="img-fluid mt-1" style="max-width: 200px; max-height: 207px" alt="...">
+                    <img src='{{ asset("assets/$p->route") }}' class="img-fluid mt-1" style="max-width: 200px; max-height: 207px" alt="...">
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">Producto: {{ $p->name }}</h5>

@@ -81,8 +81,7 @@ class ProductController extends Controller
 
     public function manageProductsScreen()
     {
-        $product = Product::all();
-
+        $product = Product::join('images', 'products.id', 'images.product_id')->get();
         return view('manageProducts', compact('product'));
     }
 
