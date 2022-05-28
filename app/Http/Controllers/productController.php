@@ -7,6 +7,7 @@ use App\Models\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Product_size;
+use App\Models\Product_category;
 
 
 class ProductController extends Controller
