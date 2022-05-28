@@ -16,7 +16,7 @@
                     <p class="card-text mb-5">Descripción: {{ $p->description }}</p>
                     <div class="position-absolute bottom-0 mb-2">
                         <a href="/editarProducto/{{ $p->id }}" class="btn btn-primary">Editar</a>
-                        <button type="button" class="btn"  style="background-color: rgb(192, 192, 192)"data-bs-toggle="modal" data-bs-target="#exampleModal{{$p->id}}">
+                        <button type="button" class="btn"  style="background-color: rgb(192, 192, 192)"data-bs-toggle="modal" data-bs-target="#exampleModal{{$pgi->id}}">
                             Eliminar
                         </button>
                     </div>
