@@ -16,28 +16,26 @@
                     <p class="card-text mb-5">Descripción: {{ $p->description }}</p>
                     <div class="position-absolute bottom-0 mb-2">
                         <a href="/editarProducto/{{ $p->id }}" class="btn btn-primary">Editar</a>
-                        <button type="button" class="btn " style="background-color: rgb(192, 192, 192)" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="button" class="btn"  style="background-color: rgb(192, 192, 192)"data-bs-toggle="modal" data-bs-target="#exampleModal{{$p->id}}">
                             Eliminar
                         </button>
                     </div>
                 </div>
             </div>
-        @endforeach
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel"> ¿Estás seguro de eliminar el producto?</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+            {{-- modal --}}
+            <div class="modal fade" id="exampleModal{{$p->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">¿Estás seguro de eliminar el producto?</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                      <a href="/eliminarproducto/{{$p->id}}"><button type="button" class="btn btn-primary" >Sí</button></a>
+                  </div>
                 </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                  <button type="button" class="btn btn-primary">Sí</button>
-                </div>
-              </div>
             </div>
-          </div>
+        @endforeach
     </div>
 @endsection
