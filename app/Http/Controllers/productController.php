@@ -68,6 +68,9 @@ class ProductController extends Controller
         $product = Product::find($id);
         
         if($product){
+            Image::where('product_id',$id).>delete();
+            Product_size::where('product_id',$id).>delete();
+            Product_category::where('product_id',$id).>delete();
             $product->delete();
             $msg = "Eliminado exitosamente";
 
