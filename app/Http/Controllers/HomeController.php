@@ -37,20 +37,11 @@ class HomeController extends Controller
         if (isset($id)) {
             $product_id = intval($id);
             $p = Product::find($product_id);
-<<<<<<< HEAD
             if(!is_null($p)){ //verify if the product exist
                 $images = Image::where("product_id",$product_id)->get(); //obtain product images
                 $sizes = Product_size::where("product_id",$product_id)->get(); //otain product sizes info
                 return view("product",compact('p','images','sizes'));
             }else
-=======
-            dd($p);
-            if (!is_null($p)) { //verify if the product exist
-                $images = Image::where("product_id", $product_id)->get(); //obtain product images
-                $sizes = Product_size::where("product_id", $product_id)->get(); //otain product sizes info
-                return view("product", compact('p', 'images', 'sizes'));
-            } else
->>>>>>> 24284a03b163147c9d72b5115406268bbab9e42e
                 return view("error_views/product_not_found");
         } else
             return view("error_views/product_not_found");
