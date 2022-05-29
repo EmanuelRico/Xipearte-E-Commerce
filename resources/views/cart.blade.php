@@ -3,8 +3,8 @@
 @section('title',"Xipearte")
 
 @section('content')
-
-    <div id="botones1" class="col">
+<div class="container">
+    <div id="botones1" class="col mt-3">
         <a href="{{ url('/') }}">< Volver a Catálogo</a>
     </div>
 <table id="cart" class="table table-condensed">
@@ -115,5 +115,5 @@
     });
   
 </script>
-
+</div>
 @endsection
