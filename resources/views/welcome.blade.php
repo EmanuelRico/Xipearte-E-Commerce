@@ -50,7 +50,7 @@
                 <div class="card shadow" style="width: 18rem;">
                     @foreach($img as $i)
                         @if($i->product_id === $p->id)
-                            <img src="{{ asset('assets/'.$i->route) }}" class="card-img-top img-fluid" width="500" height="600">
+                            <img src="{{ asset('assets/'.$i->route) }}" class="card-img-top img-fluid" >
                         @endif
                     @endforeach
                     <div class="card-body">
@@ -75,7 +75,7 @@
                 <div class="card shadow" style="width: 18rem;">
                     @foreach($img as $i)
                         @if($i->product_id === $p->id)
-                            <img src="{{ asset('assets/'.$i->route) }}" class="card-img-top img-fluid" width="500" height="600">
+                            <img src="{{ asset('assets/'.$i->route) }}" class="card-img-top img-fluid" >
                         @endif
                     @endforeach
                     <div class="card-body">
@@ -100,7 +100,7 @@
                 <div class="card shadow" style="width: 18rem;">
                     @foreach($img as $i)
                         @if($i->product_id === $p->id)
-                            <img src="{{ asset('assets/'.$i->route) }}" class="card-img-top img-fluid" width="500" height="600">
+                            <img src="{{ asset('assets/'.$i->route) }}" class="card-img-top img-fluid">
                         @endif
                     @endforeach
                     <div class="card-body">

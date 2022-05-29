@@ -120,7 +120,20 @@ class HomeController extends Controller
         $product_id = intval($id);
         $producto = Product::find($product_id);
         $sizes = Product_size::where('product_id', $product_id)->get();
-        return view('product', compact('producto', 'sizes'));
+        $images = Image::where('product_id',$product_id)->get();
+
+        $productos = DB::table('products')
+            ->orderBy('id', 'asc')
+            ->take(5)
+            ->get();
+        $imgAdd = [];
+        foreach ($productos as $p) {
+            $img = DB::table('images')
+                ->where('product_id', $p->id)->first();
+            $imgAdd = Arr::add($imgAdd, $p->id, $img);
+        }
+
+        return view('product', compact('producto', 'sizes','images','productos','imgAdd'));
     }
 
     public function viewCategories()
