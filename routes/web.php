@@ -73,3 +73,7 @@ Route::post('/eliminarProducto', [ProductController::class, 'delete']);
 Route::delete('/olvidar', [HomeController::class, 'clearCarrito'])->name('clearCarrito.from.cart');
 
 Route::get('/nosotros',[HomeController::class, 'aboutUs']);
+
+Route::Get('/address',function (){
+    return view('addDirection');
+});
