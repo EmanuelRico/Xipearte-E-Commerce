@@ -8,6 +8,7 @@
         <x-jet-authentication-card>
             <x-slot name="logo">
                 <x-jet-authentication-card-logo />
+                <h3 class="text-center">Iniciar Sesión</h3>
             </x-slot>
     
             <div class="card-body">
@@ -56,7 +57,7 @@
                             @endif
     
                             <x-jet-button>
-                                {{ __('Iniciar sesión') }}
+                                {{ __('Ingresar') }}
                             </x-jet-button>
                         </div>
                     </div>
