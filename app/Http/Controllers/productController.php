@@ -87,7 +87,7 @@ class ProductController extends Controller
 
     public function manageProductsScreen()
     {
-        $product = Product::join('images', 'products.id', 'images.product_id')->get();
+        $product = Product::join('images', 'products.id', 'images.product_id')->orderBy('name')->get();
         return view('manageProducts', compact('product'));
     }
 
