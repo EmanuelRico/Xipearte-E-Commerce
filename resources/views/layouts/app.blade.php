@@ -71,7 +71,7 @@ $c_dropdown = Category::all();
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Productos</a>
+                        <a class="nav-link text-white" href="/productos">Productos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="/nosotros">Nosotros</a>
