@@ -14,9 +14,9 @@ class SaleSeeder extends Seeder
      */
     public function run()
     {
-        $s = new Sale();
-        $s->user_id = 1;
-        $s->total = 100.0;
-        $s->save();
+        // $s = new Sale();
+        // $s->user_id = 1;
+        // $s->total = 100.0;
+        // $s->save();
     }
 }
