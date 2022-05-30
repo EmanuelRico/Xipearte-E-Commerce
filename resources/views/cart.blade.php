@@ -26,7 +26,15 @@
                         <td data-th="Producto">
                             <div class="row">
                                 <div class="col-sm-9">
-                                    <h4 id="producto">{{ $details['name'] }}</h4>
+                                    <div class="row">
+                                        <div class="col-sm-4 hidden-xs">
+                                            <img src="{{ asset('assets/'.$details['rImage'])}}" alt="" width="120" height="120">
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <h4 id="producto">{{ $details['name'] }}</h4>
+                                        </div>
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </td>
@@ -36,7 +44,7 @@
                         </td>
                         <td data-th="Subtotal" class="text-center">${{ $details['price'] * $details['quantity'] }}</td>
                         <td data-th="">
-                            <button class="btn btn-danger btn-sm remove-from-cart"><i class="fa-solid fa-trash"></i></ion-icon></button>
+                            <button class="btn btn-danger btn-sm remove-from-cart"><i class="fa-solid fa-trash"></i></button>
                         </td>
                     </tr>
                 @endforeach
@@ -54,7 +62,7 @@
     <hr class="solid" id="dividir">
     <div class="row"id="botones2">
         <div class="col"  >
-            <button class="btn btn-success" onclick="location.href=''">Realizar Compra</button>
+            <button class="btn btn-primary" onclick="location.href=''">Realizar Compra</button>
         </div>
     </div>       
 </div>

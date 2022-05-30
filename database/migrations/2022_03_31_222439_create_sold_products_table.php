@@ -16,9 +16,8 @@ class CreateSoldProductsTable extends Migration
         Schema::create('sold_products', function (Blueprint $table) {
             $table->id();
             $table->timestamps();          
-            $table->foreignId("product_id")->references("id")->on("products");
+            $table->string("productos");
             $table->foreignId("sale_id")->references("id")->on("sales");
-            $table->foreignId("size_id")->references("id")->on("product_sizes");
             $table->float("final_price");
         });
     }
