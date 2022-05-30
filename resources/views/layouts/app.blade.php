@@ -12,6 +12,7 @@ $c_dropdown = Category::all();
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
@@ -29,11 +30,17 @@ $c_dropdown = Category::all();
 </head>
 
 <body class="font-sans antialiased bg-white">
-    <div class="container-fluid d-flex">
-        <a href="/"><img src="{{ asset('assets/logo.jpeg') }}" style="max-height: 60px;" alt=""></a>
-    </div>
+
+    @if (!\Request::is('register'))
+        @if (!\Request::is('login'))
+            <div class="container-fluid d-flex justify-content-center">
+                <a href="/" class=""><img src="{{ asset('assets/logo.jpeg') }}" style="max-height: 60px;"
+                        alt=""></a>
+            </div>
+        @endif
+    @endif
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary py-3 sticky-top">
-        <div class="container-fluid container-xxl">
+        <div class="container-fluid container-xxl d-flex">
             <a class="navbar-brand title-hover text-white" href="/">Inicio</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -52,7 +59,6 @@ $c_dropdown = Category::all();
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 
                                 @foreach ($c_dropdown as $c)
-            
                                     <li><a class="dropdown-item"
                                             href="/categoria/{{ $c->id }}">{{ $c->name }}</a></li>
                                 @endforeach
@@ -65,10 +71,10 @@ $c_dropdown = Category::all();
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Productos</a>
+                        <a class="nav-link text-white" href="/productos">Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Nosotros</a>
+                        <a class="nav-link text-white" href="/nosotros">Nosotros</a>
                     </li>
                 </ul>
 
@@ -86,45 +92,60 @@ $c_dropdown = Category::all();
                     @else
                         @if (Auth::user()->type == 1)
                             <div class="nav-item dropdown pt-1 pt-lg-0 d-flex align-items-center ms-1">
-                                <a lass="nav-link dropdown-toggle px-0 fa-solid fa-user fa-lg text-white" href="#"
+                                <a class="nav-link dropdown-toggle px-0 fa-solid fa-lg text-white me-3" href="#"
                                     id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i
-                                        class="title-hover fa-lg fa-solid fa-cart-shopping text-white me-3"></i></a>
-                                <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
-                                    <div class="row total-header-section">
-                                        <div class="col">
-                                            <a class="px-0 text-white"><i
-                                                    class="title-hover fa-lg fa-solid fa-cart-shopping me-3"></i></a> <span
-                                                class="">{{ count((array) session('cart')) }}</span>
-                                        </div>
-                                        @php $total = 0 @endphp
-                                        @foreach ((array) session('cart') as $id => $details)
-                                            @php $total += $details['price'] * $details['quantity'] @endphp
-                                        @endforeach
-                                        <div class="col text-right">
-                                            <p>Total: <span class="">$ {{ $total }}</span></p>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown-divider"></div>
-                                    @if (session('cart'))
-                                        @foreach (session('cart') as $id => $details)
-                                            <div class="row my-3">
-                                                <div class="col">
-                                                    <div class="row">
-                                                        <p class="mb-1 col-8">{{ $details['name'] }}</p>
-                                                        <span class="col" id="valores">
-                                                            ${{ $details['price'] }}</span>
-                                                    </div>
-                                                    <span class="count"> Cantidad: {{ $details['quantity'] }}</span>
-                                                </div>
+                                        class="title-hover fa-lg fa-solid fa-cart-shopping text-white"></i> <span
+                                        class="mt-2 text-white"
+                                        style="font-size:12px">{{ count((array) session('cart')) }}</span></a>
+
+                                <ul class="dropdown-menu dropdown-menu-lg-end" style="width: 275px"
+                                    aria-labelledby="navbarDropdown">
+                                    <div class="container">
+                                        <div class="row total-header-section">
+                                            <div class="col">
+                                                <a class="px-0 text-white"><i
+                                                        class="title-hover fa-lg fa-solid fa-cart-shopping me-3"></i></a>
                                             </div>
-                                        @endforeach
-                                    @endif
-                                    <div class="dropdown-divider"></div>
-                                    <div class="row">
-                                        <a href="{{ route('cart') }}" class="btn btn-primary m-auto"
-                                            id="checkout">Checkout</a>
+                                            @php $total = 0 @endphp
+                                            @foreach ((array) session('cart') as $id => $details)
+                                                @php $total += $details['price'] * $details['quantity'] @endphp
+                                            @endforeach
+                                            <div class="col text-right">
+                                                <p>Total: <span class="">$ {{ $total }}</span></p>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="dropdown-divider"></div>
+                                            @if (session('cart'))
+                                                @foreach (session('cart') as $id => $details)
+                                                    <div class="row my-3">
+                                                        <div class="col-4">
+
+                                                            <img src="{{ asset('assets/' . $details['rImage']) }}" alt=""
+                                                                width="90" height="90">
+                                                        </div>
+                                                        <div class="col ms-3">
+                                                            <div class="row">
+                                                                <p class="mb-1 col-12">{{ $details['name'] }}</p>
+                                                                <span class="col-12" style="color:rgb(119, 118, 118)" id="valores">
+                                                                    ${{ $details['price'] }}</span>
+                                                                <span class="count col-12 " style="color:rgb(119, 118, 118)"> Cantidad:
+                                                                        {{ $details['quantity'] }}</span>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            @endif
+                                            <div class="dropdown-divider"></div>
+                                            <div class="row mx-3">
+                                                <a href="{{ route('cart') }}" class="btn btn-primary m-auto"
+                                                    id="checkout">Checkout</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </ul>
+
                             </div>
 
 
@@ -155,7 +176,7 @@ $c_dropdown = Category::all();
 
                                     <x-jet-dropdown-link href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                document.getElementById('logout-form').submit();">
+                                                                                                                document.getElementById('logout-form').submit();">
                                         {{ __('Cerrar sesión') }}
                                     </x-jet-dropdown-link>
                                     <form method="POST" id="logout-form" action="{{ route('logout') }}">

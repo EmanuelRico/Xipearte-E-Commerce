@@ -17,6 +17,7 @@ class CreateSalesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->foreignId("user_id")->references("id")->on("users");
+            $table->string("direccion");
             $table->float("total");
         });
     }

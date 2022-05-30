@@ -75,6 +75,9 @@ class HomeController extends Controller
         $producto = Product::findOrFail($id);
         if ($producto) {
             $cart = session()->get('cart', []);
+            $img = DB::table('images')->where('product_id', $producto->id)->first();
+            $image = $img->route;
+            
 
             if (isset($cart[$id])) {
                 $cart[$id]['quantity']++;
@@ -82,11 +85,15 @@ class HomeController extends Controller
                 $cart[$id] = [
                     "name" => $producto->name,
                     "quantity" => 1,
+                    "rImage" => $image,
                     "price" => $producto->price
                 ];
+                
             }
         }
+        
         session()->put('cart', $cart);
+       // dd($cart);
         return redirect()->back();
     }
 
@@ -120,7 +127,20 @@ class HomeController extends Controller
         $product_id = intval($id);
         $producto = Product::find($product_id);
         $sizes = Product_size::where('product_id', $product_id)->get();
-        return view('product', compact('producto', 'sizes'));
+        $images = Image::where('product_id',$product_id)->get();
+
+        $productos = DB::table('products')
+            ->orderBy('id', 'asc')
+            ->take(5)
+            ->get();
+        $imgAdd = [];
+        foreach ($productos as $p) {
+            $img = DB::table('images')
+                ->where('product_id', $p->id)->first();
+            $imgAdd = Arr::add($imgAdd, $p->id, $img);
+        }
+
+        return view('product', compact('producto', 'sizes','images','productos','imgAdd'));
     }
 
     public function viewCategories()
@@ -135,5 +155,16 @@ class HomeController extends Controller
         $products = Product::join('product_categories as pc', 'pc.product_id', 'products.id')->where('pc.category_id', $id)->join('images', 'products.id', 'images.product_id')->get();
         
         return view('category_view', compact('category','products'));
+    }
+
+    public function aboutUs()
+    {
+        return view ('nosotros');
+    }
+
+    public function productsScreenUser()
+    {
+        $product = Product::join('images', 'products.id', 'images.product_id')->orderBy('name')->get();
+        return view('products', compact('product'));
     }
 }
