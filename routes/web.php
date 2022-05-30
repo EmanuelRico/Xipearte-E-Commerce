@@ -77,3 +77,5 @@ Route::get('/nosotros',[HomeController::class, 'aboutUs']);
 Route::Get('/address',function (){
     return view('addDirection');
 });
+
+Route::get('/productos',[HomeController::class,'productsScreenUser']);

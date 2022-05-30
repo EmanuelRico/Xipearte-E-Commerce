@@ -161,4 +161,10 @@ class HomeController extends Controller
     {
         return view ('nosotros');
     }
+
+    public function productsScreenUser()
+    {
+        $product = Product::join('images', 'products.id', 'images.product_id')->orderBy('name')->get();
+        return view('products', compact('product'));
+    }
 }

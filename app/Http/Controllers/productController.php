@@ -91,6 +91,8 @@ class ProductController extends Controller
         return view('manageProducts', compact('product'));
     }
 
+    
+
     public function viewProductsEdit($id)
     {
         $p = Product::find($id);
