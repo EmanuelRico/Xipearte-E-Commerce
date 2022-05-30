@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Product_size;
 use App\Models\Product_category;
-use App\Http\Controllers\Category;
+use App\Models\Category;
 
 
 class ProductController extends Controller
