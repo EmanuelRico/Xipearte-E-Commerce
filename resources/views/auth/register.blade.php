@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="container-100 d-flex justify-content-center align-items-center">
+<div class="container-100 d-flex justify-content-center align-items-center mt-5">
     <x-guest-layout>
         <x-jet-authentication-card>
             <x-slot name="logo">

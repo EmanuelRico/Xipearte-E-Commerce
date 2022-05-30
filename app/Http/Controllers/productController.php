@@ -35,12 +35,14 @@ class ProductController extends Controller
         foreach($request->file('images') as $file){
             $imagen = new Image();
             $name = $file->getClientOriginalName();
-            $dest = 'img';
+            $dest = 'assets/img';
             $file->move($dest,$name);
-            $imagen->route = $dest.'/'.$name;
+            $r = 'img';
+            $imagen->route = $r.'/'.$name;
             $imagen->product_id = $product->id;
             $imagen->save();
         }
+<<<<<<< HEAD
 
         foreach ($categories as $c) {
             if(isset($_POST["categorie".$c->id])){
@@ -53,6 +55,8 @@ class ProductController extends Controller
 
        
         
+=======
+>>>>>>> origin
         $msg = "Creado exitosamente";
         return redirect('panelControl')->with('msg', $msg);
     }
