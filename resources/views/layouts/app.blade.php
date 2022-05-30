@@ -12,7 +12,8 @@ $c_dropdown = Category::all();
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
@@ -109,6 +110,9 @@ $c_dropdown = Category::all();
                                             @if (session('cart'))
                                                 @foreach (session('cart') as $id => $details)
                                                     <div class="row my-3">
+                                                    <div class="col-4">
+                                                        
+                                                    </div>
                                                         <div class="col">
                                                             <div class="row">
                                                                 <p class="mb-1 col-8">{{ $details['name'] }}</p>
