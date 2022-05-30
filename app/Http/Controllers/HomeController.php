@@ -149,4 +149,9 @@ class HomeController extends Controller
         
         return view('category_view', compact('category','products'));
     }
+
+    public function aboutUs()
+    {
+        return view ('nosotros');
+    }
 }
