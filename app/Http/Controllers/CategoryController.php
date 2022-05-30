@@ -27,7 +27,7 @@ class CategoryController extends Controller
     //pantalla administrador para Ver todas las categorias y editarlas
     public function manageCategoriesScreen()
     {
-        $category = Category::all();
+        $category = Category::orderBy('name')->get();
         return view('manageCategories', compact('category'));
     }
 
