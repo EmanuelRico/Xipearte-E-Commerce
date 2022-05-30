@@ -75,6 +75,9 @@ class HomeController extends Controller
         $producto = Product::findOrFail($id);
         if ($producto) {
             $cart = session()->get('cart', []);
+            $img = DB::table('images')->where('product_id', $producto->id)->first();
+            $image = $img->route;
+            
 
             if (isset($cart[$id])) {
                 $cart[$id]['quantity']++;
@@ -82,11 +85,16 @@ class HomeController extends Controller
                 $cart[$id] = [
                     "name" => $producto->name,
                     "quantity" => 1,
+                    "image" => $image,
                     "price" => $producto->price
                 ];
+                
             }
+            dd($cart);
         }
+        
         session()->put('cart', $cart);
+        
         return redirect()->back();
     }
 
