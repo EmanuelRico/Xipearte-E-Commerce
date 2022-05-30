@@ -11,7 +11,6 @@ class CategoryController extends Controller
     //Agregar categoria
     public function saveCategory(Request $request)
     {
-        
         $cat = new Category();
         $cat->name = $request->categoryName;
         $cat->description = $request->categoryDescription;
