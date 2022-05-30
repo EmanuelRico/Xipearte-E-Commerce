@@ -61,8 +61,8 @@
     </div>
     <hr class="solid" id="dividir">
     <div class="row"id="botones2">
-        <div class="col"  >
-            <button class="btn btn-primary" onclick="location.href=''">Realizar Compra</button>
+        <div class="col position-relative"  >
+            <button class="btn btn-primary position-absolute top-0 end-0 me-3" onclick="location.href=''">Realizar Compra</button>
         </div>
     </div>       
 </div>
