@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Product_size;
 use App\Models\Product_category;
+use App\Http\Controllers\Category;
 
 
 class ProductController extends Controller
@@ -34,6 +35,9 @@ class ProductController extends Controller
             $imagen->route = $dest.'/'.$name;
             $imagen->product_id = $product->id;
             $imagen->save();
+        }
+        foreach (${request->categorie.""} as $c) {
+            # code...
         }
         $msg = "Creado exitosamente";
         return redirect('panelControl')->with('msg', $msg);
@@ -96,7 +100,7 @@ class ProductController extends Controller
     public function viewProductsEdit($id)
     {
         $p = Product::find($id);
-
-        return view('editProduct')->with('p', $p);
+        $categories = Category::all();
+        return view('editProduct',compact('categories'))->with('p', $p);
     }
 }

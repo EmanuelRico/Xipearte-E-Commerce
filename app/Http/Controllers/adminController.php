@@ -21,6 +21,7 @@ class adminController extends Controller
     }
 
     public function pantallaNP () {
-        return view('addProduct');
+        $categories = Category::all();
+        return view('addProduct',compact('categories'));
     }
 }

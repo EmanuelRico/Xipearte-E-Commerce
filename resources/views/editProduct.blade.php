@@ -37,6 +37,19 @@
                                 aria-describedby="basic-addon3" placeholder="" required>
                         </div>
                     </div>
+                    <div class="form-row mb-3">
+                        <label for="basic-url" class="form-label">Escoga las categorias</label>
+                        <div class="form-group">
+                            @foreach ($categories as $c)
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="{{$c->id}}" id="flexCheckDefault{{$c->id}}" name="categorie{{$c->id}}">
+                                <label class="form-check-label" for="flexCheckDefault{{$c->id}}">
+                                  {{$c->name}}
+                                </label>
+                              </div>
+                            @endforeach
+                        </div>
+                    </div>
                     <div class="mb-3">
                         <label for="formFileMultiple" class="form-label">Seleccionar imágenes a mostrar</label>
                         <div class="input-group">
