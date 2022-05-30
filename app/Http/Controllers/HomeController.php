@@ -85,16 +85,15 @@ class HomeController extends Controller
                 $cart[$id] = [
                     "name" => $producto->name,
                     "quantity" => 1,
-                    "image" => $image,
+                    "rImage" => $image,
                     "price" => $producto->price
                 ];
                 
             }
-            dd($cart);
         }
         
         session()->put('cart', $cart);
-        
+       // dd($cart);
         return redirect()->back();
     }
 
