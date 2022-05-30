@@ -152,7 +152,7 @@ class HomeController extends Controller
     public function viewCategory($id)
     {
         $category = Category::find($id);
-        $products = Product::join('product_categories as pc', 'pc.product_id', 'products.id')->where('pc.category_id', $id)->join('images', 'products.id', 'images.product_id')->get();
+        $products = Product::select('products.id', 'products.price', 'products.name', 'images.route')->join('product_categories as pc', 'pc.product_id', 'products.id')->where('pc.category_id', $id)->join('images', 'products.id', 'images.product_id')->get();
         
         return view('category_view', compact('category','products'));
     }
@@ -164,7 +164,7 @@ class HomeController extends Controller
 
     public function productsScreenUser()
     {
-        $product = Product::join('images', 'products.id', 'images.product_id')->orderBy('name')->get();
+        $product = Product::select('products.id', 'products.name', 'products.price', 'images.route')->join('images', 'products.id', 'images.product_id')->orderBy('name')->get();
         return view('products', compact('product'));
     }
 }
