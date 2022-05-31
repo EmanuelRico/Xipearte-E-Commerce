@@ -20,7 +20,11 @@
                         <th scope="row">{{$order->id}}</th>
                         <td>{{$order->total}}</td>
                         <td id="fecha">{{$order->created_at->toDateString()}}</td>
-                        <td class="text-center"><input type="button" value="Revisar detalles de Pedido" id=<?php echo $order->id; ?>   class="btn btn-primary detalles"></td>
+                        <td class="text-center">
+                            <a href="/detalles/{{$order->id}}">
+                            <input type="button" value="Revisar detalles de Pedido" id=<?php echo $order->id; ?>   class="btn btn-primary detalles">
+                            </a>
+                        </td>
                     </tr>
                 @endforeach
             @endif

@@ -1,8 +1,14 @@
 <?php
 
 use App\Http\Controllers\SaleController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SaleDetailsController;
+use App\Http\Controllers\adminController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
+
+
 
 /*
 |--------------------------------------------------------------------------

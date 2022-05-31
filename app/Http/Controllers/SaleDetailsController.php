@@ -21,10 +21,9 @@ class SaleDetailsController extends Controller
     }
 
     public function viewOrder($order_id = null) {
-        dd($order_id);
+        
         if(!is_null($order_id)) {
             $orders = Sold_product::all();
-            dd($orders);
             $order = $orders -> firstWhere('pedidos_id', '=', $order_id);
             return response ($order);
         } else
