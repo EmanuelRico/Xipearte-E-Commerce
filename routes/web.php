@@ -76,6 +76,11 @@ Route::delete('/olvidar', [HomeController::class, 'clearCarrito'])->name('clearC
 
 Route::get('/nosotros',[HomeController::class, 'aboutUs']);
 
+
+Route::get('/productos',[HomeController::class,'productsScreenUser']);
+
+Route::post('/buscar',[HomeController::class,'buscarProductos']);
+
 Route::get('/address',[SaleController::class, 'Pedido']);
 Route::post('/saveAdd',[SaleController::class, 'saveAdd']);
 Route::post('/crearOrden',[SaleController::class, 'createOrder'])->name('crearOrden');
