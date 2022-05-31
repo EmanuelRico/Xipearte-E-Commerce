@@ -62,7 +62,7 @@
     <hr class="solid" id="dividir">
     <div class="row"id="botones2">
         <div class="col"  >
-            <button class="btn btn-primary" onclick="location.href=''">Realizar Compra</button>
+            <button class="btn btn-primary" onclick="location.href='/address'">Realizar Compra</button>
         </div>
     </div>       
 </div>
