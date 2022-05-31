@@ -8,6 +8,8 @@ use App\Models\Product;
 use App\Models\Product_category;
 use App\Models\Product_size;
 use Illuminate\Http\Request;
+use App\Models\Sale;
+use App\Models\Sold_product;
 
 class adminController extends Controller
 {
@@ -23,5 +25,10 @@ class adminController extends Controller
     public function pantallaNP () {
         $categories = Category::all();
         return view('addProduct',compact('categories'));
+    }
+
+    public function viewOrders() {
+        $orders = Sale::all();
+        return view('ordersAdmin')->with('orders', $orders);
     }
 }
