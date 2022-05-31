@@ -79,3 +79,5 @@ Route::Get('/address',function (){
 });
 
 Route::get('/productos',[HomeController::class,'productsScreenUser']);
+
+Route::post('/buscar',[HomeController::class,'buscarProductos']);

@@ -45,7 +45,7 @@
                             </button>
                         @endforeach
                     </div>
-                    <h1 id="price" class="mt-3">${{ $producto->price }}</h1>
+                    <h1 id="price" class="mt-3">${{ $producto->price }}.00</h1>
                     @auth
                         <button type="button" class="btn btn-dark col-12 d-block py-3 rounded-3 mt-3"
                             onclick="location.href='{{ route('add.to.cart', $producto->id) }}'">
@@ -71,7 +71,7 @@
                 <div class="row flex-row flex-nowrap">
                     @foreach ($productos as $lastView)
                         <div class="col-4 col-md-5 col-lg-3 d-flex justify-content-center ">
-                            <a href="/producto/{{ $lastView->id }}">
+                            <a href="/producto/{{ $lastView->id }}" class="text-decoration-none">
                                 <div class="card">
                                     @foreach ($imgAdd as $ia)
                                         @if ($ia->product_id === $lastView->id)

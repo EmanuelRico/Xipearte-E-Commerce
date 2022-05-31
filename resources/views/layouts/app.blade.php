@@ -79,9 +79,9 @@ $c_dropdown = Category::all();
                 </ul>
 
                 <div class="pt-0 pb-3 py-lg-0 col-12 col-lg-4">
-                    <form class="d-flex">
+                    <form class="d-flex" action="/buscar" method="POST">
                         @csrf
-                        <input class="form-control me-2 " type="search" placeholder="Buscar" aria-label="Buscar">
+                        <input class="form-control me-2 " name="search" id="search" type="search" placeholder="Buscar" aria-label="Buscar">
                         <button class="btn btn-primary" type="submit"><i
                                 class="title-hover fa-solid fa-lg fa-magnifying-glass text-white me-1"></i></button>
                     </form>

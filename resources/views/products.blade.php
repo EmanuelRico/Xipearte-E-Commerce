@@ -18,7 +18,7 @@
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">Producto: {{ $p->name }}</h5>
-                        <h6 class="card-subtitle">Precio: {{ $p->price }}</h5>
+                        <h6 class="card-subtitle">Precio: ${{ $p->price }}.00</h5>
                             <p class="card-text mb-5">Descripción: {{ $p->description }}</p>
                             <div class="position-absolute bottom-0 mb-2">
                             </div>

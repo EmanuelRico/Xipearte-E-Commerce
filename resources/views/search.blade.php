@@ -1,19 +1,19 @@
 @extends('layouts.app')
 
-@section('title', $category->name)
+@section('title', 'Resultado de:')
 @section('content')
 <div class="container d-flex justify-content-around flex-wrap">
-    <h2 class="fw-bold pt-4 pb-3 w-100">{{$category->name}} </h2>
+    <h2 class="fw-bold pt-4 pb-3 w-100">Resultados de la búsqueda:  </h2>
     @php
         $name = "";
     @endphp
-    @foreach ($products as $p)
+    @foreach ($productos as $p)
         @if ($name != $p->name)
             
         
             <div class="card mt-3 border border-dark border-2" style="width: 18rem;">
                 <div class="d-flex justify-content-center">
-                    <img src='{{ asset("assets/$p->route") }}' class="img-fluid mt-1"
+                    <img src='{{ asset("assets/".$p->route) }}' class="img-fluid mt-1"
                         style="max-width: 200px; max-height: 207px" alt="...">
                 </div>
                 <div class="card-body">
