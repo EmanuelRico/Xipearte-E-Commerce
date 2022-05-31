@@ -18,7 +18,7 @@ class CreateSoldProductsTable extends Migration
             $table->timestamps();
             $table->foreignId("user_id")->references("id")->on("users");   
             $table->foreignId("sale_id")->references("id")->on("sales");
-            $table->string("products");
+            $table->longText("products");
             $table->float("final_price");
         });
     }

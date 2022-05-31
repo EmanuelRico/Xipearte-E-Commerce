@@ -14,9 +14,9 @@ class SaleSeeder extends Seeder
      */
     public function run()
     {
-        // $s = new Sale();
-        // $s->user_id = 1;
-        // $s->total = 100.0;
-        // $s->save();
+        $s->user_id = 2;
+        $s->direccion = '{"Calle":"a","Numero Exterior":"a","Numero Interior":"a","Colonia":"a","Codigo Postal":"1234","Referencias":"a","Municipio":"a","Estado":"a"}';
+        $s->total = 3390.00;
+        $s->save();
     }
 }

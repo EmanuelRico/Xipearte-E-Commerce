@@ -14,17 +14,28 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        $c = new Category();
         $c->id = 1;
-        $c -> name = "Duis veniam enim dolore duis id veniam pariatur.";
-        $c -> description = "Duis veniam enim dolore duis id veniam pariatur.";
+        $c -> name = "Vestidos";
+        $c -> description = "Vestidos de diferentes estilos y telas";
         $c ->save();
         unset($c);
 
         $c = new Category();
         $c->id = 2;
-        $c -> name = "Vestidos de chiapas";
-        $c -> description = "Duis veniam enim dolore duis id veniam pariatur.";
+        $c -> name = "Chamarras";
+        $c -> description = "Chamarras elaboradas y pintadas a mano";
+        $c ->save();
+
+        $c = new Category();
+        $c->id = 3;
+        $c -> name = "Blusas de manta";
+        $c -> description = "Blusas bordadas a mano";
+        $c ->save();
+
+        $c = new Category();
+        $c->id = 4;
+        $c -> name = "Huipil";
+        $c -> description = "Bordados a mano";
         $c ->save();
     }
 }
