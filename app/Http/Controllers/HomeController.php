@@ -172,9 +172,15 @@ class HomeController extends Controller
         $search = $request->input('search');
         $productos = Product::query()->where('name', 'LIKE', "%{$search}%")->orWhere('description', 'LIKE', "%{$search}%")->get();
         if ($productos->isEmpty()) {
-            $productos=Product::all();
+            $productos= [];
+            return view('search')->with('productos', $productos)->with('coinci',$search);
         }
-        dd($productos);
-        return view('search')->with('productos', $productos)->with('coinci',$search);
+        $images = [];
+        foreach ($productos as $p) {
+            $img = DB::table('images')
+                ->where('product_id', $p->id)->first();
+            $images = Arr::add($images, $p->id, $img);
+        }
+        return view('search')->with('productos', $productos)->with('coinci',$search)->with('images',$images);
     }
 }
