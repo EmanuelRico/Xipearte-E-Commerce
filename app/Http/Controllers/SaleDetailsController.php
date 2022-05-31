@@ -3,14 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Category;
-use App\Models\Image;
-use App\Models\Product;
-use App\Models\Product_category;
-use App\Models\Product_size;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Arr;
-use App\Models\Sale;
 use App\Models\Sold_product;
 
 class SaleDetailsController extends Controller
@@ -26,5 +18,16 @@ class SaleDetailsController extends Controller
         $orderDetails->products = $products;
         $orderDetails->final_price = $total;
         $orderDetails->save();
+    }
+
+    public function viewOrder($order_id = null) {
+        dd($order_id);
+        if(!is_null($order_id)) {
+            $orders = Sold_product::all();
+            dd($orders);
+            $order = $orders -> firstWhere('pedidos_id', '=', $order_id);
+            return response ($order);
+        } else
+        return redirect('/pedidos');
     }
 }

@@ -12,6 +12,7 @@ use App\Models\Sale;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
 use App\Http\Controllers\SaleDetailsController;
+use Auth;
 
 class SaleController extends Controller
 {
@@ -51,14 +52,13 @@ class SaleController extends Controller
             $orderDetails = new SaleDetailsController;
             $orderDetails->createDetails($request->user_id, $order->id, json_encode($cart), $order->total);
         }
-        return view('/cart');
-        
-        // $cart = $request->session()->get('cart');
-        // 
-        // $order->total = $request ->total;
-        // $order->direccion = $request ->direccion;
-        // $order->save();
-        // $request->session()->forget('cart');
-        // $orderDetails = new SaleDetailsController;
+        return view('products');
     }
+
+    public function viewOrders() {
+        $user_id = Auth::user()->id;
+        $orders = Sale::query()->where('user_id', '=', $user_id)->get();
+        return view('ordersUser')->with('orders', $orders);
+    }
+    
 }

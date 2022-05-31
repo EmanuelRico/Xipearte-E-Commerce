@@ -76,6 +76,14 @@ $c_dropdown = Category::all();
                     <li class="nav-item">
                         <a class="nav-link text-white" href="/nosotros">Nosotros</a>
                     </li>
+                    @guest
+                    @else
+                        @if (Auth::user()->type == 1)
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/pedidos">Pedidos</a>
+                            </li>
+                        @endif
+                    @endguest
                 </ul>
 
                 <div class="pt-0 pb-3 py-lg-0 col-12 col-lg-4">
