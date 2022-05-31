@@ -14,6 +14,7 @@ class ImageSeeder extends Seeder
      */
     public function run()
     {
+        $i = new Image();
         $i->product_id = 1;
         $i->route = "img/IMG20210430182017.jpg";
         $i->save();

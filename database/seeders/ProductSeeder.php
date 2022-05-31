@@ -14,6 +14,7 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
+        $p = new Product();
         $p->id = 1;
         $p->name = "Top Tank de Algodón";
         $p->description = "Blusa de algodón bordada a mano";
