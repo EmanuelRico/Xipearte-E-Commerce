@@ -10,7 +10,7 @@
     @foreach ($products as $p)
         @if ($name != $p->name)
             
-        
+        <a href="/producto/{{$p->id}}"  class="text-decoration-none">
             <div class="card mt-3 border border-dark border-2" style="width: 18rem;">
                 <div class="d-flex justify-content-center">
                     <img src='{{ asset("assets/$p->route") }}' class="img-fluid mt-1"
@@ -23,6 +23,7 @@
                         
                 </div>
             </div>
+            </a>
         @endif
         @php
             $name = $p->name;
