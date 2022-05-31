@@ -1,10 +1,14 @@
 <?php
 
+use App\Http\Controllers\SaleController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SaleDetailsController;
 use App\Http\Controllers\adminController;
-use App\Http\Controllers\categoryController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -74,10 +78,15 @@ Route::delete('/olvidar', [HomeController::class, 'clearCarrito'])->name('clearC
 
 Route::get('/nosotros',[HomeController::class, 'aboutUs']);
 
-Route::Get('/address',function (){
-    return view('addDirection');
-});
 
 Route::get('/productos',[HomeController::class,'productsScreenUser']);
 
 Route::post('/buscar',[HomeController::class,'buscarProductos']);
+
+Route::get('/address',[SaleController::class, 'Pedido']);
+Route::post('/saveAdd',[SaleController::class, 'saveAdd']);
+Route::post('/crearOrden',[SaleController::class, 'createOrder'])->name('crearOrden');
+Route::get('/pedidos',[SaleController::class, 'viewOrders']);
+Route::get('/detalles/{id}', [SaleDetailsController::class, 'viewOrder']);
+
+
