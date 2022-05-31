@@ -71,15 +71,17 @@ class ProductController extends Controller
             $product->save();
             //si se mandan imagenes, las sobreescribe
             if($request->file('images')) Image::where('product_id', $product->id)->delete();
-            foreach($request->file('images') as $file){
-                $imagen = new Image();
-                $name = $file->getClientOriginalName();
-                $imagen->route = $file->storeAs('img', $name,'public');
-                $imagen->product_id = $product->id;
-                $imagen->save();
+            if ($request->has(['images'])) {
+                foreach($request->file('images') as $file){
+                    $imagen = new Image();
+                    $name = $file->getClientOriginalName();
+                    $imagen->route = $file->storeAs('img', $name,'public');
+                    $imagen->product_id = $product->id;
+                    $imagen->save();
+                }
             }
 
-            Category::where('product_id', $product->id)->delete();
+            // Category::where('product_id', $product->id)->delete();
             foreach ($categories as $c) {
                 if(isset($_POST["categorie".$c->id])){
                     $new_c = new Product_category();
