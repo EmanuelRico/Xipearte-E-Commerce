@@ -50,6 +50,7 @@ Route::get('/producto/{product_id}', [HomeController::class, 'viewProduct']);
 Route::get('/panelControl', [adminController:: class, 'panelControl']);
 
 Route::get('/añadirProducto', [adminController::class, 'pantallaNP']);
+Route::get('/pedidosA',[adminController::class, 'viewOrders']);
 
 Route::get('/cart', [HomeController::class, 'cart'])->name('cart');
 Route::get('/add-to-cart/{id}', [HomeController::class, 'addToCart'])->name('add.to.cart');

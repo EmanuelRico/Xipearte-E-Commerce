@@ -52,12 +52,17 @@ class SaleController extends Controller
             $orderDetails = new SaleDetailsController;
             $orderDetails->createDetails($request->user_id, $order->id, json_encode($cart), $order->total);
         }
-        return view('products');
+        return redirect('/productos');
     }
 
     public function viewOrders() {
         $user_id = Auth::user()->id;
         $orders = Sale::query()->where('user_id', '=', $user_id)->get();
+        return view('ordersUser')->with('orders', $orders);
+    }
+
+    public function viewDirecc($orderID) {
+        $orders = Sale::query()->where('id', '=', $orderID)->get();
         return view('ordersUser')->with('orders', $orders);
     }
     

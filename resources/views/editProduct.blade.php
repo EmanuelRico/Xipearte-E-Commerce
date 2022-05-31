@@ -54,7 +54,7 @@
                         <label for="formFileMultiple" class="form-label">Seleccionar imágenes a mostrar</label>
                         <div class="input-group">
                             <input name="images[]" class="form-control" type="file" id="formFileMultiple" accept="image/*"
-                                multiple hidden required />
+                                multiple hidden  />
                             <!-- our custom upload button -->
                             <label for="formFileMultiple" class="selectImage rounded-start col-4">Seleccionar imágenes
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"

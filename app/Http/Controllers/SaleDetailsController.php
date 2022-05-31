@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Sold_product;
+use App\Http\Controllers\SaleController;
 
 class SaleDetailsController extends Controller
 {
@@ -21,10 +22,9 @@ class SaleDetailsController extends Controller
     }
 
     public function viewOrder($order_id = null) {
-        
         if(!is_null($order_id)) {
             $orders = Sold_product::all();
-            $order = $orders -> firstWhere('pedidos_id', '=', $order_id);
+            $order = $orders -> firstWhere('sale_id', '=', $order_id);
             return response ($order);
         } else
         return redirect('/pedidos');
