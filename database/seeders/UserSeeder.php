@@ -20,5 +20,7 @@ class UserSeeder extends Seeder
         $u->password = "yIXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi";
         $u->type = 2;
         $u->save();
+
+        
     }
 }
