@@ -60,9 +60,9 @@
         </div>
     </div>
     <hr class="solid" id="dividir">
-    <div class="row"id="botones2">
-        <div class="col position-relative"  >
-            <button class="btn btn-primary position-absolute top-0 end-0 me-3" onclick="location.href=''">Realizar Compra</button>
+    <div class="row"id="botones2 mb-5">
+        <div class="col position-relative mb-5"  >
+            <button class="btn btn-primary position-absolute top-0 end-0 me-3" onclick="location.href='/address'">Realizar Compra</button>
         </div>
     </div>       
 </div>
