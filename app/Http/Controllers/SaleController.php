@@ -11,7 +11,7 @@ use App\Models\Product_size;
 use App\Models\Sale;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
-use App\Controllers\SaleDetailsController;
+use App\Http\Controllers\SaleDetailsController;
 
 class SaleController extends Controller
 {
@@ -23,14 +23,42 @@ class SaleController extends Controller
         return view('addDirection');
     }
 
+    public function saveAdd (Request $request) {
+        $dir = [
+            'Calle' => $request->street,
+            'Numero Exterior' => $request->exteriorNumber,
+            'Numero Interior' => $request->interiorNumber,
+            'Colonia' => $request->colonia,
+            'Codigo Postal' => $request->postalCode,
+            'Referencias' => $request->references,
+            'Municipio' => $request->municipio,
+            'Estado' => $request->state,
+        ];
+        // $direccion = json_encode($dir);
+        // dd($direccion);
+        return view("createOrder")->with('direccion', $dir);
+    }
+
     public function createOrder(Request $request) {
         $order = new Sale();
         $cart = $request->session()->get('cart');
-        $order->user_id = $request ->user_id;
-        $order->total = $request ->total;
-        $order->direccion = $request ->direccion;
-        $order->save();
-        $request->session()->forget('cart');
-        $orderDetails = new SaleDetailsController;
+        if ($cart) {
+            $order->user_id = $request ->user_id;
+            $order->direccion = $request ->address;
+            $order->total = $request ->total;
+            $order->save();
+            $request->session()->forget('cart');
+            $orderDetails = new SaleDetailsController;
+            $orderDetails->createDetails($request->user_id, $order->id, json_encode($cart), $order->total);
+        }
+        return view('/cart');
+        
+        // $cart = $request->session()->get('cart');
+        // 
+        // $order->total = $request ->total;
+        // $order->direccion = $request ->direccion;
+        // $order->save();
+        // $request->session()->forget('cart');
+        // $orderDetails = new SaleDetailsController;
     }
 }

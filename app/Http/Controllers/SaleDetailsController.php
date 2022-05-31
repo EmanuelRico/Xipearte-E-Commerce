@@ -15,5 +15,16 @@ use App\Models\Sold_product;
 
 class SaleDetailsController extends Controller
 {
-    //
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
+    public function createDetails($idUser, $orderID, $products, $total){
+        $orderDetails = new Sold_product();
+        $orderDetails->user_id = $idUser;
+        $orderDetails->sale_id = $orderID;
+        $orderDetails->products = $products;
+        $orderDetails->final_price = $total;
+        $orderDetails->save();
+    }
 }
