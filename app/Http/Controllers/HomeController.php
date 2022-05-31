@@ -164,7 +164,7 @@ class HomeController extends Controller
 
     public function productsScreenUser()
     {
-        $product = Product::select('products.id', 'products.name', 'products.price', 'images.route')->join('images', 'products.id', 'images.product_id')->orderBy('name')->get();
+        $product = Product::select('products.id', 'products.name', 'products.price', 'products.description','images.route')->join('images', 'products.id', 'images.product_id')->orderBy('name')->get();
         return view('products', compact('product'));
     }
 }
