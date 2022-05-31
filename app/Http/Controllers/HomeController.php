@@ -152,7 +152,7 @@ class HomeController extends Controller
     public function viewCategory($id)
     {
         $category = Category::find($id);
-        $products = Product::select('products.id', 'products.price', 'products.name', 'images.route')->join('product_categories as pc', 'pc.product_id', 'products.id')->where('pc.category_id', $id)->join('images', 'products.id', 'images.product_id')->get();
+        $products = Product::select('products.id', 'products.price', 'products.description','products.name', 'images.route')->join('product_categories as pc', 'pc.product_id', 'products.id')->where('pc.category_id', $id)->join('images', 'products.id', 'images.product_id')->get();
         
         return view('category_view', compact('category','products'));
     }
@@ -166,5 +166,15 @@ class HomeController extends Controller
     {
         $product = Product::select('products.id', 'products.name', 'products.price', 'products.description','images.route')->join('images', 'products.id', 'images.product_id')->orderBy('name')->get();
         return view('products', compact('product'));
+    }
+
+    public function buscarProductos(Request $request) {
+        $search = $request->input('search');
+        $productos = Product::query()->where('name', 'LIKE', "%{$search}%")->orWhere('description', 'LIKE', "%{$search}%")->get();
+        if ($productos->isEmpty()) {
+            $productos=Product::all();
+        }
+        dd($productos);
+        return view('search')->with('productos', $productos)->with('coinci',$search);
     }
 }

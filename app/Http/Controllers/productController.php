@@ -125,9 +125,9 @@ class ProductController extends Controller
 
     public function viewProductsEdit($id)
     {
-        dd($id);
+        
         $p = Product::find($id);
-        dd($p);
+        
         $categories = Category::all();
         $cat = Product_category::where('product_id', $p->id)->get();
         return view('editProduct',compact('categories','cat'))->with('p', $p);
