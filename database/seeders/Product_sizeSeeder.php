@@ -14,6 +14,7 @@ class Product_sizeSeeder extends Seeder
      */
     public function run()
     {
+        $p = new Product_size();
         $p->id = 1;
         $p -> product_id = 1;
         $p -> size = "xl" ;

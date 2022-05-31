@@ -14,6 +14,7 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
+        $c = new Category();
         $c->id = 1;
         $c -> name = "Vestidos";
         $c -> description = "Vestidos de diferentes estilos y telas";
