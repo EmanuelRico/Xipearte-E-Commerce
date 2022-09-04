@@ -1,10 +1,15 @@
 @extends('layouts.app')
 
+@section('css')
+    <link rel="stylesheet" href="{{asset('DataTables/datatables.min.css')}}">
+    <link rel="stylesheet" href="{{asset('DataTables/DataTables-1.12.1/css/dataTables.bootstrap5.min.css')}}">
+@endsection
+
 @section('content')
 
 <div class="mt-5">
     <div class="container" id="cuadro">
-        <table id="tablaPedidos" class="table table-condensed">
+        <table id="tablaPedidos" class="table table-condensed display">
             <thead>
                 <tr>
                     <th>Id</th>
@@ -59,8 +64,9 @@
                         <thead>
                             <tr>
                                 <th style="width:45%">Nombre de Producto</th>
-                                <th style="width:25%">Cantidad</th>
-                                <th style="width:20%">Precio</th>
+                                <th style="width:20%">Cantidad</th>
+                                <th style="width:15%">Precio unitario</th>
+                                <th style="width:20%">Precio total</th>
                             </tr>
                         </thead>
                         <tbody id="productos">
@@ -79,33 +85,60 @@
     @endif
 </div>
 
+@push('scripts')
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
-<script>
-    $(document).ready(function() {
-        $(document).on('click', '.detalles', function(){
-            var order_id = $(this).attr('id');
-            console.log(order_id);
-            //$('#pedido-Modal').modal('show');
-            $.ajax({
-                method:"GET",
-                //url:'{{URL::to("/detalles/2")}}',
-                url:"/detalles/"+order_id,
-                success: function(response){
-                    $('#IDOrder').html(response.sale_id);
-                    const products = JSON.parse(response.products);
-                    for (let x in products) {
-                        $("#productos").append("<tr><td>"+products[x].name+"</td><td>"+ products[x].quantity+"</td><td>"+ products[x].price+"</td></tr>");
-                    }
-                    $('#pago').html('$'+response.final_price);
-                    $('#pedido-Modal').modal('show');
-                },
+    <script src="{{asset('dataTables/dataTables.min.js')}}"></script>
+
+    <script>
+        $(document).ready(function() {
+            $(document).on('click', '.detalles', function(){
+                var order_id = $(this).attr('id');
+                console.log(order_id);
+                //$('#pedido-Modal').modal('show');
+                $.ajax({
+                    method:"GET",
+                    //url:'{{URL::to("/detalles/2")}}',
+                    url:"/detalles/"+order_id,
+                    success: function(response){
+                            $('#IDOrder').html(response.sale_id);
+                            console.log(response);
+                            response.forEach(element => {
+                                $("#productos").append("<tr><td>"+element.product.name+"</td><td>"+element.cantidad+"</td><td>$"+element.price+"</td><td>$"+element.final_price+".00</td></tr>");
+                            });
+                            $('#pago').html('$'+response[0].sale.total+'.00');
+                            $('#pedido-Modal').modal('show');
+                        },
+                })
             })
-        })
-
-        $("#pedido-Modal").on("hidden.bs.modal", () => {
-            $("#productos").html("")
+    
+            $("#pedido-Modal").on("hidden.bs.modal", () => {
+                $("#productos").html("")
+            });
         });
-    });
-</script>
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#tablaPedidos').DataTable( {
+            ordering: true,
+            language: {
+            lengthMenu: 'Mostrando _MENU_ pedidos por página',
+            zeroRecords: 'No se encontro ninguna coincidencia',
+            info: 'Mostrando página _PAGE_ de _PAGES_',
+            infoEmpty: 'No hay pedidos',
+            infoFiltered: '(Filtrados de _MAX_ pedidos totales)',
+            "search":         "Buscar:",
+            "paginate": {
+                "first":      "Primero",
+                "last":       "Último",
+                "next":       "Siguiente",
+                "previous":   "Anterior"
+            },
+        },
+            } );
+        });
+    </script>
+@endpush
+
 
 @endsection

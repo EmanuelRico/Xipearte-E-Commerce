@@ -71,8 +71,11 @@ Route::post('/eliminarCategoria',[CategoryController::class, 'delete']);
 
 //rutas productos
 Route::post('/nuevoProducto',[ProductController::class,'create']);
+Route::post('/subirImagenes/{id}',[ProductController::class,'subeImagenes']);
+
 Route::get('/administrarProductos',[ProductController::class, 'manageProductsScreen']);
 Route::get('/editarProducto/{id}', [ProductController::class, 'viewProductsEdit']);
+Route::delete('/eliminaFoto/{id}',[ProductController::class,'eliminaFoto']);
 Route::post('/actualizarProducto',[ProductController::class, 'update']);
 Route::post('/eliminarProducto', [ProductController::class, 'delete']);
 Route::delete('/olvidar', [HomeController::class, 'clearCarrito'])->name('clearCarrito.from.cart');
@@ -82,7 +85,7 @@ Route::get('/nosotros',[HomeController::class, 'aboutUs']);
 
 Route::get('/productos',[HomeController::class,'productsScreenUser']);
 
-Route::post('/buscar',[HomeController::class,'buscarProductos']);
+Route::get('/buscar',[HomeController::class,'buscarProductos']);
 
 Route::get('/address',[SaleController::class, 'Pedido']);
 Route::post('/saveAdd',[SaleController::class, 'saveAdd']);

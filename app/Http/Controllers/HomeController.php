@@ -17,18 +17,15 @@ class HomeController extends Controller
 {
     public function home()
     {
-        $productos = DB::table('products')
-            ->orderBy('id', 'asc')
+        $productos = Product::where('status',1)->orderBy('id', 'asc')
             ->take(6)
             ->get();
         $images = [];
         foreach ($productos as $p) {
-            $img = DB::table('images')
-                ->where('product_id', $p->id)->first();
-            $images = Arr::add($images, $p->id, $img);
+            $p->imagenes;
         }
 
-        return view("welcome")->with('productos', $productos)->with('img', $images);
+        return view("welcome")->with('productos', $productos);
     }
 
     //return product view
@@ -86,7 +83,8 @@ class HomeController extends Controller
                     "name" => $producto->name,
                     "quantity" => 1,
                     "rImage" => $image,
-                    "price" => $producto->price
+                    "price" => $producto->price,
+                    "product_id" => $producto->id
                 ];
                 
             }
@@ -127,34 +125,35 @@ class HomeController extends Controller
         $product_id = intval($id);
         $producto = Product::find($product_id);
         $sizes = Product_size::where('product_id', $product_id)->get();
-        $images = Image::where('product_id',$product_id)->get();
+        $producto->imagenes;
 
-        $productos = DB::table('products')
-            ->orderBy('id', 'asc')
+        $productos = Product::orderBy('id', 'asc')
             ->take(5)
             ->get();
-        $imgAdd = [];
         foreach ($productos as $p) {
-            $img = DB::table('images')
-                ->where('product_id', $p->id)->first();
-            $imgAdd = Arr::add($imgAdd, $p->id, $img);
+            $p->imagenes;
         }
-
-        return view('product', compact('producto', 'sizes','images','productos','imgAdd'));
+        return view('product', compact('producto', 'sizes','productos'));
     }
 
     public function viewCategories()
     {
-        $category = Category::all();
+        $category = Category::where('status',1)->paginate(15);
         return view('categories', compact('category'));
     }
     //Ver categoria en especifico
     public function viewCategory($id)
     {
-        $category = Category::find($id);
-        $products = Product::select('products.id', 'products.price', 'products.description','products.name', 'images.route')->join('product_categories as pc', 'pc.product_id', 'products.id')->where('pc.category_id', $id)->join('images', 'products.id', 'images.product_id')->get();
+        $category = Product_category::where('category_id','=',$id)->paginate(15);
+        $categoryName = Category::where('id',$id)->first()->name;
+        foreach($category as $pc){
+            $pc->product;
+            $pc->product->imagenes;
+            $pc->category;
+        }
+        // return dd($category);
         
-        return view('category_view', compact('category','products'));
+        return view('category_view', compact('category','categoryName'));
     }
 
     public function aboutUs()
@@ -164,23 +163,24 @@ class HomeController extends Controller
 
     public function productsScreenUser()
     {
-        $product = Product::select('products.id', 'products.name', 'products.price', 'products.description','images.route')->join('images', 'products.id', 'images.product_id')->orderBy('name')->get();
+        $product = Product::where('status',1)->orderBy('name')->paginate(15);
+        foreach($product as $p){
+            $p->imagenes;
+        }
         return view('products', compact('product'));
     }
 
     public function buscarProductos(Request $request) {
         $search = $request->input('search');
-        $productos = Product::query()->where('name', 'LIKE', "%{$search}%")->orWhere('description', 'LIKE', "%{$search}%")->get();
+        $productos = Product::where('status',1)->where('name', 'LIKE', "%{$search}%")->orWhere('description', 'LIKE', "%{$search}%")->paginate(15);
         if ($productos->isEmpty()) {
-            $productos= [];
+            $productos = [];
             return view('search')->with('productos', $productos)->with('coinci',$search);
         }
         $images = [];
         foreach ($productos as $p) {
-            $img = DB::table('images')
-                ->where('product_id', $p->id)->first();
-            $images = Arr::add($images, $p->id, $img);
+            $p->imagenes;
         }
-        return view('search')->with('productos', $productos)->with('coinci',$search)->with('images',$images);
+        return view('search')->with('productos', $productos)->with('coinci',$search);
     }
 }

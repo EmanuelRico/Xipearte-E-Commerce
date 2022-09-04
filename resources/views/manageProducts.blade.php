@@ -3,6 +3,13 @@
 @section('title', 'Editar Productos')
 
 @section('content')
+    @if(Session::has('message'))
+        <div class="alert alert-{{ Session::get('message-type') }} alert-dismissable">
+            <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+            <i class="glyphicon glyphicon-{{ Session::get('message-type') == 'success' ? 'ok' : 'remove'}}"></i> {{ Session::get('message') }}
+        </div>
+    @endif
+    
     <div class="container d-flex justify-content-around flex-wrap">
         <h2 class="fw-bold pt-4 pb-3 w-100">Productos disponibles</h2>
         @php
@@ -12,14 +19,20 @@
             @if ($name != $p->name)
                 <div class="card mt-3 border border-dark border-2" style="width: 18rem;">
                     <div class="d-flex justify-content-center">
-                        <img src='{{ asset("assets/$p->route") }}' class="img-fluid mt-1"
+                        @if($p->imagenes->count()>0)
+                            <img src='{{ asset("assets/".$p->imagenes->first()->route) }}' class="img-fluid mt-1"
                             style="max-width: 200px; max-height: 207px" alt="...">
+                        @else
+                            <img src='https://kangsblackbeltacademy.com/wp-content/uploads/2017/04/default-image.jpg' class="img-fluid mt-1"
+                            style="max-width: 200px; max-height: 207px" alt="...">
+                        @endif
+                        
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Producto: {{ $p->name }}</h5>
-                        <h6 class="card-subtitle">Precio: ${{ $p->price }}.00</h5>
-                            <p class="card-text mb-5">Descripción: {{ $p->description }}</p>
-                            <div class="position-absolute bottom-0 mb-2">
+                        <h5 class="card-title text-center">{{ $p->name }}</h5>
+                        <h6 class="card-subtitle text-center">${{ $p->price }}.00</h5>
+                            <p class="card-text mb-5 text-center">{{ $p->description }}</p>
+                            <div class="position-absolute text-center bottom-0 mb-2">
                                 <a href="/editarProducto/{{ $p->id }}" class="btn btn-primary">Editar</a>
                                 <button type="button" class="btn" style="background-color: rgb(192, 192, 192)"
                                     data-bs-toggle="modal" data-bs-target="#exampleModal{{ $p->id }}">
@@ -55,6 +68,11 @@
                 $name = $p->name;
             @endphp
         @endforeach
+        
+        
 
+    </div>
+    <div class="container d-flex justify-content-around flex-wrap mt-5">
+        {{ $product->links() }}
     </div>
 @endsection

@@ -18,6 +18,7 @@ class CreateProductCategoriesTable extends Migration
             $table->timestamps();
             $table->foreignId("product_id")->references("id")->on("products");
             $table->foreignId("category_id")->references("id")->on("categories");
+            $table->boolean('status')->default(true);
         });
     }
 

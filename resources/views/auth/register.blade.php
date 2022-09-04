@@ -14,7 +14,7 @@
             <x-jet-validation-errors class="mb-3" />
 
             <div class="card-body">
-                <form method="POST" action="{{ route('register') }}">
+                <form method="POST" action="{{ route('register') }}" autocomplete="off">
                     @csrf
 
                     <div class="mb-3">

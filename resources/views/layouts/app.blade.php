@@ -15,7 +15,9 @@ $c_dropdown = Category::all();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <!-- Styles -->
+    @yield('css')
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    
 
     @livewireStyles
 
@@ -50,9 +52,14 @@ $c_dropdown = Category::all();
 
             <div class="collapse navbar-collapse " id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
+
+                    <li class="nav-item me-3">
+                        <a class="nav-link text-white" href="/productos">Productos</a>
+                    </li>
+
+                    <li class="nav-item me-3">
                         <div class="dropdown">
-                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            <button class="btn btn-primary dropdown-toggle px-0" type="button" id="dropdownMenuButton1"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Categorías
                             </button>
@@ -70,10 +77,8 @@ $c_dropdown = Category::all();
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="/productos">Productos</a>
-                    </li>
-                    <li class="nav-item">
+                    
+                    <li class="nav-item me-3">
                         <a class="nav-link text-white" href="/nosotros">Nosotros</a>
                     </li>
                     @guest
@@ -87,7 +92,7 @@ $c_dropdown = Category::all();
                 </ul>
 
                 <div class="pt-0 pb-3 py-lg-0 col-12 col-lg-4">
-                    <form class="d-flex" action="/buscar" method="POST">
+                    <form class="d-flex" action="/buscar" method="GET">
                         @csrf
                         <input class="form-control me-2 " name="search" id="search" type="search" placeholder="Buscar" aria-label="Buscar">
                         <button class="btn btn-primary" type="submit"><i
@@ -238,6 +243,7 @@ $c_dropdown = Category::all();
 
             @stack('scripts')
 
+            
         </body>
 
         </html>

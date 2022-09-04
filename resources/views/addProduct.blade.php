@@ -2,12 +2,21 @@
 
 @section('title', 'Xipearte')
 
-@section('content')
+@section('css')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.css" integrity="sha512-7uSoC3grlnRktCWoO4LjHMjotq8gf9XDFQerPuaph+cqR7JC9XKGdvN+UwZMC14aAaBDItdRj3DcSDs4kMWUgg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+@endsection
 
+@section('content')
+    @if(Session::has('message'))
+        <div class="alert alert-{{ Session::get('message-type') }} alert-dismissable">
+            <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+            <i class="glyphicon glyphicon-{{ Session::get('message-type') == 'success' ? 'ok' : 'remove'}}"></i> {{ Session::get('message') }}
+        </div>
+    @endif
 
     <div class="container">
 
-        <form action="/nuevoProducto" method="POST" enctype="multipart/form-data">
+        <form action="/nuevoProducto" method="POST" enctype="multipart/form-data" autocomplete="off" id="addProducto">
             @csrf
             <div class="row justify-content-md-center ">
 
@@ -24,18 +33,26 @@
                         <textarea name="description" class="form-control border-dark border-2" style="background-color: white"
                             id="exampleFormControlTextarea1" rows="6" required></textarea>
                     </div>
-                    <div class="mb-3">
-                        <label for="basic-url" class="form-label">Precio</label>
-                        <input name="price" type="number" step="0.01" class="form-control border-dark border-2"
-                            style="background-color: white" id="basic-url" aria-describedby="basic-addon3" placeholder=""
-                            required>
-                    </div>
-                    <div class="form-row mb-3">
-                        <label for="basic-url" class="form-label">Stock disponible</label>
-                        <div class="form-group">
-                            <input name="stock" type="number" class="form-control border-dark border-2 "
-                                style="background-color: white" id="basic-url" aria-describedby="basic-addon3"
-                                placeholder="" required>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="basic-url" class="form-label">Precio</label>
+                                <input name="price" type="number" step="0.01" class="form-control border-dark border-2"
+                                    style="background-color: white" id="basic-url" aria-describedby="basic-addon3" placeholder=""
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="form-row mb-3">
+                                <label for="basic-url" class="form-label">Stock disponible</label>
+                                <div class="form-group">
+                                    <input name="stock" type="number" class="form-control border-dark border-2 "
+                                        style="background-color: white" id="basic-url" aria-describedby="basic-addon3"
+                                        placeholder="" required>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="form-row mb-3">
@@ -51,7 +68,7 @@
                             @endforeach
                         </div>
                     </div>
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <label for="formFileMultiple" class="form-label">Seleccionar imágenes a mostrar</label>
                         <div class="input-group">
                             <input name="images[]" class="form-control" type="file" id="formFileMultiple" accept="image/*"
@@ -71,12 +88,24 @@
                             <span id="file-chosen" class="selectImage2 rounded-end col me-0">Imágenes no seleccionadas</span>
 
                         </div>
+                    </div> --}}
+                    <div class="form-group mb-3">
+                        <label for="exampleFormControlTextarea1">Lugar de origen</label>
+                        <input name="origin" class="form-control border-dark border-2" id="exampleFormControlTextarea1" rows="6" style="background-color: white"
+                            required>
                     </div>
                     <div class="form-group mb-3">
                         <label for="exampleFormControlTextarea1">Acerca del lugar de origen</label>
-                        <textarea name="origin" class="form-control border-dark border-2" id="exampleFormControlTextarea1" rows="6" style="background-color: white"
+                        <textarea name="aboutOrigin" class="form-control border-dark border-2" id="exampleFormControlTextarea1" rows="6" style="background-color: white"
                             required></textarea>
                     </div>
+                    <div class="form-group mb-3">
+                        <label for="exampleFormControlTextarea1">Agregar imagenes al producto</label>
+                        <div class="dropzone" id="my-awesome-dropzone">
+            
+                        </div>
+                    </div>
+                    
                     <button type="submit" class="btn btn-dark col-12 d-block py-3 rounded-3 mt-3 mb-3">
                         <h4 class="my-0 py-0">Añadir producto</h4>
                     </button>
@@ -84,7 +113,63 @@
                 </div>
             </div>
         </form>
+        
     </div>
 
     <script src="{{ asset('js/addProduct.js') }}"></script>
 @endsection
+
+@push('scripts')
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js" integrity="sha512-U2WE1ktpMTuRBPoCFDzomoIorbOyUv0sP8B+INA3EzNAhehbzED1rOJg6bCqPf/Tuposxb5ja/MAUnC8THSbLQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+
+        Dropzone.autoDiscover = false;
+        var myDropzone = new Dropzone('.dropzone',{
+            url:'/unaUrl',
+            acceptedFiles: 'image/*',
+            dictDefaultMessage:'Selecciona o arrastra las imagenes aquí',
+            maxFiles: 5, 
+            autoProcessQueue: false,
+            uploadMultiple:true,
+            parallelUploads: 10,
+            headers: {
+            'X-CSRF-TOKEN': '{{csrf_token()}}',
+            },
+        });
+
+        $(function(){
+            $("#addProducto").on("submit",function(e){
+                e.preventDefault();
+                var action = $(this).attr("action");
+                var method = $(this).attr("method");
+                var form_data = new FormData($(this)[0]);
+                var form = $(this);
+                $.ajax({
+                    url:action,
+                    dataType:'json',
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: form_data,
+                    type: method,
+                    success: function(response) {
+                        myDropzone.options.url =  '/subirImagenes/'+response.id;
+                        myDropzone.processQueue();
+                        myDropzone.on("success", function(file, responseText) {
+                            // location.reload();
+                            location.href = "/editarProducto/"+response.id;
+                            // console.log('hola');
+                        });
+                    },
+                    error: function(response){
+
+                    },
+                })
+            });
+        });
+
+        
+    </script>
+@endpush

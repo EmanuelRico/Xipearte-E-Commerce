@@ -10,31 +10,37 @@
     @if($productos === [])
         <h3>No se encontraron resultados para su búsqueda</h3>
     @endif
+
     @foreach ($productos as $p)
         @if ($name != $p->name)
             
-        <a href="/producto/{{$p->id}}"  class="text-decoration-none">
-            <div class="card mt-3 border border-dark border-2" style="width: 18rem;">
+        <div class="card mt-3 shadow" style="width: 18rem;">
+            <a href="producto/{{ $p->id }}" class="text-decoration-none">
                 <div class="d-flex justify-content-center">
-                    @foreach($images as $i)
-                        @if($i->product_id === $p->id)
-                            <img src='{{ asset("assets/".$i->route) }}' class="img-fluid mt-1"
+                    @if($p->imagenes->count()>0)
+                        <img src='{{ asset("assets/".$p->imagenes->first()->route) }}' class="img-fluid mt-1"
                             style="max-width: 200px; max-height: 207px" alt="...">
-                        @endif
-                    @endforeach
+                    @else
+                        <img src='https://kangsblackbeltacademy.com/wp-content/uploads/2017/04/default-image.jpg' class="img-fluid mt-1"
+                            style="max-width: 200px; max-height: 207px" alt="...">
+                    @endif
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">Producto: {{ $p->name }}</h5>
-                    <h6 class="card-subtitle">Precio: ${{ $p->price }}.00</h5>
-                        <p class="card-text mb-5">Descripción: {{ $p->description }}</p>
-                        
+                    <h5 class="card-title d-flex justify-content-center">{{ $p->name }}</h5>
+                    <p class="card-text mb-3 d-flex justify-content-center">{{ $p->description }}</p>
+                    <h6 class="card-subtitle d-flex justify-content-center">${{ $p->price }}.00</h5>
                 </div>
-            </div>
             </a>
+        </div>
+                    
+                
         @endif
         @php
             $name = $p->name;
         @endphp
     @endforeach
+    <div class="container d-flex justify-content-around flex-wrap mt-5">
+        {{ $productos->appends($_GET)->links() }}
+    </div>
 </div>
 @endsection

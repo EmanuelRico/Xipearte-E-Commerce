@@ -17,8 +17,30 @@ class SoldProductSeeder extends Seeder
         $s = new Sold_product();
         $s->user_id = 1;
         $s->sale_id = 1;
-        $s->products = '{"2":{"name":"Quexquemetl azul","quantity":1,"rImage":"img\/IMG20210508120837.jpg","price":335},"5":{"name":"Blusa blanca bordada","quantity":1,"rImage":"img\/2.jpg","price":235},"4":{"name":"Camisa bordada","quantity":"12","rImage":"img\/1.jpg","price":235}}';
-        $s->final_price = 3390.00;
+        $s->product_id = 2;
+        $s->cantidad = 1;
+        $s->price = 335;
+        $s->final_price = 670.00;
+        $s->save();
+        unset($s);
+
+        $s = new Sold_product();
+        $s->user_id = 1;
+        $s->sale_id = 1;
+        $s->product_id = 5;
+        $s->cantidad = 1;
+        $s->price = 235;
+        $s->final_price = 235;
+        $s->save();
+        unset($s);
+
+        $s = new Sold_product();
+        $s->user_id = 1;
+        $s->sale_id = 1;
+        $s->product_id = 4;
+        $s->cantidad = 12;
+        $s->price = 235;
+        $s->final_price = 2820;
         $s->save();
     }
 }

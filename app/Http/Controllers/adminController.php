@@ -19,16 +19,29 @@ class adminController extends Controller
     }
 
     public function panelControl() {
-        return view('panel');
+        $sales = Sale::all();
+        foreach($sales as $s){
+            $s->user;
+            $s->sold_product;
+            foreach($s->sold_product as $sp){
+                $sp->product->imagenes;
+            }
+            // $s->sold_product->
+        }
+        // return dd($sales);
+        return view('panel',compact('sales'));
     }
 
     public function pantallaNP () {
-        $categories = Category::all();
+        $categories = Category::where('status',1)->get();
         return view('addProduct',compact('categories'));
     }
 
     public function viewOrders() {
         $orders = Sale::all();
+        foreach($orders as $o){
+            $o->user;
+        }
         return view('ordersAdmin')->with('orders', $orders);
     }
 }

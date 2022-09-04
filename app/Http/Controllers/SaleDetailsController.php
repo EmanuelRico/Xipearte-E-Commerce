@@ -23,8 +23,12 @@ class SaleDetailsController extends Controller
 
     public function viewOrder($order_id = null) {
         if(!is_null($order_id)) {
-            $orders = Sold_product::all();
-            $order = $orders -> firstWhere('sale_id', '=', $order_id);
+            $order = Sold_product::where('sale_id',$order_id)->get();
+            foreach($order as $o){
+                $o->product;
+                $o->sale;
+                $o->sale->user;
+            }
             return response ($order);
         } else
         return redirect('/pedidos');

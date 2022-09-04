@@ -14,13 +14,18 @@
                 <div class="card mt-3 shadow" style="width: 18rem;">
                     <a href="producto/{{ $p->id }}" class="text-decoration-none">
                         <div class="d-flex justify-content-center">
-                            <img src='{{ asset("assets/$p->route") }}' class="img-fluid mt-1"
-                                style="max-width: 200px; max-height: 207px" alt="...">
+                            @if($p->imagenes->count()>0)
+                                <img src='{{ asset("assets/".$p->imagenes->first()->route) }}' class="img-fluid mt-3"
+                                    style="max-width: 200px; max-height: 207px" alt="...">
+                            @else
+                                <img src='https://kangsblackbeltacademy.com/wp-content/uploads/2017/04/default-image.jpg' class="img-fluid mt-3"
+                                    style="max-width: 200px; max-height: 207px" alt="...">
+                            @endif
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">Producto: {{ $p->name }}</h5>
-                            <h6 class="card-subtitle">Precio: {{ $p->price }}</h5>
-                                <p class="card-text mb-3">Descripción: {{ $p->description }}</p>
+                            <h5 class="card-title text-center">{{ $p->name }}</h5>
+                            <p class="card-text mb-3 d-flex justify-content-center">{{ $p->description }}</p>
+                            <h6 class="card-subtitle d-flex justify-content-center">${{ $p->price }}.00</h5>
                         </div>
                     </a>
                 </div>
@@ -30,5 +35,8 @@
             @endphp
         @endforeach
 
+    </div>
+    <div class="container d-flex justify-content-around flex-wrap mt-5">
+        {{ $product->links() }}
     </div>
 @endsection

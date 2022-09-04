@@ -15,7 +15,9 @@ class CategoryController extends Controller
         $cat->name = $request->categoryName;
         $cat->description = $request->categoryDescription;
         $cat->save();
-        return redirect('/panelControl');
+        $request->session()->flash('message', 'Categoría creada exitosamente');
+        $request->session()->flash('message-type', 'success');
+        return redirect("editarCategoria/".$cat->id);
     }
 
     //pantalla para agregar categoria
@@ -26,7 +28,7 @@ class CategoryController extends Controller
     //pantalla administrador para Ver todas las categorias y editarlas
     public function manageCategoriesScreen()
     {
-        $category = Category::orderBy('name')->get();
+        $category = Category::where('status',1)->orderBy('name')->paginate(15);
         return view('manageCategories', compact('category'));
     }
 
@@ -46,7 +48,9 @@ class CategoryController extends Controller
             $c->description = $request->description;
             $c->save();
             $msg = "Actualizado exitosamente";
-            return redirect('administrarCategorias')->with('msg', $msg);
+            $request->session()->flash('message', 'Categoría actualizada exitosamente');
+            $request->session()->flash('message-type', 'success');
+            return redirect("editarCategoria/".$c->id);
         }
         else{
             $msg = "No se pudo actualizar";
@@ -58,13 +62,20 @@ class CategoryController extends Controller
     public function delete(Request $request){
         //cambiar la variable show a falso, solo se muestran las categorias con show = true
         $category = Category::find((int)$request->id);
+        $category->status = 0;
+        $category->save();
         
         if($category){
-            Product_category::where('category_id', (int)$request->id)->delete();
-            $category->delete();
+            $pc = Product_category::where('category_id', (int)$request->id)->get();
+            foreach($pc as $p){
+                $p->status = 0;
+                $p->save();
+            }
             $msg = "Eliminado exitosamente";
-
-            return redirect('panelControl')->with('msg', $msg);
+            $category = Category::where('status',1)->orderBy('name')->paginate(15);
+            $request->session()->flash('message', 'Categoría eliminada exitosamente');
+            $request->session()->flash('message-type', 'success');
+            return redirect("administrarCategorias");
         }
         else{
             $msg = "No se pudo eliminar";

@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\Product_category;
 use App\Models\Product_size;
 use App\Models\Sale;
+use App\Models\Sold_product;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
 use App\Http\Controllers\SaleDetailsController;
@@ -49,8 +50,19 @@ class SaleController extends Controller
             $order->total = $request ->total;
             $order->save();
             $request->session()->forget('cart');
-            $orderDetails = new SaleDetailsController;
-            $orderDetails->createDetails($request->user_id, $order->id, json_encode($cart), $order->total);
+            foreach($cart as $c){
+                $o = new Sold_product();
+                $o->user_id = $request->user_id;
+                $o->sale_id = $order->id;
+                $o->product_id = $c['product_id'];
+                $o->cantidad = $c['quantity'];
+                $o->price = $c['price'];
+                $o->final_price = $c['quantity'] * $c['price'];
+                $o->save();
+                // return dd ($o);
+            }
+            // $orderDetails = new SaleDetailsController;
+            // $orderDetails->createDetails($request->user_id, $order->id, json_encode($cart), $order->total);
         }
         return redirect('/productos');
     }

@@ -39,28 +39,24 @@
     </button>
 </div>
 
-<h4 class="d-flex justify-content-center my-4 fw-bold">De Temporada</h4>
+<h4 class="d-flex justify-content-center my-4 fw-bold">De temporada</h4>
 
 <div class=" mx-5 py-3 shadow-lg hscroll" style="overflow-x:scroll;">
     <div class="row flex-row flex-nowrap">
 
-    @foreach($productos as $p)
-    <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
-            <a href="/producto/{{$p->id}}"  class="text-decoration-none">
-                <div class="card shadow" style="width: 18rem;">
-                    @foreach($img as $i)
-                        @if($i->product_id === $p->id)
-                            <img src="{{ asset('assets/'.$i->route) }}" class="card-img-top img-fluid" >
-                        @endif
-                    @endforeach
-                    <div class="card-body">
-                        <p class="card-text d-flex justify-content-center fw-bold h5 ">{{$p->name}}</p>
-                        <h3 class="d-flex justify-content-center">${{$p->price}}.00</h3>
+        @foreach($productos as $p)
+        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
+                <a href="/producto/{{$p->id}}"  class="text-decoration-none">
+                    <div class="card shadow" style="max-width: 20rem;" >
+                            <img src="{{ asset('assets/'.$p->imagenes->first()->route) }}" class="img-fluid " style="min-height: 430px;min-width:200px">
+                        <div class="card-body">
+                            <p class="card-title text-center fw-bold h5 text-truncate">{{$p->name}}</p>
+                            <h3 class=" card-text d-flex justify-content-center">${{$p->price}}.00</h3>
+                        </div>
                     </div>
-                </div>
-            </a>
-        </div>
-    @endforeach
+                </a>
+            </div>
+        @endforeach
     </div>
 </div>
 
@@ -72,15 +68,11 @@
     @foreach($productos as $p)
     <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
             <a href="/producto/{{$p->id}}"  class="text-decoration-none">
-                <div class="card shadow" style="width: 18rem;">
-                    @foreach($img as $i)
-                        @if($i->product_id === $p->id)
-                            <img src="{{ asset('assets/'.$i->route) }}" class="card-img-top img-fluid" >
-                        @endif
-                    @endforeach
+                <div class="card shadow" style="max-width: 20rem;" >
+                        <img src="{{ asset('assets/'.$p->imagenes->first()->route) }}" class="img-fluid " style="min-height: 430px;min-width:200px">
                     <div class="card-body">
-                        <p class="card-text d-flex justify-content-center fw-bold h5 ">{{$p->name}}</p>
-                        <h3 class="d-flex justify-content-center">${{$p->price}}.00</h3>
+                        <p class="card-title text-center fw-bold h5 text-truncate">{{$p->name}}</p>
+                        <h3 class=" card-text d-flex justify-content-center">${{$p->price}}.00</h3>
                     </div>
                 </div>
             </a>
@@ -89,28 +81,24 @@
     </div>
 </div>
 
-<h4 class="d-flex justify-content-center my-4 fw-bold">Recien Agregados</h4>
+<h4 class="d-flex justify-content-center my-4 fw-bold">Recien agregados</h4>
 
 <div class=" mx-5 py-3 shadow-lg hscroll" style="overflow-x:scroll;">
     <div class="row flex-row flex-nowrap">
 
-    @foreach($productos as $p)
-    <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
-            <a href="/producto/{{$p->id}}"  class="text-decoration-none">
-                <div class="card shadow" style="width: 18rem;">
-                    @foreach($img as $i)
-                        @if($i->product_id === $p->id)
-                            <img src="{{ asset('assets/'.$i->route) }}" class="card-img-top img-fluid">
-                        @endif
-                    @endforeach
-                    <div class="card-body">
-                        <p class="card-text d-flex justify-content-center fw-bold h5 ">{{$p->name}}</p>
-                        <h3 class="d-flex justify-content-center">${{$p->price}}.00</h3>
+        @foreach($productos as $p)
+        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
+                <a href="/producto/{{$p->id}}"  class="text-decoration-none">
+                    <div class="card shadow" style="max-width: 20rem;" >
+                            <img src="{{ asset('assets/'.$p->imagenes->first()->route) }}" class="img-fluid " style="min-height: 430px;min-width:200px">
+                        <div class="card-body">
+                            <p class="card-title text-center fw-bold h5 text-truncate">{{$p->name}}</p>
+                            <h3 class=" card-text d-flex justify-content-center">${{$p->price}}.00</h3>
+                        </div>
                     </div>
-                </div>
-            </a>
-        </div>
-    @endforeach
+                </a>
+            </div>
+        @endforeach
     </div>
 </div>
 
