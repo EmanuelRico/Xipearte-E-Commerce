@@ -45,6 +45,10 @@ Route::get('/producto', function () {
     return view('producto');
 });
 
+Route::get('/administrarUsuarios', function () {
+    return view('manageUsers');
+});
+
 Route::get('/producto/{product_id}', [HomeController::class, 'viewProduct']);
 
 Route::get('/panelControl', [adminController:: class, 'panelControl']);
