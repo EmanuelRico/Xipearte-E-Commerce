@@ -93,4 +93,4 @@ Route::post('/crearOrden',[SaleController::class, 'createOrder'])->name('crearOr
 Route::get('/pedidos',[SaleController::class, 'viewOrders']);
 Route::get('/detalles/{id}', [SaleDetailsController::class, 'viewOrder']);
 
-
+Route::any('/AdministrarUsuarios', [adminController::class, 'viewUsers']);
