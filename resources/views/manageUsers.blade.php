@@ -41,27 +41,16 @@
                         <tbody>
                             @foreach ($users as $u)
                                 <tr>
-
                                     <td data-th="Correo electrónico">{{ $u->email }}</td>
                                     <td data-th="Nombre">{{ $u->name }}</td>
 
-                                    @if ($u->type == 1)
-                                        <td data-th="Administrador">
-                                            <div class="form-check form-switch form-check-reverse">
-                                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckReverse"
-                                                    onclick="changeToAdmin({{ $u->id }})">
-                                            </div>
-                                        </td>
-                                    @endif
-                                    @if ($u->type == 2)
-                                        <td data-th="Administrador">
-                                            <div class="form-check form-switch form-check-reverse">
-                                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckReverse"
-                                                    checked onclick="changeToNormal({{ $u->id }})">
-                                            </div>
-                                        </td>
-                                    @endif
-
+                                    <td data-th="Administrador">
+                                        <div class="form-check form-switch form-check-reverse" id="">
+                                            <input class="form-check-input" type="checkbox" id='{{$u->id}}'
+                                                @if ($u->type == 2) checked @endif
+                                                onClick="changeUserType({{ $u->id }}, {{ $u->type }})">
+                                        </div>
+                                    </td>
 
                                 </tr>
                             @endforeach
@@ -74,20 +63,15 @@
 @endsection
 
 <script>
-    async function changeToAdmin(id) {
+    async function changeUserType(id, type) {
+        if (type == 1) type = 2;
+        else type = 1;
+        var funtion = "changeUserType(" + id + ',' + type + ")";
+        document.getElementById(id.toString()).setAttribute("onClick", funtion);
+        console.log(id + " " + type);
         var actualRoute = document.URL;
-        fetch(actualRoute + '/Admin/' + String(id))
-            // Exito
-            .then(response => response.json()) // convertir a json
-
-            .then(json => console.log(json)) //imprimir los datos en la consola
-
-            .catch(err => console.log('Solicitud fallida', err)); // Capturar errores
-    }
-
-    async function changeToNormal(id) {
-        var actualRoute = document.URL;
-        fetch(actualRoute + '/Normal/' + String(id))
+        var url = actualRoute + '/' + String(id) + '/' + String(type);
+        fetch(url)
             // Exito
             .then(response => response.json()) // convertir a json
 
