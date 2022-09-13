@@ -48,7 +48,7 @@ class adminController extends Controller
     public function viewUsers()
     {
         $user = auth()->user();
-        $users = User::select('id', 'name', 'email')
+        $users = User::select('id', 'name', 'email', 'type')
             ->where([
                 ['id', '!=', $user->id],
                 ['id', '!=', 1]
