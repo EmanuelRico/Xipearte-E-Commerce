@@ -12,25 +12,14 @@ class AdminUserController extends Controller
         $this->middleware('checkadmin');
     }
 
-    public function changeUserToAdmin($id){
+    public function changeUserTypw($id, $type){
         $user = User::find($id);
         $reply = '404';
         if($user){
-            $user->type = 2;
+            $user->type = intval($type);
             $user->save();
             $reply = '200';
         }  
-        return response()->json($reply);
-    }
-
-    public function changeUserToNormal($id){
-        $user = User::find($id);
-        $reply = '404';
-        if($user){
-            $user->type = 1;
-            $user->save();
-            $reply = '200';
-        }
         return response()->json($reply);
     }
 }
