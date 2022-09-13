@@ -52,7 +52,7 @@ class adminController extends Controller
             ->where([
                 ['id', '!=', $user->id],
                 ['id', '!=', 1]
-            ]);
+            ])->get();
         return view('manageUsers', compact('users'));
     }
 }
