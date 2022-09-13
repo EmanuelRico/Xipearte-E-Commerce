@@ -36,7 +36,7 @@
                                     <div class="card-body">
                                         <p class="card-text d-flex justify-content-center fw-bold h5 ">{{$s->user->nombre}}</p>
                                         <h5 class="d-flex justify-content-center">{{Carbon\Carbon::parse($s->created_at)->format('d/m/Y')}}</h5>
-                                        <h5 class="d-flex justify-content-center">${{$s->total}}.00</h5>
+                                        <h5 class="d-flex justify-content-center">${{$s->total}}</h5>
                                     </div>
                                 </div>
                             </a>

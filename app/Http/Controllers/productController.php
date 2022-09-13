@@ -24,11 +24,12 @@ class ProductController extends Controller
 
         $categories = Category::where('status',1)->get();
         
+        
 
         $product = New Product();
         $product->name = $request->name;
         $product->description = $request->description;
-        $product->price = $request->price;
+        $product->price = floatval($request->price);
         $product->origin = $request->origin;
         $product->stock = $request->stock;
         $product->originDescription = $request->aboutOrigin;

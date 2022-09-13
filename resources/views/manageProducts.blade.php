@@ -30,7 +30,7 @@
                     </div>
                     <div class="card-body">
                         <h5 class="card-title text-center">{{ $p->name }}</h5>
-                        <h6 class="card-subtitle text-center">${{ $p->price }}.00</h5>
+                        <h6 class="card-subtitle text-center">${{ $p->price }}</h5>
                             <p class="card-text mb-5 text-center">{{ $p->description }}</p>
                             <div class="position-absolute text-center bottom-0 mb-2">
                                 <a href="/editarProducto/{{ $p->id }}" class="btn btn-primary">Editar</a>
