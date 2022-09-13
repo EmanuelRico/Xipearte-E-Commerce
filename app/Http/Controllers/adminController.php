@@ -48,9 +48,11 @@ class adminController extends Controller
     public function viewUsers()
     {
         $user = auth()->user();
-
         $users = User::select('id', 'name', 'email')
-            ->where('id', '!=', $user->id);
+            ->where([
+                ['id', '!=', $user->id],
+                ['id', '!=', 1]
+            ]);
         return view('manageUsers', compact('users'));
     }
 }
