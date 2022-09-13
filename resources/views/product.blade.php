@@ -91,7 +91,7 @@
 
         <div class="container mt-5">
             <h3 class="fw-bold">Tus últimas visitas</h3>
-            <div class="container-fluid" style="overflow-x:scroll;">
+            <div class="container-fluid  shadow-lg hscroll" style="overflow-x:scroll;">
                 <div class="row flex-row flex-nowrap">
                     @foreach ($productos as $lastView)
                         <div class="col-4 col-md-5 col-lg-3 d-flex justify-content-center ">

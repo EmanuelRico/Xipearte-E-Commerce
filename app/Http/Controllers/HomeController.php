@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
 use App\Models\Image;
 use App\Models\Product;
 use App\Models\Product_category;
 use App\Models\Product_size;
+use App\Models\Sale;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
@@ -15,17 +17,49 @@ use function PHPUnit\Framework\isNull;
 
 class HomeController extends Controller
 {
-    public function home()
+    public function home(Request $request)
     {
-        $productos = Product::where('status',1)->orderBy('id', 'asc')
-            ->take(6)
-            ->get();
-        $images = [];
-        foreach ($productos as $p) {
-            $p->imagenes;
-        }
+        $sales = Sale::all();
 
-        return view("welcome")->with('productos', $productos);
+        if(Auth::check()){
+            if (Auth::user()->type == "2"){
+                foreach($sales as $s){
+                    $s->user;
+                    $s->sold_product;
+                    foreach($s->sold_product as $sp){
+                        $sp->product->imagenes;
+                    }
+                    // $s->sold_product->
+                }
+                // return dd($sales);
+                return view('panel',compact('sales'));
+            }
+            else if(Auth::user()->type == "1"){
+                
+                $productos = Product::where('status',1)->orderBy('id', 'asc')
+                    ->take(6)
+                    ->get();
+                $images = [];
+                foreach ($productos as $p) {
+                    $p->imagenes;
+                }
+        
+                return view("welcome")->with('productos', $productos);
+            }
+        }
+        else{
+            $productos = Product::where('status',1)->orderBy('id', 'asc')
+                    ->take(6)
+                    ->get();
+                $images = [];
+                foreach ($productos as $p) {
+                    $p->imagenes;
+                }
+        
+                return view("welcome")->with('productos', $productos);
+        }
+    
+
     }
 
     //return product view

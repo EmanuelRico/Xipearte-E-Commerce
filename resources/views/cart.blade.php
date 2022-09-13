@@ -28,7 +28,7 @@
                                 <div class="col-sm-9">
                                     <div class="row">
                                         <div class="col-sm-4 hidden-xs">
-                                            <img src="{{ asset('assets/'.$details['rImage'])}}" alt="" width="120" height="120">
+                                            <img src="{{ asset('assets/'.$details['rImage'])}}" alt="..." class="cssCenterImage">
                                         </div>
                                         <div class="col-sm-8">
                                             <h4 id="producto">{{ $details['name'] }}</h4>

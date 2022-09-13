@@ -11292,6 +11292,20 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.cssCenterImage {
+  width: 120px;
+  height: 120px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.cssCenterImageCart {
+  width: 90px;
+  height: 90px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .selectImage {
   background-color: black !important;
   color: white;

@@ -134,8 +134,8 @@ $c_dropdown = Category::all();
                                                     <div class="row my-3">
                                                         <div class="col-4">
 
-                                                            <img src="{{ asset('assets/' . $details['rImage']) }}" alt=""
-                                                                width="90" height="90">
+                                                            <img src="{{ asset('assets/' . $details['rImage']) }}" alt="..."
+                                                                class="cssCenterImageCart">
                                                         </div>
                                                         <div class="col ms-3">
                                                             <div class="row">
