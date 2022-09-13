@@ -7,6 +7,7 @@ use App\Http\Controllers\adminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminUserController;
 
 
 
@@ -44,10 +45,10 @@ Route::get('/dashboard', [adminController::class, 'panelControl']);
 Route::get('/producto', function () {
     return view('producto');
 });
-
+/*
 Route::get('/administrarUsuarios', function () {
     return view('manageUsers');
-});
+});*/
 
 Route::get('/producto/{product_id}', [HomeController::class, 'viewProduct']);
 
@@ -97,4 +98,6 @@ Route::post('/crearOrden',[SaleController::class, 'createOrder'])->name('crearOr
 Route::get('/pedidos',[SaleController::class, 'viewOrders']);
 Route::get('/detalles/{id}', [SaleDetailsController::class, 'viewOrder']);
 
-
+Route::any('/AdministrarRoles', [adminController::class, 'viewUsers']);
+Route::get('/AdministrarRoles/Admin/{id}', [AdminUserController::class, 'changeUserToAdmin']);
+Route::get('/AdministrarRoles/Normal/{id}', [AdminUserController::class, 'changeUserToNormal']);

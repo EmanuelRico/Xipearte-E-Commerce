@@ -19,7 +19,7 @@
                 </div>
             </div>
            
-            <form action="/crearOrden" method="POST" enctype="multipart/form-data">
+           
         </div>
         
     
@@ -38,14 +38,28 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($users as $u)
                             <tr>
-                                <td data-th="Correo electrónico">{{ "correoprovisionaldeprueba@gmail.com"}}</td>
-                                <td data-th="Nombre">{{ "Pablo Ocaña" }}</td>
-                                <td data-th="Administrador"> <div class="form-check form-switch form-check-reverse">
-                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckReverse">
-                                  </div> 
-                                </td>
+                                
+                                    <td data-th="Correo electrónico">{{ $u->email}}</td>
+                                    <td data-th="Nombre">{{ $u->name }}</td>
+                   
+                                    @if ($u->type == 1)
+                                        <td data-th="Administrador"> <div class="form-check form-switch form-check-reverse">
+                                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckReverse" onclick="changeToAdmin({{ $u->id }})">
+                                        </div> 
+                                        </td> 
+                                    @endif
+                                    @if ($u->type == 2)
+                                        <td data-th="Administrador"> <div class="form-check form-switch form-check-reverse">
+                                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckReverse" checked onclick="changeToNormal({{ $u->id }})">
+                                        </div> 
+                                        </td> 
+                                    @endif
+                                
+                                
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -53,3 +67,28 @@
         </div>
     </div>
 @endsection
+
+<script>
+    async function changeToAdmin(id) {
+        var actualRoute = document.URL;
+        fetch(actualRoute  + '/Admin/' + String(id))
+            // Exito
+            .then(response => response.json()) // convertir a json
+            
+            .then(json => console.log(json)) //imprimir los datos en la consola
+
+            .catch(err => console.log('Solicitud fallida', err)); // Capturar errores
+    }
+
+    async function changeToNormal(id) {
+        var actualRoute = document.URL;
+        fetch(actualRoute  + '/Normal/' + String(id))
+            // Exito
+            .then(response => response.json()) // convertir a json
+            
+            .then(json => console.log(json)) //imprimir los datos en la consola
+
+            .catch(err => console.log('Solicitud fallida', err)); // Capturar errores
+
+    }
+</script>
