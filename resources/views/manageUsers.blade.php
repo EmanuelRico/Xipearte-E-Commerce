@@ -46,7 +46,7 @@
                    
                                     @if ($u->type == 1)
                                         <td data-th="Administrador"> <div class="form-check form-switch form-check-reverse">
-                                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckReverse" onclick= "location.href='http://xipearte-e-commerce.test/AdministrarRoles/Admin/{{ $u->id }}';">
+                                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckReverse" onclick="changeToAdmin({{ $u->id }})">
                                         </div> 
                                         </td> 
                                     @endif
@@ -90,18 +90,5 @@
 
             .catch(err => console.log('Solicitud fallida', err)); // Capturar errores
 
-            /*fetch('flores.jpg').then(function(response) {
-            if(response.ok) {
-                response.blob().then(function(miBlob) {
-                var objectURL = URL.createObjectURL(miBlob);
-                miImagen.src = objectURL;
-                });
-            } else {
-                console.log('Respuesta de red OK pero respuesta HTTP no OK');
-            }
-            })
-            .catch(function(error) {
-            console.log('Hubo un problema con la petición Fetch:' + error.message);
-            });*/
     }
 </script>
