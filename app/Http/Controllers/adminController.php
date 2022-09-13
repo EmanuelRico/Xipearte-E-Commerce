@@ -10,6 +10,7 @@ use App\Models\Product_size;
 use Illuminate\Http\Request;
 use App\Models\Sale;
 use App\Models\Sold_product;
+use App\Models\User;
 
 class adminController extends Controller
 {
@@ -43,5 +44,10 @@ class adminController extends Controller
             $o->user;
         }
         return view('ordersAdmin')->with('orders', $orders);
+    }
+
+    public function viewUsers(){
+        $users = User::all();
+        return view('manageUsers',compact('users'));
     }
 }
