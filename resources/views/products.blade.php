@@ -25,7 +25,7 @@
                         <div class="card-body">
                             <h5 class="card-title text-center">{{ $p->name }}</h5>
                             <p class="card-text mb-3 d-flex justify-content-center">{{ $p->description }}</p>
-                            <h6 class="card-subtitle d-flex justify-content-center">${{ $p->price }}.00</h5>
+                            <h6 class="card-subtitle d-flex justify-content-center">${{ $p->price }}</h6>
                         </div>
                     </a>
                 </div>

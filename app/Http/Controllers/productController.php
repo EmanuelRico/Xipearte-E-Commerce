@@ -22,9 +22,7 @@ class ProductController extends Controller
 
     public function create(Request $request){
 
-        $categories = Category::where('status',1)->get();
-        
-        
+        $categories = Category::where('status',1)->get(); 
 
         $product = New Product();
         $product->name = $request->name;
@@ -34,17 +32,6 @@ class ProductController extends Controller
         $product->stock = $request->stock;
         $product->originDescription = $request->aboutOrigin;
         $product->save();
-
-        // foreach($request->file('images') as $file){
-        //     $imagen = new Image();
-        //     $name = $file->getClientOriginalName();
-        //     $dest = 'assets/img';
-        //     $file->move($dest,$name);
-        //     $r = 'img';
-        //     $imagen->route = $r.'/'.$name;
-        //     $imagen->product_id = $product->id;
-        //     $imagen->save();
-        // }
 
         foreach ($categories as $c) {
             if(isset($_POST["categorie".$c->id])){
