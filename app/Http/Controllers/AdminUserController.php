@@ -20,7 +20,7 @@ class AdminUserController extends Controller
             $user->save();
             $reply = '200';
         }  
-        return json_encode($reply);
+        return response()->json($reply);
     }
 
     public function changeUserToNormal($id){
@@ -31,6 +31,6 @@ class AdminUserController extends Controller
             $user->save();
             $reply = '200';
         }
-        return json_encode($reply);
+        return response()->json($reply);
     }
 }
