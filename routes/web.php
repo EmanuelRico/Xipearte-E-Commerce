@@ -98,5 +98,5 @@ Route::get('/pedidos',[SaleController::class, 'viewOrders']);
 Route::get('/detalles/{id}', [SaleDetailsController::class, 'viewOrder']);
 
 Route::any('/AdministrarRoles', [adminController::class, 'viewUsers']);
-Route::get('/AdministrarRoles/Admin/{id}', AdminUserController::class, 'changeUserToAdmin');
-Route::get('/AdministrarRoles/Normal/{id}', AdminUserController::class, 'changeUserToNormal');
+Route::get('/AdministrarRoles/Admin/{id}', [AdminUserController::class, 'changeUserToAdmin']);
+Route::get('/AdministrarRoles/Normal/{id}', [AdminUserController::class, 'changeUserToNormal']);
