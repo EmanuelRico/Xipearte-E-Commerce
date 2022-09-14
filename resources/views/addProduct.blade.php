@@ -44,7 +44,7 @@
                             </div>
                         </div>
 
-                        <div class="col-6">
+                        <!-- <div class="col-6">
                             <div class="form-row mb-3">
                                 <label for="basic-url" class="form-label">Stock disponible</label>
                                 <div class="form-group">
@@ -53,7 +53,7 @@
                                         placeholder="" required>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="form-row mb-3">
                         <label for="basic-url" class="form-label">Escoga las categorias</label>
@@ -62,10 +62,28 @@
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="{{$c->id}}" id="flexCheckDefault{{$c->id}}" name="categorie{{$c->id}}">
                                 <label class="form-check-label" for="flexCheckDefault{{$c->id}}">
-                                  {{$c->name}}
+                                {{$c->name}}
                                 </label>
-                              </div>
+                            </div>
                             @endforeach
+                        </div>
+                    </div>
+                    <div class="form-group row my-1">
+                        <label for="" id="letrero">Tallas:</label>
+                        <div class="form-check col my-2" id="opciones">
+                            <input type="radio" class="form-check-input" id="Unitalla" name="sizing" value="Unitalla" required>
+                            <label class="form-check-label" for="Unitalla">Unitalla</label>
+                        </div>
+                        <div class="form-check col my-2" id="opciones">
+                            <input type="radio" class="form-check-input" id="vTallas" name="sizing" value="vTallas" required>
+                            <label class="form-check-label" for="vTallas">Varias Tallas</label>
+                        </div>
+                        <br>
+                        <div class="row my-1" id="inputUnitalla">
+                                
+                        </div>
+                        <div class="row my-1" id="tablaTallas">
+                                
                         </div>
                     </div>
                     {{-- <div class="mb-3">
@@ -138,6 +156,78 @@
             'X-CSRF-TOKEN': '{{csrf_token()}}',
             },
         });
+
+    var showT = false;
+    var showU = false;
+    $(document).ready(function() {            
+        $('input[name="sizing"]').click(function() {
+            if (!$("input[id='Unitalla']").is(":checked")) {
+                $('#uni').remove();
+                $('#stockUni').remove();
+                showT = false;
+            } else
+            if ($("input[id='Unitalla']").is(":checked") && showU == false) {
+                $('#tablaT').remove();
+                $('#head').remove();
+                $('#body').remove();
+                $('#columnas').remove();
+                $('#talla').remove();
+                $('#piezas').remove();
+                $('#tr1').remove();
+                $('#tr2').remove();
+                $('#tr3').remove();
+                $('#tr4').remove();
+                $('#tr5').remove();
+                $('#XCH').remove();
+                $('#CH').remove();
+                $('#M').remove();
+                $('#G').remove();
+                $('#XG').remove();
+                $('#XCH2').remove();
+                $('#CH2').remove();
+                $('#M2').remove();
+                $('#G2').remove();
+                $('#XG2').remove();
+                showU = true;
+            }
+            if (!$("input[id='vTallas']").is(":checked")) {
+                $('#inputUnitalla').append("<div class='form-row mb-3' id='uni'></div>");
+                $('#uni').append("<label for='basic-url' class='form-label'>Stock disponible</label>");
+                $('#uni').append(" <div class='form-group' id='stockUni'></div>");
+                $('#stockUni').append("<input name='stock' type='number' class='form-control border-dark border-2' style='background-color: white' id='basic-url' aria-describedby='basic-addon3' placeholder='' required>");
+                showU = false;
+            } else 
+            if ($("input[id='vTallas']").is(":checked") && showT == false) {
+                $('#tablaTallas').append("<table class='table' id='tablaT'></table>")
+                $('#tablaT').append("<thead id='head'></thead>");
+                $('#tablaT').append("<tbody id='body'></tbody>");
+                $('#head').append("<tr id='columnas'></tr>");
+                $('#columnas').append("<th id='talla'>Talla</th>");
+                $('#columnas').append("<th id='piezas'># Piezas</th>");
+                $('#body').append("<tr id='tr1'></tr>");
+                $('#body').append("<tr id='tr2'></tr>");
+                $('#body').append("<tr id='tr3'></tr>");
+                $('#body').append("<tr id='tr4'></tr>");
+                $('#body').append("<tr id='tr5'></tr>");
+                $('#tr1').append("<td id='XCH'>XCH</td>");
+                $('#tr2').append("<td id='CH'>CH</td>");
+                $('#tr3').append("<td id='M'>M</td>");
+                $('#tr4').append("<td id='G'>G</td>");
+                $('#tr5').append("<td id='XG'>XG</td>");
+                $('#tr1').append("<td id='XCH2'></td>");
+                $('#tr2').append("<td id='CH2'></td>");
+                $('#tr3').append("<td id='M2'></td>");
+                $('#tr4').append("<td id='G2'></td>");
+                $('#tr5').append("<td id='XG2'></td>");
+                $('#XCH2').append("<input name='stockXCH' type='number' placeholder='0' class='form-control border-dark border-2 'style='background-color: white' id='basic-url' aria-describedby='basic-addon3'placeholder=''>");
+                $('#CH2').append("<input name='stockCH' type='number' placeholder='0' class='form-control border-dark border-2' style='background-color: white' id='basic-url' aria-describedby='basic-addon3'placeholder=''>")
+                $('#M2').append("<input name='stockM' type='number' placeholder='0' class='form-control border-dark border-2' style='background-color: white' id='basic-url' aria-describedby='basic-addon3'placeholder=''>");
+                $('#G2').append("<input name='stockG' type='number' placeholder='0' class='form-control border-dark border-2' style='background-color: white' id='basic-url' aria-describedby='basic-addon3'placeholder=''>");
+                $('#XG2').append("<input name='stockXG' type='number' placeholder='0' class='form-control border-dark border-2' style='background-color: white' id='basic-url' aria-describedby='basic-addon3'placeholder=''>");
+                showT = true;
+            }
+        });
+    });
 
         $(function(){
             $("#addProducto").on("submit",function(e){

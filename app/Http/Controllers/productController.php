@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Product_size;
 use App\Models\Product_category;
 use App\Models\Category;
+use App\Http\Controllers\ProductSizeController;
 
 
 class ProductController extends Controller
@@ -29,7 +30,13 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->price = floatval($request->price);
         $product->origin = $request->origin;
-        $product->stock = $request->stock;
+        if (isset($request->stock)){
+            $product->stock = $request->stock;
+        } else {
+            $stock = $request->stockXCH + $request->stockCH + $request->stockM + $request->stockG + $request->stockXG;
+            $product->stock = $stock;
+        }
+        
         $product->originDescription = $request->aboutOrigin;
         $product->save();
 
@@ -40,6 +47,15 @@ class ProductController extends Controller
                 $new_c->category_id = $c->id;
                 $new_c->save();
             }
+        }
+        $uni = "Unitalla";
+        $mSizes = "vTallas";
+        $createSizes = new ProductSizeController();
+        if($request->sizing == $uni) {
+            $createSizes->createSizing($product->id, $request->sizing, $product->stock);
+        } 
+        if($request->sizing == $mSizes){
+            $createSizes->createSizing($product->id, $request->sizing, $product->stock, $request->stockXCH, $request->stockCH, $request->stockM, $request->stockG, $request->stockXG);
         }
 
         $msg = "Creado exitosamente";
