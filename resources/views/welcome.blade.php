@@ -21,15 +21,14 @@
                 $isFirst = true;
             @endphp
             @foreach ($images_carousel as $item)
-                <a href='/producto/{{ $item[0] }}'
-                    class="carousel-item @if ($isFirst) active
+                <div class="carousel-item @if ($isFirst) active
                 @php
                     $isFirst = false;
                 @endphp @endif img-fluid"
                     style="max-height: 400px;" data-bs-interval="3000">
                     <img src="{{ asset('assets/' . $item[1]) }}" class="d-block w-100" alt="...">
 
-                </a>
+                </div>
             @endforeach
 
         </div>
@@ -56,7 +55,7 @@
                                 style="min-height: 430px;min-width:200px">
                             <div class="card-body">
                                 <p class="card-title text-center fw-bold h5 text-truncate">{{ $p->name }}</p>
-                                <h3 class=" card-text d-flex justify-content-center">${{ $p->price }}.00</h3>
+                                <h3 class=" card-text d-flex justify-content-center">${{ $p->price }}</h3>
                             </div>
                         </div>
                     </a>
@@ -100,7 +99,7 @@
                                 style="min-height: 430px;min-width:200px">
                             <div class="card-body">
                                 <p class="card-title text-center fw-bold h5 text-truncate">{{ $p->name }}</p>
-                                <h3 class=" card-text d-flex justify-content-center">${{ $p->price }}.00</h3>
+                                <h3 class=" card-text d-flex justify-content-center">${{ $p->price }}</h3>
                             </div>
                         </div>
                     </a>
