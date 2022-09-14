@@ -115,13 +115,14 @@ class HomeController extends Controller
 
     public function addToCart(Request $request)
     {
+        
         $id = $request->id;
         $size = $request->size;
         $producto = Product::findOrFail($id);
         if ($producto) {
             $cart = session()->get('cart', []);
             $img = DB::table('images')->where('product_id', $producto->id)->first();
-            //$this_size = Product_size::where([['product_id', $producto->id], ['size', $size]])->first();
+            $this_size = Product_size::where([['product_id', $producto->id], ['size', $size]])->first();
             $image = $img->route;
 
 

@@ -61,23 +61,22 @@
                     <h4 id="placeOrigin"> {{ $producto->origin }}</h4>
                     <h1 id="nameProduct" class="fw-bold">{{ $producto->name }}</h1>
                     <h4 id="descriptionProduct" class="fw-bold">{{ $producto->description }}</h4>
-                    <form action="/add-to-cart" method="post">
+                    <form action="/add-to-cart" method="get">
+                        <input type="hidden" name="id" value="{{ $producto->id}}">
                         <div class="d-flex justify-content-between mt-3">
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Open this select menu</option>
-                                @foreach ($sizes as $s)
-                                    <option value=""><button type="button"
-                                            class="btn btn-outline-dark col-2 d-block p-2 rounded-3">
-                                            <h3 class="my-0 py-0">{{ $s->size }}</h3>
-                                        </button></option>
-                                @endforeach
-                            </select>
-
+                            <h5>Selecciona la talla</h5>
+                            @foreach ($sizes as $s)
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="size"
+                                        id="radio-{{ $s->size }}" value="{{ $s->size }}" required>
+                                    <label class="form-check-label text-capitalize"
+                                        for="radio-{{ $s->size }}">{{ $s->size }}</label>
+                                </div>
+                            @endforeach
                         </div>
                         <h1 id="price" class="mt-3">${{ $producto->price }}</h1>
                         @auth
-                            <button type="submit" class="btn btn-dark col-12 d-block py-3 rounded-3 mt-3"
-                                {{-- onclick="location.href='{{ route('add.to.cart', $producto->id) }}'" --}}>
+                            <button type="submit" class="btn btn-dark col-12 d-block py-3 rounded-3 mt-3">
                                 <h4 class="my-0 py-0">Añadir al carrito</h4>
                             </button>
                         @else
@@ -86,11 +85,11 @@
                                 <h4 class="my-0 py-0">Añadir al carrito</h4>
                             </button>
                             @endif
-                            <div class=" border border-3 rounded-3 border-dark p-2 mt-5">
-                                <p class="fw-bold">Acerca del lugar de origen</p>
-                                <p>{{ $producto->originDescription }}</p>
-                            </div>
                         </form>
+                        <div class=" border border-3 rounded-3 border-dark p-2 mt-5">
+                            <p class="fw-bold">Acerca del lugar de origen</p>
+                            <p>{{ $producto->originDescription }}</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -98,7 +97,7 @@
 
 
         <div class="container mt-5">
-            <h3 class="fw-bold">Recomendaciones</h3>
+            <h3 class="fw-bold">Tus últimas visitas</h3>
             <div class="container-fluid  shadow-lg hscroll" style="overflow-x:scroll;">
                 <div class="row flex-row flex-nowrap">
                     @foreach ($productos as $lastView)
@@ -112,7 +111,7 @@
                                     @endforeach
                                     <div class="card-body">
                                         <h5 class="fw-bold card-text text-center text-truncate">{{ $lastView->name }}</h5>
-                                        <h4 class="fw-bold card-text text-center"> ${{ $lastView->price }} </h4>
+                                        <h4 class="fw-bold card-text text-center"> ${{ $lastView->price }}</h4>
                                     </div>
                                 </div>
                             </a>
