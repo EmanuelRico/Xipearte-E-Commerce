@@ -26,6 +26,7 @@ class SaleController extends Controller
     }
 
     public function saveAdd (Request $request) {
+        // dd($request->state);
         $dir = [
             'Calle' => $request->street,
             'Numero Exterior' => $request->exteriorNumber,

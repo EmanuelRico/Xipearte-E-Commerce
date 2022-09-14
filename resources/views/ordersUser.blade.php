@@ -28,8 +28,12 @@
                         <td class="">
                         @foreach (json_decode($order->direccion) as $key => $value)
                             @if($key == 'Codigo Postal')
+                            @elseif ($key == 'Estado')
+                                {{ $value }}
                             @else
-                                {{ $value }}, 
+                                @if($value)
+                                    {{ $value }}, 
+                                @endif
                             @endif
                         @endforeach
                         </td>

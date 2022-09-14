@@ -164,9 +164,16 @@
             if (!$("input[id='Unitalla']").is(":checked")) {
                 $('#uni').remove();
                 $('#stockUni').remove();
-                showT = false;
+                showU = false;
             } else
             if ($("input[id='Unitalla']").is(":checked") && showU == false) {
+                $('#inputUnitalla').append("<div class='form-row mb-3' id='uni'></div>");
+                $('#uni').append("<label for='basic-url' class='form-label'>Stock disponible</label>");
+                $('#uni').append(" <div class='form-group' id='stockUni'></div>");
+                $('#stockUni').append("<input name='stock' type='number' class='form-control border-dark border-2' style='background-color: white' id='basic-url' aria-describedby='basic-addon3' placeholder='' required>");
+                showU = true;
+            }
+            if (!$("input[id='vTallas']").is(":checked")) {
                 $('#tablaT').remove();
                 $('#head').remove();
                 $('#body').remove();
@@ -188,14 +195,7 @@
                 $('#M2').remove();
                 $('#G2').remove();
                 $('#XG2').remove();
-                showU = true;
-            }
-            if (!$("input[id='vTallas']").is(":checked")) {
-                $('#inputUnitalla').append("<div class='form-row mb-3' id='uni'></div>");
-                $('#uni').append("<label for='basic-url' class='form-label'>Stock disponible</label>");
-                $('#uni').append(" <div class='form-group' id='stockUni'></div>");
-                $('#stockUni').append("<input name='stock' type='number' class='form-control border-dark border-2' style='background-color: white' id='basic-url' aria-describedby='basic-addon3' placeholder='' required>");
-                showU = false;
+                showT = false;
             } else 
             if ($("input[id='vTallas']").is(":checked") && showT == false) {
                 $('#tablaTallas').append("<table class='table' id='tablaT'></table>")

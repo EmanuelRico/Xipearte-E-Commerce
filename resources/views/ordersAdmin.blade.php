@@ -34,7 +34,9 @@
                         @foreach (json_decode($order->direccion) as $key => $value)
                             @if($key == 'Codigo Postal')
                             @else
-                                {{ $value }}, 
+                                @if($value)
+                                    {{ $value }}, 
+                                @endif
                             @endif
                         @endforeach
                         </td>
