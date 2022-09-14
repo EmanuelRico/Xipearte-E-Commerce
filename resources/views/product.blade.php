@@ -69,7 +69,7 @@
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="size"
                                         id="radio-{{ $s->size }}" value="{{ $s->size }}" required>
-                                    <label class="form-check-label text-capitalize"
+                                    <label class="form-check-label text-uppercase"
                                         for="radio-{{ $s->size }}">{{ $s->size }}</label>
                                 </div>
                             @endforeach
