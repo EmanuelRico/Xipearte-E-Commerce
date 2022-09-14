@@ -21,14 +21,15 @@
                 $isFirst = true;
             @endphp
             @foreach ($images_carousel as $item)
-                <div class="carousel-item @if ($isFirst) active
+                <a href='/producto/{{ $item[0] }}'
+                    class="carousel-item @if ($isFirst) active
                 @php
                     $isFirst = false;
                 @endphp @endif img-fluid"
                     style="max-height: 400px;" data-bs-interval="3000">
                     <img src="{{ asset('assets/' . $item[1]) }}" class="d-block w-100" alt="...">
 
-                </div>
+                </a>
             @endforeach
 
         </div>
