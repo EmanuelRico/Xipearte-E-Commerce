@@ -20,25 +20,25 @@
                 <div class="col-12 col-md-5 mt-3">
 
                     <div>
-                        <img class="w-100  mx-auto d-block pro-img"
+                        <img class="w-100  mx-auto d-block pro-img rounded"
                             src="{{ asset('assets/' . $producto->imagenes->first()->route) }} " style="max-width:400px">
                     </div>
 
-                    <div class="container-fluid pt-4" style="overflow-x:scroll;">
+                    <div class="container-fluid pt-4 hscroll" style="overflow-x:scroll;">
 
                         <div class="thumb-img row flex-row flex-nowrap">
                             @foreach ($producto->imagenes as $i)
                                 @if ($i->id == $producto->imagenes->first()->id)
-                                    <div class="box active col-4 col-md-5 col-lg-3 col-xl-4 col-xxl-3 d-flex justify-content-center mx-3"
+                                    <div class="box active col-4 col-md-5 col-lg-3 col-xl-4 col-xxl-3 d-flex justify-content-center mx-3 rounded"
                                         onclick="changeImage(this)">
                                         <img src="{{ asset('assets/' . $i->route) }}"
-                                            class="card-img-top rounded-0 img-fluid">
+                                            class="card-img-top rounded img-fluid">
                                     </div>
                                 @else
-                                    <div class="box col-4 col-md-5 col-lg-3 col-xl-4 col-xxl-3 d-flex justify-content-center mx-3"
+                                    <div class="box col-4 col-md-5 col-lg-3 col-xl-4 col-xxl-3 d-flex justify-content-center mx-3 rounded"
                                         onclick="changeImage(this)">
                                         <img src="{{ asset('assets/' . $i->route) }}"
-                                            class="card-img-top rounded-0 img-fluid">
+                                            class="card-img-top rounded img-fluid">
                                     </div>
                                 @endif
                             @endforeach
