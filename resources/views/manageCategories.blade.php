@@ -12,13 +12,13 @@
     <div class="container d-flex justify-content-around flex-wrap">
         <h2 class="fw-bold pt-4 pb-3 w-100">Categorías disponibles</h2>
         @foreach ($category as $c)
-            <div class="card mt-3 border border-dark border-2" style="width: 18rem;">
+            <div class="card mt-3 shadow" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title text-center">{{ $c->name }}</h5>
                     <p class="card-text mb-5 text-center">{{ $c->description }}</p>
-                    <div class="position-absolute bottom-0 mb-2">
-                        <a href="/editarCategoria/{{ $c->id }}" class="btn btn-primary">Editar</a>
-                        <button type="button" class="btn"  style="background-color: rgb(192, 192, 192)"data-bs-toggle="modal" data-bs-target="#exampleModal{{$c->id}}">
+                    <div class="position-absolute d-flex justify-content-center bottom-0 mb-2 w-100">
+                        <a href="/editarCategoria/{{ $c->id }}" class="btn btn-primary me-3">Editar</a>
+                        <button type="button" class="btn me-3"  style="background-color: rgb(192, 192, 192)"data-bs-toggle="modal" data-bs-target="#exampleModal{{$c->id}}">
                           Eliminar
                         </button>
                     </div>

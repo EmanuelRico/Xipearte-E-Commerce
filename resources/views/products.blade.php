@@ -15,10 +15,10 @@
                     <a href="producto/{{ $p->id }}" class="text-decoration-none">
                         <div class="d-flex justify-content-center">
                             @if($p->imagenes->count()>0)
-                                <img src='{{ asset("assets/".$p->imagenes->first()->route) }}' class="img-fluid mt-3"
+                                <img src='{{ asset("assets/".$p->imagenes->first()->route) }}' class="img-fluid mt-3 rounded"
                                     style="max-width: 200px; max-height: 207px" alt="...">
                             @else
-                                <img src='https://kangsblackbeltacademy.com/wp-content/uploads/2017/04/default-image.jpg' class="img-fluid mt-3"
+                                <img src='https://kangsblackbeltacademy.com/wp-content/uploads/2017/04/default-image.jpg' class="img-fluid mt-3 rounded"
                                     style="max-width: 200px; max-height: 207px" alt="...">
                             @endif
                         </div>

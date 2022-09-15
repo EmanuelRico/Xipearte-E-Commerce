@@ -68,23 +68,25 @@
                             @endforeach
                         </div>
                     </div>
-                    <div class="form-group row my-1">
-                        <label for="" id="letrero">Tallas:</label>
-                        <div class="form-check col my-2" id="opciones">
-                            <input type="radio" class="form-check-input" id="Unitalla" name="sizing" value="Unitalla" required>
-                            <label class="form-check-label" for="Unitalla">Unitalla</label>
-                        </div>
-                        <div class="form-check col my-2" id="opciones">
-                            <input type="radio" class="form-check-input" id="vTallas" name="sizing" value="vTallas" required>
-                            <label class="form-check-label" for="vTallas">Varias Tallas</label>
-                        </div>
-                        <br>
-                        <div class="row my-1" id="inputUnitalla">
-                                
-                        </div>
-                        <div class="row my-1" id="tablaTallas">
-                                
-                        </div>
+                    <div class="form-group my-1 mb-3">
+                        
+                            <label for="" id="letrero">Tallas:</label>
+                            <div class="form-check " id="opciones">
+                                <input type="radio" class="form-check-input" id="Unitalla" name="sizing" value="Unitalla" required>
+                                <label class="form-check-label" for="Unitalla">Unitalla</label>
+                            </div>
+                            <div class="form-check" id="opciones">
+                                <input type="radio" class="form-check-input" id="vTallas" name="sizing" value="vTallas" required>
+                                <label class="form-check-label" for="vTallas">Varias Tallas</label>
+                            </div>
+                            <br>
+                            <div class="row " id="inputUnitalla">
+                                    
+                            </div>
+                            <div class="row" id="tablaTallas">
+                                    
+                            </div>
+                       
                     </div>
                     {{-- <div class="mb-3">
                         <label for="formFileMultiple" class="form-label">Seleccionar imágenes a mostrar</label>
@@ -164,9 +166,16 @@
             if (!$("input[id='Unitalla']").is(":checked")) {
                 $('#uni').remove();
                 $('#stockUni').remove();
-                showT = false;
+                showU = false;
             } else
             if ($("input[id='Unitalla']").is(":checked") && showU == false) {
+                $('#inputUnitalla').append("<div class='form-row mb-3' id='uni'></div>");
+                $('#uni').append("<label for='basic-url' class='form-label'>Stock disponible</label>");
+                $('#uni').append(" <div class='form-group' id='stockUni'></div>");
+                $('#stockUni').append("<input name='stock' type='number' class='form-control border-dark border-2' style='background-color: white' id='basic-url' aria-describedby='basic-addon3' placeholder='' required>");
+                showU = true;
+            }
+            if (!$("input[id='vTallas']").is(":checked")) {
                 $('#tablaT').remove();
                 $('#head').remove();
                 $('#body').remove();
@@ -188,14 +197,7 @@
                 $('#M2').remove();
                 $('#G2').remove();
                 $('#XG2').remove();
-                showU = true;
-            }
-            if (!$("input[id='vTallas']").is(":checked")) {
-                $('#inputUnitalla').append("<div class='form-row mb-3' id='uni'></div>");
-                $('#uni').append("<label for='basic-url' class='form-label'>Stock disponible</label>");
-                $('#uni').append(" <div class='form-group' id='stockUni'></div>");
-                $('#stockUni').append("<input name='stock' type='number' class='form-control border-dark border-2' style='background-color: white' id='basic-url' aria-describedby='basic-addon3' placeholder='' required>");
-                showU = false;
+                showT = false;
             } else 
             if ($("input[id='vTallas']").is(":checked") && showT == false) {
                 $('#tablaTallas').append("<table class='table' id='tablaT'></table>")

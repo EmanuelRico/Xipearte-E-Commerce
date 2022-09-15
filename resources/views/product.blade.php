@@ -20,22 +20,22 @@
                     <div class="col-12 col-md-5 mt-3">
 
                         <div>
-                            <img class="w-100  mx-auto d-block pro-img"  src="{{ asset('assets/' . $producto->imagenes->first()->route) }} " style="max-width:400px">
+                            <img class="w-100  mx-auto d-block pro-img rounded"  src="{{ asset('assets/' . $producto->imagenes->first()->route) }} " style="max-width:400px">
                         </div>
 
-                        <div class="container-fluid pt-4" style="overflow-x:scroll;">
+                        <div class="container-fluid pt-4 hscroll" style="overflow-x:scroll;">
                             
-                                <div class="thumb-img row flex-row flex-nowrap">
+                                <div class="thumb-img row flex-row flex-nowrap ">
                                 @foreach ($producto->imagenes as $i)
                                     @if($i->id == $producto->imagenes->first()->id)
-                                        <div class="box active col-4 col-md-5 col-lg-3 col-xl-4 col-xxl-3 d-flex justify-content-center mx-3" onclick="changeImage(this)">
+                                        <div class="box active col-4 col-md-5 col-lg-3 col-xl-4 col-xxl-3 d-flex justify-content-center mx-3 mb-2 rounded " onclick="changeImage(this)">
                                             <img src="{{ asset('assets/' . $i->route) }}"
-                                                class="card-img-top rounded-0 img-fluid" >
+                                                class="card-img-top rounded img-fluid" >
                                         </div>
                                     @else
-                                        <div class="box col-4 col-md-5 col-lg-3 col-xl-4 col-xxl-3 d-flex justify-content-center mx-3" onclick="changeImage(this)">
+                                        <div class="box col-4 col-md-5 col-lg-3 col-xl-4 col-xxl-3 d-flex justify-content-center mx-3 mb-2" onclick="changeImage(this)">
                                             <img src="{{ asset('assets/' . $i->route) }}"
-                                                class="card-img-top rounded-0 img-fluid" >
+                                                class="card-img-top rounded img-fluid" >
                                         </div>
                                     @endif 
                                 @endforeach
@@ -91,7 +91,7 @@
 
         <div class="container mt-5">
             <h3 class="fw-bold">Tus últimas visitas</h3>
-            <div class="container-fluid  shadow-lg hscroll" style="overflow-x:scroll;">
+            <div class="container-fluid  shadow-lg hscroll rounded" style="overflow-x:scroll;">
                 <div class="row flex-row flex-nowrap">
                     @foreach ($productos as $lastView)
                         <div class="col-4 col-md-5 col-lg-3 d-flex justify-content-center ">
@@ -99,7 +99,7 @@
                                 <div class="card text-center">
                                     @foreach ($lastView->imagenes as $ia)
                                             <img src="{{ asset('assets/' . $ia->route) }}"
-                                                class="card-img-top rounded-0 img-fluid mx-auto d-block" style="min-height:300px;max-height: 300px;max-width:225px" alt="...">
+                                                class="card-img-top img-fluid mx-auto d-block rounded" style="min-height:300px;max-height: 300px;max-width:225px" alt="...">
                                     @endforeach
                                     <div class="card-body">
                                         <h5 class="fw-bold card-text text-center text-truncate">{{ $lastView->name }}</h5>
