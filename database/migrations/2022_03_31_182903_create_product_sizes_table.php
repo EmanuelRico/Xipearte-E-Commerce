@@ -17,7 +17,7 @@ class CreateProductSizesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->foreignId("product_id")->references("id")->on("products");
-            $table->string("size",2);
+            $table->string("size",8);
             $table->integer("stock");
         });
     }

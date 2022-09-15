@@ -13,24 +13,11 @@
             <table id="tablaPedidos" class="table table-condensed display">
                 <thead>
                     <tr>
-                        <th scope="row">{{$order->id}}</th>
-                        <td>{{$order->total}}</td>
-                        <td class="">
-                        @foreach (json_decode($order->direccion) as $key => $value)
-                            @if($key == 'Codigo Postal')
-                            @elseif ($key == 'Estado')
-                                {{ $value }}
-                            @else
-                                @if($value)
-                                    {{ $value }}, 
-                                @endif
-                            @endif
-                        @endforeach
-                        </td>
-                        <td id="fecha">{{$order->created_at->toDateString()}}</td>
-                        <td class="text-center">
-                            <input type="button" value="Revisar detalles de Pedido" id=<?php echo $order->id; ?>   class="btn btn-primary detalles">
-                        </td>
+                        <th>ID Pedido</th>
+                        <th>Total</th>
+                        <th>Dirección de Entrega</th>
+                        <th style="width:10%">Fecha Pedido</th>
+                        <th style="width:20%">Detalles</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,6 +29,8 @@
                             <td class="">
                             @foreach (json_decode($order->direccion) as $key => $value)
                                 @if($key == 'Codigo Postal')
+                                @elseif ($key == 'Estado')
+                                    {{ $value }}
                                 @else
                                     {{ $value }}, 
                                 @endif
@@ -64,7 +53,7 @@
     @else
 
     <div class="modal fade" id="pedido-Modal" role="dialog" tabindex="-1" aria-labelledby="pedido-Modal" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content p-3">
                 <div class="modal-header">
                     <h5 class="modal-title fw-bold" style="font-size:22px" id="verPedidoLabel">Ver pedido</h5>
@@ -79,8 +68,9 @@
                         <table class="m-auto table table-condensed">
                             <thead>
                                 <tr>
-                                    <th style="width:45%">Nombre de Producto</th>
+                                    <th style="width:30%">Nombre de Producto</th>
                                     <th style="width:20%">Cantidad</th>
+                                    <th style="width:15%">Talla</th>
                                     <th style="width:15%">Precio unitario</th>
                                     <th style="width:20%">Precio total</th>
                                 </tr>
@@ -121,7 +111,7 @@
                             $('#IDOrder').html(response.sale_id);
                             console.log(response);
                             response.forEach(element => {
-                                $("#productos").append("<tr><td>"+element.product.name+"</td><td>"+element.cantidad+"</td><td>$"+element.price+"</td><td>$"+element.final_price+".00</td></tr>");
+                                $("#productos").append("<tr><td>"+element.product.name+"</td><td>"+element.cantidad+"</td><td>"+element.size+"</td><td>$"+element.price+"</td><td>$"+element.final_price+".00</td></tr>");
                             });
                             $('#pago').html('$'+response[0].sale.total+'.00');
                             $('#pedido-Modal').modal('show');

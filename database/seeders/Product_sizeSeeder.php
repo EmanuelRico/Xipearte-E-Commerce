@@ -17,7 +17,7 @@ class Product_sizeSeeder extends Seeder
         $p = new Product_size();
         $p->id = 1;
         $p -> product_id = 1;
-        $p -> size = "xl" ;
+        $p -> size = "XG" ;
         $p -> stock = 10;
         $p->save();
         unset($p);
@@ -25,7 +25,7 @@ class Product_sizeSeeder extends Seeder
         $p = new Product_size();
         $p ->id = 2;
         $p -> product_id = 1;
-        $p -> size = "l" ;
+        $p -> size = "G" ;
         $p -> stock = 7;
         $p->save();
         unset($p);
@@ -33,154 +33,154 @@ class Product_sizeSeeder extends Seeder
         $p = new Product_size();
         $p->id = 3;
         $p -> product_id = 1;
-        $p -> size = "s" ;
+        $p -> size = "CH" ;
         $p -> stock = 0;
         $p->save();
         unset($p);
 
         $p = new Product_size();
         $p -> product_id = 2;
-        $p -> size = "xl" ;
+        $p -> size = "XG" ;
         $p -> stock = 10;
         $p->save();
         unset($p);
 
         $p = new Product_size();
         $p -> product_id = 2;
-        $p -> size = "l" ;
+        $p -> size = "G" ;
         $p -> stock = 7;
         $p->save();
         unset($p);
 
         $p = new Product_size();
         $p -> product_id = 2;
-        $p -> size = "s" ;
+        $p -> size = "S" ;
         $p -> stock = 0;
         $p->save();
         unset($p);
 
         $p = new Product_size();
         $p -> product_id = 2;
-        $p -> size = "m" ;
+        $p -> size = "M" ;
         $p -> stock = 5;
         $p->save();
         unset($p);
 
         $p = new Product_size();
         $p -> product_id = 2;
-        $p -> size = "xs" ;
+        $p -> size = "XCH" ;
         $p -> stock = 4;
         $p->save();
         unset($p);
 
         $p = new Product_size();
         $p -> product_id = 3;
-        $p -> size = "s" ;
+        $p -> size = "S" ;
         $p -> stock = 4;
         $p->save();
         unset($p);
 
         $p = new Product_size();
         $p -> product_id = 3;
-        $p -> size = "l" ;
+        $p -> size = "G" ;
         $p -> stock = 4;
         $p->save();
         unset($p);
         
         $p = new Product_size();
         $p -> product_id = 4;
-        $p -> size = "l" ;
+        $p -> size = "G" ;
         $p -> stock = 4;
         $p->save();
         unset($p);
 
         $p = new Product_size();
         $p -> product_id = 4;
-        $p -> size = "m" ;
+        $p -> size = "M" ;
         $p -> stock = 4;
         $p->save();
         unset($p);
 
         $p = new Product_size();
         $p -> product_id = 4;
-        $p -> size = "s" ;
+        $p -> size = "S" ;
         $p -> stock = 4;
         $p->save();
         unset($p);
         
         $p = new Product_size();
         $p -> product_id = 5;
-        $p -> size = "xl" ;
+        $p -> size = "XG" ;
         $p -> stock = 4;
         $p->save();
         unset($p);
 
         $p = new Product_size();
         $p -> product_id = 5;
-        $p -> size = "l" ;
+        $p -> size = "G" ;
         $p -> stock = 4;
         $p->save();
         unset($p);
 
         $p = new Product_size();
         $p -> product_id = 6;
-        $p -> size = "m" ;
+        $p -> size = "M" ;
         $p -> stock = 4;
         $p->save();
         unset($p);
 
         $p = new Product_size();
         $p -> product_id = 6;
-        $p -> size = "s" ;
+        $p -> size = "CH" ;
         $p -> stock = 4;
         $p->save();
         unset($p);
         
         $p = new Product_size();
         $p -> product_id = 7;
-        $p -> size = "s" ;
+        $p -> size = "CH" ;
         $p -> stock = 4;
         $p->save();
         unset($p);
 
         $p = new Product_size();
         $p -> product_id = 7;
-        $p -> size = "xs" ;
+        $p -> size = "XCH" ;
         $p -> stock = 4;
         $p->save();
         unset($p);
 
         $p = new Product_size();
         $p -> product_id = 8;
-        $p -> size = "s" ;
+        $p -> size = "CH" ;
         $p -> stock = 4;
         $p->save();
         unset($p);
 
         $p = new Product_size();
         $p -> product_id = 8;
-        $p -> size = "m" ;
+        $p -> size = "M" ;
         $p -> stock = 4;
         $p->save();
         unset($p);
 
         $p = new Product_size();
         $p -> product_id = 8;
-        $p -> size = "l" ;
+        $p -> size = "G" ;
         $p -> stock = 4;
         $p->save();
         unset($p);
 
         $p = new Product_size();
         $p -> product_id = 9;
-        $p -> size = "l" ;
+        $p -> size = "G" ;
         $p -> stock = 4;
         $p->save();
         unset($p);
 
         $p = new Product_size();
         $p -> product_id = 10;
-        $p -> size = "s" ;
+        $p -> size = "CH" ;
         $p -> stock = 4;
         $p->save();
         unset($p);

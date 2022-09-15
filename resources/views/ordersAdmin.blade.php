@@ -34,6 +34,8 @@
                             <td >
                             @foreach (json_decode($order->direccion) as $key => $value)
                                 @if($key == 'Codigo Postal')
+                                @elseif ($key == 'Estado')
+                                    {{ $value }}
                                 @else
                                     {{ $value }}, 
                                 @endif
@@ -57,7 +59,7 @@
     @else
 
     <div class="modal fade" id="pedido-Modal" role="dialog" tabindex="-1" aria-labelledby="pedido-Modal" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content p-3">
                 <div class="modal-header">
                     <h5 class="modal-title fw-bold" style="font-size:22px" id="verPedidoLabel" >Ver pedido</h5>
@@ -72,8 +74,9 @@
                         <table class="m-auto table-condensed table">
                             <thead>
                                 <tr>
-                                    <th style="width:45%">Nombre de Producto</th>
+                                    <th style="width:30%">Nombre de Producto</th>
                                     <th style="width:20%">Cantidad</th>
+                                    <th style="width:15%">Talla</th>
                                     <th style="width:15%">Precio unitario</th>
                                     <th style="width:20%">Precio total</th>
                                 </tr>
@@ -119,7 +122,7 @@
                         console.log(response);
                        // $("#productos").append(<table>);
                         response.forEach(element => {
-                            $("#productos").append("<tr><td>"+element.product.name+"</td><td>"+element.cantidad+"</td><td>$"+element.price+"</td><td>$"+element.final_price+"</td></tr>");
+                            $("#productos").append("<tr><td>"+element.product.name+"</td><td>"+element.cantidad+"</td><td>"+element.size+"</td><td>$"+element.price+"</td><td>$"+element.final_price+"</td></tr>");
                         });
                         
                         $('#pago').html('$'+response[0].sale.total);

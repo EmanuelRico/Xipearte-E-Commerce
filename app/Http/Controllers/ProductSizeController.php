@@ -25,8 +25,7 @@ class ProductSizeController extends Controller
             $size->size = $sizing;
             $size->stock = $stock;
             $size->save();
-        } 
-        if($sizing == $mSizes) {
+        } elseif($sizing == $mSizes) {
             if($stockXCH > $cero) {
                 $XCH = "XCH";
                 $this->addSize($idProd, $XCH, $stockXCH);
@@ -60,5 +59,9 @@ class ProductSizeController extends Controller
         $newSize->size = $size;
         $newSize->stock = $stock;
         $newSize->save();
+    }
+
+    public function deleteSize($idProd) {
+        
     }
 }

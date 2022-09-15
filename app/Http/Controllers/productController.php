@@ -97,13 +97,21 @@ class ProductController extends Controller
     public function update(Request $request){
         $product = Product::find((int)$request->id);
         $categories = Category::all();
+        $uni = "Unitalla";
+        $mSizes = "vTallas";
         //si encuentra el producto mandando por medio del id, crea un nuevo producto
         if($product){
             $product->name = $request->name;
             $product->description = $request->description;
             $product->price = (float)$request->price;
             $product->origin = $request->origin;
-            $product->stock = $request->stock;
+            if($request->sizing == $uni) {
+                $product->stock = $request->stock;
+            } elseif ($request->sizing ==$mSizes) {
+                $stock = $request->stockXCH + $request->stockCH + $request->stockM + $request->stockG + $request->stockXG;
+                $product->stock = $stock;
+            }
+            
             $product->originDescription = $request->aboutOrigin;
             $product->save();
             //si se mandan imagenes, las sobreescribe
@@ -117,15 +125,28 @@ class ProductController extends Controller
             //         $imagen->save();
             //     }
             // }
-            // Category::where('product_id', $product->id)->delete();
-            foreach ($categories as $c) {
-                if(isset($_POST["categorie".$c->id])){
-                    $new_c = new Product_category();
-                    $new_c->product_id = $product->id;
-                    $new_c->category_id = $c->id;
-                    $new_c->save();
+            if($request->sizing){
+                $this->deleteProdSizes($request->id);
+                if($request->sizing == $uni) {
+                    $this->createSizes($request->id, $request->sizing, $product->stock);
+                } elseif ($request->sizing ==$mSizes) {
+                //     dd($request->sizing);
+                    $this->createSizes($request->id, $request->sizing, $product->stock, $request->stockXCH, $request->stockCH, $request->stockM, $request->stockG, $request->stockXG);
                 }
             }
+            if($categories){
+                $this->deleteProdCategory($request->id);
+                foreach ($categories as $c) {
+                    if(isset($_POST["categorie".$c->id])){
+                        $new_c = new Product_category();
+                        $new_c->product_id = $product->id;
+                        $new_c->category_id = $c->id;
+                        $new_c->save();
+                    }
+                }
+            }
+            // Category::where('product_id', $product->id)->delete();
+            
             $msg = "Creado exitosamente";
             return response()->json(["status"=>true,"msg"=>$msg,"id"=>$product->id]); 
         }
@@ -133,6 +154,52 @@ class ProductController extends Controller
             $msg = "No se pudo actualizar";
             return view ('updateProduct', compact('msg'));
         }
+    }
+
+    public function createSizes($idProd, $sizing, $stock, $stockXCH=null, $stockCH=null, $stockM=null,$stockG=null,$stockXG = null) {
+        $mSizes = "vTallas";
+        $uni = "Unitalla";
+        $cero = 0;
+        if (!$stockXCH && !$stockCH && !$stockM && !$stockG && !$stockXG) {
+            $this->addSize($idProd, $uni, $stock);
+        } elseif($sizing == $mSizes) {
+            if($stockXCH > $cero) {
+                $XCH = "XCH";
+                $this->addSize($idProd, $XCH, $stockXCH);
+            }
+            if ($stockCH > $cero) {
+                $CH = "CH";
+                $this->addSize($idProd, $CH, $stockCH);
+            }
+            if ($stockM > $cero) {
+                $M = "M";
+                $this->addSize($idProd, $M, $stockM);
+            }
+            if ($stockG > $cero) {
+                $G = "G";
+                $this->addSize($idProd, $G, $stockG);
+            }
+            if ($stockXG > $cero) {
+                $XG = "XG";
+                $this->addSize($idProd, $XG, $stockXG);
+            }
+        }
+    }
+
+    public function addSize($idProd, $size, $stock) {
+        $newSize = new Product_size();
+        $newSize->product_id = $idProd;
+        $newSize->size = $size;
+        $newSize->stock = $stock;
+        $newSize->save();
+    }
+
+    public function deleteProdCategory($id) {
+        Product_category::where('product_id', $id)->delete();
+    }
+
+    public function deleteProdSizes($id) {
+        Product_size::where('product_id', $id)->delete();
     }
 
     public function delete(Request $request){
