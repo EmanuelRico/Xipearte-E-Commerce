@@ -74,8 +74,8 @@
                         <table class="m-auto table-condensed table">
                             <thead>
                                 <tr>
-                                    <th style="width:30%">Nombre de Producto</th>
-                                    <th style="width:20%">Cantidad</th>
+                                    <th style="width:40%">Nombre de Producto</th>
+                                    <th style="width:10%">Cantidad</th>
                                     <th style="width:15%">Talla</th>
                                     <th style="width:15%">Precio unitario</th>
                                     <th style="width:20%">Precio total</th>

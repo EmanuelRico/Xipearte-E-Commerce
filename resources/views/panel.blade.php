@@ -31,7 +31,7 @@
 
                         <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
                             <div class="card shadow" style="width: 13rem;">
-                                <a href="/producto/1"  class="text-decoration-none">
+                                <a href="/pedidosA"  class="text-decoration-none">
                                 
                                     <img src="{{ asset("assets/".$s->sold_product->first()->product->imagenes->first()->route) }}" class="card-img-top img-fluid" alt="...">
                                     <div class="card-body">

@@ -60,16 +60,16 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <h5 for="" style="font-size:18px">ID de Pedido</h5>
+                    <!-- <h5 for="" style="font-size:18px">ID de Pedido</h5>
                     <p id="IDOrder"></p>
-                    <br>
+                    <br> -->
                     <h5 for="" style="font-size:18px">Productos</h5>
                     <div class="table-responsive hscroll">
                         <table class="m-auto table table-condensed">
                             <thead>
                                 <tr>
-                                    <th style="width:30%">Nombre de Producto</th>
-                                    <th style="width:20%">Cantidad</th>
+                                    <th style="width:40%">Nombre de Producto</th>
+                                    <th style="width:10%">Cantidad</th>
                                     <th style="width:15%">Talla</th>
                                     <th style="width:15%">Precio unitario</th>
                                     <th style="width:20%">Precio total</th>
@@ -108,7 +108,7 @@
                     //url:'{{URL::to("/detalles/2")}}',
                     url:"/detalles/"+order_id,
                     success: function(response){
-                            $('#IDOrder').html(response.sale_id);
+                            // $('#IDOrder').html(response.id);
                             console.log(response);
                             response.forEach(element => {
                                 $("#productos").append("<tr><td>"+element.product.name+"</td><td>"+element.cantidad+"</td><td>"+element.size+"</td><td>$"+element.price+"</td><td>$"+element.final_price+".00</td></tr>");
