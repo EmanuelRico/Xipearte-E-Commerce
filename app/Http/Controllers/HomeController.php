@@ -125,12 +125,13 @@ class HomeController extends Controller
             $this_size = Product_size::where([['product_id', $producto->id], ['size', $size]])->first();
             if ($this_size) {
                 $image = $img->route;
+                $fullID = $id.' '.$size;
 
-
-                if (isset($cart[$id])) {
-                    $cart[$id]['quantity']++;
+                if (isset($cart[$fullID])) {
+                    $cart[$fullID]['quantity']++;
                 } else {
-                    $cart[$id] = [
+                    $cart[$fullID] = [
+                        "id" => $id,
                         "name" => $producto->name,
                         "quantity" => 1,
                         "rImage" => $image,

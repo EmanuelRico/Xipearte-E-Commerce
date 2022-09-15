@@ -20,6 +20,7 @@ class CreateSoldProductsTable extends Migration
             $table->foreignId("sale_id")->references("id")->on("sales");
             $table->unsignedBigInteger('product_id');
             $table->integer('cantidad');
+            $table->string('size');
             $table->decimal('price');
             $table->float("final_price");
         });
