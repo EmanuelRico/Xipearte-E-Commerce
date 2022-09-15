@@ -68,23 +68,25 @@
                             @endforeach
                         </div>
                     </div>
-                    <div class="form-group row my-1">
-                        <label for="" id="letrero">Tallas:</label>
-                        <div class="form-check col my-2" id="opciones">
-                            <input type="radio" class="form-check-input" id="Unitalla" name="sizing" value="Unitalla" required>
-                            <label class="form-check-label" for="Unitalla">Unitalla</label>
-                        </div>
-                        <div class="form-check col my-2" id="opciones">
-                            <input type="radio" class="form-check-input" id="vTallas" name="sizing" value="vTallas" required>
-                            <label class="form-check-label" for="vTallas">Varias Tallas</label>
-                        </div>
-                        <br>
-                        <div class="row my-1" id="inputUnitalla">
-                                
-                        </div>
-                        <div class="row my-1" id="tablaTallas">
-                                
-                        </div>
+                    <div class="form-group my-1 mb-3">
+                        
+                            <label for="" id="letrero">Tallas:</label>
+                            <div class="form-check " id="opciones">
+                                <input type="radio" class="form-check-input" id="Unitalla" name="sizing" value="Unitalla" required>
+                                <label class="form-check-label" for="Unitalla">Unitalla</label>
+                            </div>
+                            <div class="form-check" id="opciones">
+                                <input type="radio" class="form-check-input" id="vTallas" name="sizing" value="vTallas" required>
+                                <label class="form-check-label" for="vTallas">Varias Tallas</label>
+                            </div>
+                            <br>
+                            <div class="row " id="inputUnitalla">
+                                    
+                            </div>
+                            <div class="row" id="tablaTallas">
+                                    
+                            </div>
+                       
                     </div>
                     {{-- <div class="mb-3">
                         <label for="formFileMultiple" class="form-label">Seleccionar imágenes a mostrar</label>

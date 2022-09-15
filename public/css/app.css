@@ -11293,17 +11293,17 @@ textarea.form-control-lg {
   }
 }
 .cssCenterImage {
-  width: 120px;
-  height: 120px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  width: 120px !important;
+  height: 120px !important;
+  -o-object-fit: cover !important;
+     object-fit: cover !important;
 }
 
 .cssCenterImageCart {
-  width: 90px;
-  height: 90px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  width: 90px !important;
+  height: 90px !important;
+  -o-object-fit: cover !important;
+     object-fit: cover !important;
 }
 
 .selectImage {

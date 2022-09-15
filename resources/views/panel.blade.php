@@ -30,16 +30,17 @@
                     @foreach ($sales as $s)
 
                         <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
-                            <a href="/producto/1"  class="text-decoration-none">
-                                <div class="card shadow" style="width: 13rem;">
+                            <div class="card shadow" style="width: 13rem;">
+                                <a href="/producto/1"  class="text-decoration-none">
+                                
                                     <img src="{{ asset("assets/".$s->sold_product->first()->product->imagenes->first()->route) }}" class="card-img-top img-fluid" alt="...">
                                     <div class="card-body">
                                         <p class="card-text d-flex justify-content-center fw-bold h5 ">{{$s->user->nombre}}</p>
                                         <h5 class="d-flex justify-content-center">{{Carbon\Carbon::parse($s->created_at)->format('d/m/Y')}}</h5>
                                         <h5 class="d-flex justify-content-center">${{floatval($s->total)}}</h5>
                                     </div>
-                                </div>
-                            </a>
+                                </a>
+                            </div>
                         </div>
                     @endforeach
                     
@@ -100,7 +101,7 @@
         <div class="col-5">
             <a href="/AdministrarRoles">
             <button type="button" class="btn btn-dark col-12 d-block py-3 rounded-3 mt-3"> 
-                <h4 class="my-0 py-0 text-truncate">Administrar usuarios</h4>
+                <h4 class="my-0 py-0 text-truncate">Administrar roles</h4>
             </button>  
             </a>     
         </div>

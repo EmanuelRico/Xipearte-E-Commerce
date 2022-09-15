@@ -8,8 +8,8 @@
             <div class="col-md-8">
                 <h2 class="fw-bold pt-4 pb-3 w-100">Usuarios</h2>
             </div>
-            <div class="col-md-4 align-items-center d-flex">
-                <div class="  ">
+            <div class="col-md-4 align-items-center d-flex " >
+                <div class="  " hidden>
                     <form class="d-flex" action="----" method="GET">
                         @csrf
                         <input class="form-control me-2 " name="search" id="search" type="search" placeholder="Buscar"
@@ -29,7 +29,7 @@
     <div class="container">
         <div class="row justify-content-md-center ">
             <div class="col col-lg-8">
-                <div class="table-responsive">
+                <div class="table-responsive hscroll">
                     <table class="table table-condensed ">
                         <thead>
                             <tr>
