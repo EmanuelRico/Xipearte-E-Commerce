@@ -10,7 +10,8 @@
     <table id="cart" class="table table-condensed">
         <thead>
             <tr>
-                <th style="width:45%">Producto</th>
+                <th style="width:40%">Producto</th>
+                <th style="width:5%">Talla</th>
                 <th style="width:10%">Precio</th>
                 <th style="width:8%">Cantidad</th>
                 <th style="width:27%" class="text-center">Subtotal</th>
@@ -38,6 +39,7 @@
                                 </div>
                             </div>
                         </td>
+                        <td data-th="Talla">{{ $details['size'] }}</td>
                         <td data-th="Precio">${{ $details['price'] }}</td>
                         <td data-th="Cantidad">
                             <input type="number" min="0" oninput="validity.valid||(value='')" value="{{ $details['quantity'] }}" class="form-control quantity update-cart"/>

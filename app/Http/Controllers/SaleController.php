@@ -57,6 +57,7 @@ class SaleController extends Controller
                 $o->sale_id = $order->id;
                 $o->product_id = $c['product_id'];
                 $o->cantidad = $c['quantity'];
+                $o->size = $c['size'];
                 $o->price = $c['price'];
                 $o->final_price = $c['quantity'] * $c['price'];
                 $o->save();

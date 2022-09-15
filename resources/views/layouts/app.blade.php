@@ -142,6 +142,8 @@ $c_dropdown = Category::all();
                                                                 <p class="mb-1 col-12">{{ $details['name'] }}</p>
                                                                 <span class="col-12" style="color:rgb(119, 118, 118)" id="valores">
                                                                     ${{ $details['price'] }}</span>
+                                                                <span class="col-12" style="color:rgb(119, 118, 118)" id="valores">
+                                                                    Talla: {{ $details['size'] }}</span>
                                                                 <span class="count col-12 " style="color:rgb(119, 118, 118)"> Cantidad:
                                                                         {{ $details['quantity'] }}</span>
                                                             </div>

@@ -9,19 +9,9 @@
 
 <div class="mt-5">
     <div class="container" id="cuadro">
-        <table id="tablaPedidos" class="table table-condensed display">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th style="width:15%">Cantidad total</th>
-                    <th>Dirección de Entrega</th>
-                    <th style="width:10%">Fecha</th>
-                    <th style="width:20%">Detalles</th>
-                </tr>
-            </thead>
-            <tbody>
-            @if(!$orders->isEmpty())
-                @foreach ($orders as $order)
+        <div class="table-responsive hscroll">
+            <table id="tablaPedidos" class="table table-condensed display">
+                <thead>
                     <tr>
                         <th scope="row">{{$order->id}}</th>
                         <td>{{$order->total}}</td>
@@ -42,10 +32,31 @@
                             <input type="button" value="Revisar detalles de Pedido" id=<?php echo $order->id; ?>   class="btn btn-primary detalles">
                         </td>
                     </tr>
-                @endforeach
-            @endif
-            </tbody>
-        </table> 
+                </thead>
+                <tbody>
+                @if(!$orders->isEmpty())
+                    @foreach ($orders as $order)
+                        <tr>
+                            <th scope="row">{{$order->id}}</th>
+                            <td>{{$order->total}}</td>
+                            <td class="">
+                            @foreach (json_decode($order->direccion) as $key => $value)
+                                @if($key == 'Codigo Postal')
+                                @else
+                                    {{ $value }}, 
+                                @endif
+                            @endforeach
+                            </td>
+                            <td id="fecha">{{$order->created_at->toDateString()}}</td>
+                            <td class="text-center">
+                                <input type="button" value="Revisar detalles de Pedido" id=<?php echo $order->id; ?>   class="btn btn-primary detalles">
+                            </td>
+                        </tr>
+                    @endforeach
+                @endif
+                </tbody>
+            </table> 
+        </div>
     </div>
 
     @if ($orders->isEmpty())
@@ -56,7 +67,7 @@
         <div class="modal-dialog">
             <div class="modal-content p-3">
                 <div class="modal-header">
-                    <h5 class="modal-title" style="font-size:22px" id="verPedidoLabel">Ver pedido</h5>
+                    <h5 class="modal-title fw-bold" style="font-size:22px" id="verPedidoLabel">Ver pedido</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -64,18 +75,20 @@
                     <p id="IDOrder"></p>
                     <br>
                     <h5 for="" style="font-size:18px">Productos</h5>
-                    <table class="m-auto">
-                        <thead>
-                            <tr>
-                                <th style="width:45%">Nombre de Producto</th>
-                                <th style="width:20%">Cantidad</th>
-                                <th style="width:15%">Precio unitario</th>
-                                <th style="width:20%">Precio total</th>
-                            </tr>
-                        </thead>
-                        <tbody id="productos">
-                        </tbody>
-                    </table>
+                    <div class="table-responsive hscroll">
+                        <table class="m-auto table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th style="width:45%">Nombre de Producto</th>
+                                    <th style="width:20%">Cantidad</th>
+                                    <th style="width:15%">Precio unitario</th>
+                                    <th style="width:20%">Precio total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productos">
+                            </tbody>
+                        </table>
+                    </div>
                     <br>
                     <h5 for="" style="font-size:18px">Precio Total</h5>
                     <p id="pago"></p>
