@@ -105,7 +105,7 @@ class SaleController extends Controller
 
     public function viewOrders() {
         $user_id = Auth::user()->id;
-        $orders = Sale::query()->where('user_id', '=', $user_id)->get();
+        $orders = Sale::query()->where('user_id', '=', $user_id)->where('status',2)->get();
         return view('ordersUser')->with('orders', $orders);
     }
 
@@ -120,11 +120,11 @@ class SaleController extends Controller
         $order->status = 2;
         $order->save();
         foreach($order->sold_product as $detalleOrden){
-
             $detalleOrden->status = 2;
             $detalleOrden->save();
         }
-        return view('pagoExitoso')->with('order',$order);
+        $order->user;
+        return view('pagoExitoso')->with('order',$order)->with('direccion',json_decode($order->direccion));
     }
     
 }
