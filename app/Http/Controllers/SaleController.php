@@ -44,42 +44,35 @@ class SaleController extends Controller
     }
 
     public function createOrder(Request $request) {
-        // $order = new Sale();
-        // $cart = $request->session()->get('cart');
-        // if ($cart) {
-        //     $order->user_id = $request ->user_id;
-        //     $order->direccion = $request ->address;
-        //     $order->total = $request ->total;
-        //     $order->save();
-        //     $request->session()->forget('cart');
-        //     foreach($cart as $c){
-        //         $o = new Sold_product();
-        //         $o->user_id = $request->user_id;
-        //         $o->sale_id = $order->id;
-        //         $o->product_id = $c['product_id'];
-        //         $o->cantidad = $c['quantity'];
-        //         $o->size = $c['size'];
-        //         $o->price = $c['price'];
-        //         $o->final_price = $c['quantity'] * $c['price'];
-        //         $o->save();
-        //         // return dd ($o);
-        //     }
-        //     // $orderDetails = new SaleDetailsController;
-        //     // $orderDetails->createDetails($request->user_id, $order->id, json_encode($cart), $order->total);
-        // }
         \Stripe\Stripe::setApiKey('sk_test_51LeKtWD9BuHAhloGP5UCHUYpKQxPSoHV8ZE7UlnOMFIdlVflmDGHStsDDqhfTlWKL2Dc8LmoJVmFr9pJU8n2zDOx00rOuzT7SC');
         header('Content-Type: application/json');
 
         try {
             $amount = 0.0;
             $description = '';
+            $order = new Sale();
             $cart = $request->session()->get('cart');
             if ($cart) {
+                $order->user_id = $request ->user_id;
+                $order->direccion = $request ->direccion;
+                $order->total = $request ->total;
+                $order->save();
+                $request->session()->forget('cart');
                 foreach($cart as $c){
+                    $o = new Sold_product();
+                    $o->user_id = $request->user_id;
+                    $o->sale_id = $order->id;
+                    $o->product_id = $c['product_id'];
+                    $o->cantidad = $c['quantity'];
+                    $o->size = $c['size'];
+                    $o->price = $c['price'];
+                    $o->final_price = $c['quantity'] * $c['price'];
                     $amount = $amount + $c['quantity'] * $c['price'];
                     $description = $description . ' ' . $c['name'] .',';
+                    $o->save();
                 }
             }
+
             $amount += 299;
             session()->put('amount', $amount);
             $amount *= 100;
@@ -98,9 +91,11 @@ class SaleController extends Controller
             session()->put('user', $user->id);
             $output = [
                 'clientSecret' => $paymentIntent->client_secret,
+                'order_id' => $order->id
             ];
 
             echo json_encode($output);
+            // return $output;
         } catch (Error $e) {
             http_response_code(500);
             echo json_encode(['error' => $e->getMessage()]);
@@ -119,32 +114,17 @@ class SaleController extends Controller
         return view('ordersUser')->with('orders', $orders);
     }
 
-    public function pagoExitoso(Request $request)
+    public function pagoExitoso($id)
     {
-        $order = new Sale();
-        $cart = $request->session()->get('cart');
-        if ($cart) {
-            $order->user_id = $request->session()->get('user');
-            $order->direccion = json_encode($request->session()->get('dir'));
-            $order->total = $request->session()->get('amount');
-            $order->save();
-            $request->session()->forget('cart');
-            foreach($cart as $c){
-                $o = new Sold_product();
-                $o->user_id = $request->session()->get('user');;
-                $o->sale_id = $order->id;
-                $o->product_id = $c['product_id'];
-                $o->cantidad = $c['quantity'];
-                $o->size = $c['size'];
-                $o->price = $c['price'];
-                $o->final_price = $c['quantity'] * $c['price'];
-                $o->save();
-                // return dd ($o);
-            }
-            // $orderDetails = new SaleDetailsController;
-            // $orderDetails->createDetails($request->user_id, $order->id, json_encode($cart), $order->total);
+        $order = Sale::findOrFail($id);
+        $order->status = 2;
+        $order->save();
+        foreach($order->sold_product as $detalleOrden){
+
+            $detalleOrden->status = 2;
+            $detalleOrden->save();
         }
-        return view('pagoExitoso');
+        return view('pagoExitoso')->with('order',$order);
     }
     
 }

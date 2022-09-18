@@ -158,8 +158,8 @@
                     </table>
                     <div class="row text-right" id="total">
                         <div class="col-8" id="total">
-                            <input type="hidden" name="total" value="{{ $total }}">
                             @php $total += 299; @endphp
+                            <input type="hidden" id="totalEnvio" name="total" value="{{ $total }}">
                             <h5><strong id="total2" name="total " class="text-right">Total:
                                     ${{ $total }}</strong></h5>
                         </div>
@@ -195,20 +195,22 @@
     <script src="https://js.stripe.com/v3/"></script> 
     <script>
         var stripe = Stripe('pk_test_51LeKtWD9BuHAhloGGD890k9sx2ToaDxddcwtrgCJ4QajYLhqq6XVrrblC9cUhDqEGQbVxpnAckUcpYosShDsQ3kP00BlYHF6Vq');
-        const items = [{ id: "xl-tshirt" }];
+        const items = { user_id: '{{ Auth::user()->id }}', direccion:"{{ json_encode($direccion) }}", total: document.getElementById('totalEnvio').value };
+        var id;
         initialize();
         document
             .querySelector("#payment-form")
             .addEventListener("submit", handleSubmit);
         async function initialize() {
-            const { clientSecret } = await fetch("/crearOrden", {
+            const { clientSecret, order_id } = await fetch("/crearOrden", {
                 method: "POST",
                 headers: { 
                 "Content-Type": "application/json",
                 'X-CSRF-TOKEN': '{{csrf_token()}}', },
-                body: JSON.stringify({ items }),
+                body: JSON.stringify(items),
             }).then((r) => r.json());
 
+            id = order_id;
             const appearance = {
                 theme: 'flat',
                 variables: {
@@ -261,7 +263,7 @@
             await stripe.confirmPayment({
                 elements,
                 confirmParams: {
-                    return_url: "http://xipearte-e-commerce.local/pagoExitoso",
+                    return_url: "http://xipearte-e-commerce.local/pagoExitoso/"+id,
                 },
             });
 

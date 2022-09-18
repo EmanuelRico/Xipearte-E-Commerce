@@ -19,6 +19,7 @@ class CreateSalesTable extends Migration
             $table->foreignId("user_id")->references("id")->on("users");
             $table->longText("direccion");
             $table->float("total");
+            $table->boolean('status')->default(true);
         });
     }
 

@@ -1,4 +1,4 @@
-<?php
+.<?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -23,6 +23,7 @@ class CreateSoldProductsTable extends Migration
             $table->string('size');
             $table->decimal('price');
             $table->float("final_price");
+            $table->boolean('status')->default(true);
         });
     }
 
