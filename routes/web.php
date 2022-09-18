@@ -100,3 +100,5 @@ Route::get('/detalles/{id}', [SaleDetailsController::class, 'viewOrder']);
 
 Route::get('/AdministrarRoles', [adminController::class, 'viewUsers']);
 Route::get('/AdministrarRoles/{id}/{type}', [AdminUserController::class, 'changeUserType']);
+
+Route::get('/pagoExitoso',[SaleController::class,'pagoExitoso']);

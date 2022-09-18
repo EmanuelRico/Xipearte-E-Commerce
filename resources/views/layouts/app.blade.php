@@ -23,7 +23,6 @@ $c_dropdown = Category::all();
 
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
-
     <!--Title-->
     <title>
         @yield('title')
