@@ -39,6 +39,7 @@ class SaleController extends Controller
         ];
         // $direccion = json_encode($dir);
         // dd($direccion);
+        session()->put('dir', $dir);
         return view("createOrder")->with('direccion', $dir);
     }
 
@@ -80,6 +81,7 @@ class SaleController extends Controller
                 }
             }
             $amount += 299;
+            session()->put('amount', $amount);
             $amount *= 100;
             // Create a PaymentIntent with amount and currency
             $paymentIntent = \Stripe\PaymentIntent::create([
@@ -90,7 +92,10 @@ class SaleController extends Controller
                 ],
                 'description' => $description,
             ]);
+
             
+            $user = Auth::user();
+            session()->put('user', $user->id);
             $output = [
                 'clientSecret' => $paymentIntent->client_secret,
             ];
@@ -116,6 +121,29 @@ class SaleController extends Controller
 
     public function pagoExitoso(Request $request)
     {
+        $order = new Sale();
+        $cart = $request->session()->get('cart');
+        if ($cart) {
+            $order->user_id = $request->session()->get('user');
+            $order->direccion = json_encode($request->session()->get('dir'));
+            $order->total = $request->session()->get('amount');
+            $order->save();
+            $request->session()->forget('cart');
+            foreach($cart as $c){
+                $o = new Sold_product();
+                $o->user_id = $request->session()->get('user');;
+                $o->sale_id = $order->id;
+                $o->product_id = $c['product_id'];
+                $o->cantidad = $c['quantity'];
+                $o->size = $c['size'];
+                $o->price = $c['price'];
+                $o->final_price = $c['quantity'] * $c['price'];
+                $o->save();
+                // return dd ($o);
+            }
+            // $orderDetails = new SaleDetailsController;
+            // $orderDetails->createDetails($request->user_id, $order->id, json_encode($cart), $order->total);
+        }
         return view('pagoExitoso');
     }
     
