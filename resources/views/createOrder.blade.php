@@ -204,7 +204,9 @@
 
     <script src="https://js.stripe.com/v3/"></script> 
     <script>
-        var stripe = Stripe('pk_test_51LeKtWD9BuHAhloGGD890k9sx2ToaDxddcwtrgCJ4QajYLhqq6XVrrblC9cUhDqEGQbVxpnAckUcpYosShDsQ3kP00BlYHF6Vq');
+        var stripekey = "{{ env('STRIPE_KEY') }}";
+        console.log(stripekey);
+        var stripe = Stripe(stripekey);
         const items = { user_id: '{{ Auth::user()->id }}', direccion:'{!! json_encode($direccion) !!}', total: document.getElementById('totalEnvio').value };
         var id;
         initialize();
