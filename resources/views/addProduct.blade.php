@@ -136,7 +136,6 @@
         
     </div>
 
-    <script src="{{ asset('js/addProduct.js') }}"></script>
 @endsection
 
 @push('scripts')
