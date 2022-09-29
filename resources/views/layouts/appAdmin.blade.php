@@ -37,6 +37,51 @@
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         
+    
+                        <li class="nav-item me-3">
+                            <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle px-0" type="button" id="dropdownMenuButton1"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Productos
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    
+        
+                                        <li><a class="dropdown-item"
+                                                href="/administrarProductos">Administrar productos</a></li>
+                                        <li><a class="dropdown-item"
+                                                href="/añadirProducto">Añadir productos</a></li>
+    
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item me-3">
+                            <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle px-0" type="button" id="dropdownMenuButton1"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Categorías
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    
+        
+                                        <li><a class="dropdown-item"
+                                                href="/administrarCategorias">Administrar categorías</a></li>
+                                        <li><a class="dropdown-item"
+                                                href="/nuevaCategoria">Añadir categoría</a></li>
+    
+                                </ul>
+                            </div>
+                        </li>
+                        
+                        <li class="nav-item me-3">
+                            <a class="nav-link text-white" href="/pedidosA">Administrar pedidos</a>
+                        </li>
+                        
+                        <li class="nav-item me-3">
+                            <a class="nav-link text-white" href="/AdministrarRoles">Administrar roles</a>
+                        </li>
+                        
                     </ul>
                     
                     
