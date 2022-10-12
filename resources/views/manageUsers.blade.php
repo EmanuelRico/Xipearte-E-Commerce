@@ -1,5 +1,10 @@
 @extends('layouts.appAdmin')
 
+@section('css')
+    <link rel="stylesheet" href="{{asset('DataTables/datatables.min.css')}}">
+    <link rel="stylesheet" href="{{asset('DataTables/DataTables-1.12.1/css/dataTables.bootstrap5.min.css')}}">
+@endsection
+
 @section('title', 'Editar Usuarios')
 
 @section('content')
@@ -30,7 +35,7 @@
         <div class="row justify-content-md-center ">
             <div class="col col-lg-8">
                 <div class="table-responsive hscroll">
-                    <table class="table table-condensed ">
+                    <table id="tablaUsuarios"  class="table table-condensed ">
                         <thead>
                             <tr>
                                 <th style="width:45%">{{ 'Correo electrónico' }}</th>
@@ -81,3 +86,31 @@
 
     }
 </script>
+
+@push('scripts')
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+    <script src="{{asset('dataTables/dataTables.min.js')}}"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#tablaUsuarios').DataTable( {
+            ordering: true,
+            language: {
+            lengthMenu: 'Mostrando _MENU_ pedidos por página',
+            zeroRecords: 'No se encontro ninguna coincidencia',
+            info: 'Mostrando página _PAGE_ de _PAGES_',
+            infoEmpty: 'No hay pedidos',
+            infoFiltered: '(Filtrados de _MAX_ pedidos totales)',
+            "search":         "Buscar:",
+            "paginate": {
+                "first":      "Primero",
+                "last":       "Último",
+                "next":       "Siguiente",
+                "previous":   "Anterior"
+            },
+        },
+            } );
+        });
+    </script>
+@endpush
