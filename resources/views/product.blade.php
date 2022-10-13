@@ -101,12 +101,12 @@
             <div class="container-fluid  shadow-lg hscroll rounded" style="overflow-x:scroll;">
                 <div class="row flex-row flex-nowrap">
                     @foreach ($productos as $lastView)
-                        <div class="col-4 col-md-5 col-lg-3 d-flex justify-content-center ">
+                        <div class="col col-md-5 col-lg-3 d-flex justify-content-center ">
                             <a href="/producto/{{ $lastView->id }}" class="text-decoration-none">
                                 <div class="card text-center">
                                     @foreach ($lastView->imagenes as $ia)
                                             <img src="{{ asset('assets/' . $ia->route) }}"
-                                                class="card-img-top img-fluid mx-auto d-block rounded" style="min-height:300px;max-height: 300px;max-width:225px" alt="...">
+                                                class="card-img-top img-fluid mx-auto d-block rounded" style="min-height:300px;max-height: 300px;max-width:225px;min-width:225px" alt="...">
                                     @endforeach
                                     <div class="card-body">
                                         <h5 class="fw-bold card-text text-center text-truncate">{{ $lastView->name }}</h5>

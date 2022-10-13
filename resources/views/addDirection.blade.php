@@ -29,11 +29,11 @@
                                 id="exampleFormControlTextarea1" rows="3" required>
                         </div>
 
-                        <div class="row">
+                        <div class="row align-items-end">
                             <div class="col-4">
                                 <div class="form-group mb-3">
                                     <label for="">Número exterior</label>
-                                    <input type="text" id="extNum" name="exteriorNumber" class="form-control border-dark border-2" style="background-color: white"
+                                    <input type="number" id="extNum" name="exteriorNumber" class="form-control border-dark border-2" style="background-color: white"
                                         id="exampleFormControlTextarea1" rows="6" required>
                                 </div>
                             </div>
@@ -41,7 +41,7 @@
                             <div class="col-4">
                                 <div class="form-group mb-3">
                                     <label for="">Número interior</label>
-                                    <input type="text" id="intNum" name="interiorNumber" class="form-control border-dark border-2" style="background-color: white"
+                                    <input type="number" id="intNum" name="interiorNumber" class="form-control border-dark border-2" style="background-color: white"
                                         id="exampleFormControlTextarea1" rows="6" >
                                 </div>
                             </div>
