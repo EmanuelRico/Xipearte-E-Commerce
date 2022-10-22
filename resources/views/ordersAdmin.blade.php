@@ -70,7 +70,7 @@
                     <p id="IDOrder"></p>
                     <br>
                     <h5 for="" style="font-size:18px">Productos</h5>
-                    <div class="table-responsive hscroll">
+                    <div class="table-responsive hscroll mb-3">
                         <table class="m-auto table-condensed table">
                             <thead>
                                 <tr>
@@ -85,6 +85,23 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="mb-3">
+                        <label for="basic-url" class="form-label font-weight-normal">Número de rastreo</label>
+                        <input name="name" type="text" class="form-control border-dark border-2"
+                            style="background-color: white" id="basic-url" aria-describedby="basic-addon3"
+                            placeholder="Número de rastreo" aria-label="Nombre..." required>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group mb-3">
+                            <label for="est">Paquetería</label>
+                            <select name="state" id="est" class="form-control border-dark border-2" style="background-color: white" id="exampleFormControlTextarea1" rows="6" required>
+                                <option value="">Seleccione una</option>  
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-dark col-12 d-block  rounded-3 mt-3 mb-3">
+                        <h4 class="my-0 py-0">Guardar guía</h4>
+                    </button>
                     <br>
                     <h5 for="" style="font-size:18px">Precio Total</h5>
                     <p id="pago"></p>

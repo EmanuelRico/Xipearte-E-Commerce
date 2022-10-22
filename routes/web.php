@@ -6,6 +6,7 @@ use App\Http\Controllers\SaleDetailsController;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\MailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminUserController;
 
@@ -22,7 +23,7 @@ use App\Http\Controllers\AdminUserController;
 |
 */
 
-Route::get('/', [HomeController::class, 'home']);
+Route::get('/', [HomeController::class, 'home'])->middleware('verified');
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     if(Auth::user()->type==2){
@@ -102,3 +103,6 @@ Route::get('/AdministrarRoles', [adminController::class, 'viewUsers']);
 Route::get('/AdministrarRoles/{id}/{type}', [AdminUserController::class, 'changeUserType']);
 
 Route::get('/pagoExitoso/{id}',[SaleController::class,'pagoExitoso']);
+
+
+Route::get('/send',[MailController::class,'index']);

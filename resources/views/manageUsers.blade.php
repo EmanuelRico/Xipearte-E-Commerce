@@ -97,7 +97,7 @@
             $('#tablaUsuarios').DataTable( {
             ordering: true,
             language: {
-            lengthMenu: 'Mostrando _MENU_ pedidos por página',
+            lengthMenu: 'Mostrando _MENU_ usuarios por página',
             zeroRecords: 'No se encontro ninguna coincidencia',
             info: 'Mostrando página _PAGE_ de _PAGES_',
             infoEmpty: 'No hay pedidos',

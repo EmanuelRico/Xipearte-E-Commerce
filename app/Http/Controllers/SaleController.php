@@ -124,6 +124,7 @@ class SaleController extends Controller
             $detalleOrden->save();
         }
         $order->user;
+        
         return view('pagoExitoso')->with('order',$order)->with('direccion',json_decode($order->direccion));
     }
     
