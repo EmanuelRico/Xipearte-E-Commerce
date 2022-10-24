@@ -94,7 +94,7 @@
                         </table>
                     </div>
 
-                    
+                    <p id="mostrarGuia"></p>
                     <form id="addRastreo" method="POST">
                         @csrf
                         <div class="mb-3">
@@ -160,6 +160,15 @@
                         response.forEach(element => {
                             $("#productos").append("<tr><td>"+element.product.name+"</td><td>"+element.cantidad+"</td><td>"+element.size+"</td><td>$"+element.price+"</td><td>$"+element.final_price+"</td></tr>");
                         });
+                        console.log(response[0].sale.guiaRastreo );
+                        if(response[0].sale.guiaRastreo !== null){
+                            $('#addRastreo').hide();
+                            $('#mostrarGuia').html(response[0].sale.guiaRastreo +' / '+response[0].sale.paqueteria);
+                        }else{
+                            $('#addRastreo').show();
+                            $('#mostrarGuia').html('');
+                        
+                        }
                         
                         $('#pago').html('$'+response[0].sale.total);
                         $('#pedido-Modal').modal('show');
