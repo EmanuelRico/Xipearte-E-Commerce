@@ -17,6 +17,7 @@ use Auth;
 use Mail;
 use App\Mail\NuevoPedidoAdmin;
 use App\Mail\ConfirmacionPedido;
+use App\Mail\PedidoEnviado;
 
 
 
@@ -144,7 +145,21 @@ class SaleController extends Controller
 
     public function guiaRastreo(Request $request, $id)
     {
-        
+        $order = Sale::findOrFail($id);
+        $order->status = 3;
+        $order->guiaRastreo = $request->guia;
+        $order->paqueteria = $request->paqueterial;
+        $order->save();
+
+        foreach($order->sold_product as $detalleOrden){
+            $detalleOrden->product;
+        }
+        $order->user;
+
+        Mail::to($order->user->email)->send(new PedidoEnviado($order));
+        $request->session()->flash('message', 'Guía de rastreo añadida exitosamente');
+        $request->session()->flash('message-type', 'success');
+        return redirect("/pedidosA");
     }
     
 }

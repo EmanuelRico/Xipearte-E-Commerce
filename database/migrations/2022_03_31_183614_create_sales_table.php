@@ -18,6 +18,8 @@ class CreateSalesTable extends Migration
             $table->timestamps();
             $table->foreignId("user_id")->references("id")->on("users");
             $table->longText("direccion");
+            $table->string('guiaRastreo')->nullable();
+            $table->string('paqueteria')->nullable();
             $table->float("total");
             $table->boolean('status')->default(true);
         });

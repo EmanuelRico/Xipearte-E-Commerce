@@ -9,6 +9,12 @@
 
 @section('content')
 
+@if(Session::has('message'))
+    <div class="alert alert-{{ Session::get('message-type') }} alert-dismissable">
+        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+        <i class="glyphicon glyphicon-{{ Session::get('message-type') == 'success' ? 'ok' : 'remove'}}"></i> {{ Session::get('message') }}
+    </div>
+    @endif
 
 <div class="mt-5">
     <div class="container" id="cuadro">
@@ -90,16 +96,21 @@
                     <form id="addRastreo" method="POST">
                         @csrf
                         <div class="mb-3">
-                            <label for="basic-url" class="form-label font-weight-normal">Número de rastreo</label>
-                            <input name="name" type="text" class="form-control border-dark border-2"
-                                style="background-color: white" id="basic-url" aria-describedby="basic-addon3"
+                            <label for="guia" class="form-label font-weight-normal">Número de rastreo</label>
+                            <input name="guia" type="text" class="form-control border-dark border-2"
+                                style="background-color: white" id="guia" aria-describedby="basic-addon3"
                                 placeholder="Número de rastreo" aria-label="Nombre..." required>
                         </div>
                         <div class="col-12">
                             <div class="form-group mb-3">
-                                <label for="est">Paquetería</label>
-                                <select name="state" id="est" class="form-control border-dark border-2" style="background-color: white" id="exampleFormControlTextarea1" rows="6">
+                                <label for="paqueteria">Paquetería</label>
+                                <select name="paqueteria" id="paqueteria" class="form-control border-dark border-2" style="background-color: white" id="exampleFormControlTextarea1" rows="6" required>
                                     <option value="">Seleccione una</option>  
+                                    <option value="FEDEX">FedEx</option>  
+                                    <option value="DHL">DHL</option>
+                                    <option value="Estafeta">Estafeta</option>
+                                    <option value="J&T Express">J&T Express</option>
+                                    <option value="Correos de Mexico">Correos de México</option>
                                 </select>
                             </div>
                         </div>
