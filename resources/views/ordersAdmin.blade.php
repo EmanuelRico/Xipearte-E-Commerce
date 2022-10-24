@@ -93,6 +93,8 @@
                             </tbody>
                         </table>
                     </div>
+
+                    
                     <form id="addRastreo" method="POST">
                         @csrf
                         <div class="mb-3">
@@ -213,6 +215,7 @@
                     type: method,
                     success: function(response) {
                         
+                        location.href = "/pedidosA";
                     },
                     error: function(response){
 

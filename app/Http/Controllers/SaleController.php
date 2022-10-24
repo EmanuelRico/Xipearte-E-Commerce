@@ -148,7 +148,7 @@ class SaleController extends Controller
         $order = Sale::findOrFail($id);
         $order->status = 3;
         $order->guiaRastreo = $request->guia;
-        $order->paqueteria = $request->paqueterial;
+        $order->paqueteria = $request->paqueteria;
         $order->save();
 
         foreach($order->sold_product as $detalleOrden){
@@ -159,7 +159,8 @@ class SaleController extends Controller
         Mail::to($order->user->email)->send(new PedidoEnviado($order));
         $request->session()->flash('message', 'Guía de rastreo añadida exitosamente');
         $request->session()->flash('message-type', 'success');
-        return redirect("/pedidosA");
+        
+        return response()->json(["status"=>true]); 
     }
     
 }

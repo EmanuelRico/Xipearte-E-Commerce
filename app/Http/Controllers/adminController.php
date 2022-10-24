@@ -38,7 +38,7 @@ class adminController extends Controller
 
     public function viewOrders()
     {
-        $orders = Sale::where('status',2)->get();
+        $orders = Sale::where('status','>',1)->get();
         foreach ($orders as $o) {
             $o->user;
         }
