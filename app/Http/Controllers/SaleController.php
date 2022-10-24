@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
 use App\Http\Controllers\SaleDetailsController;
 use Auth;
+use Mail;
+use App\Mail\NuevoPedidoAdmin;
+use App\Mail\ConfirmacionPedido;
+
+
 
 class SaleController extends Controller
 {
@@ -57,7 +62,7 @@ class SaleController extends Controller
                 $order->direccion = $request ->direccion;
                 $order->total = $request ->total;
                 $order->save();
-                $request->session()->forget('cart');
+                // $request->session()->forget('cart');
                 foreach($cart as $c){
                     $o = new Sold_product();
                     $o->user_id = $request->user_id;
@@ -98,7 +103,7 @@ class SaleController extends Controller
             // return $output;
         } catch (Error $e) {
             http_response_code(500);
-            echo json_encode(['error' => $e->getMessage()]);
+            return $e;
         }
 
     }
@@ -120,11 +125,19 @@ class SaleController extends Controller
         $order->status = 2;
         $order->save();
         foreach($order->sold_product as $detalleOrden){
+            $detalleOrden->product;
             $detalleOrden->status = 2;
             $detalleOrden->save();
+            //Restas de stock
         }
         $order->user;
         
+        //Confirmacion de pedido al cliente
+        Mail::to($order->user->email)->send(new ConfirmacionPedido($order));
+
+        //Aviso al admin de nuevo pedido
+        Mail::to('fejerogo.17@gmail.com')->send(new NuevoPedidoAdmin($order));
+
         return view('pagoExitoso')->with('order',$order)->with('direccion',json_decode($order->direccion));
     }
     

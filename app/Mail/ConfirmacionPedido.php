@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class NuevoPedidoAdmin extends Mailable
+class ConfirmacionPedido extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -30,10 +30,9 @@ class NuevoPedidoAdmin extends Mailable
      */
     public function build()
     {
-        
         return $this->from('pruebasxipearte@gmail.com','Pedidos Xipearte')
-        ->subject('Nuevo pedido en Xipearte')
-        ->markdown('emails.nuevoPedidoAdmin')
+        ->subject('Confirmación de orden #'.$this->data['id'])
+        ->markdown('emails.confirmacionPedido')
         ->with('data',$this->data);
     }
 }
