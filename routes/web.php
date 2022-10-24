@@ -95,6 +95,7 @@ Route::get('/buscar',[HomeController::class,'buscarProductos']);
 
 Route::get('/address',[SaleController::class, 'Pedido']);
 Route::post('/saveAdd',[SaleController::class, 'saveAdd']);
+Route::post('/guiaRastreo/{id}',[SaleController::class, 'guiaRastreo']);
 Route::post('/crearOrden',[SaleController::class, 'createOrder'])->name('crearOrden');
 Route::get('/pedidos',[SaleController::class, 'viewOrders']);
 Route::get('/detalles/{id}', [SaleDetailsController::class, 'viewOrder']);

@@ -34,6 +34,7 @@
                             <td >
                             @foreach (json_decode($order->direccion) as $key => $value)
                                 @if($key == 'Codigo Postal')
+                                {{ $value }}
                                 @elseif ($key == 'Estado')
                                     {{ $value }}
                                 @else
@@ -69,6 +70,7 @@
                     <h5 for="" style="font-size:18px">Usuario</h5>
                     <p id="IDOrder"></p>
                     <br>
+                    <p id="numeroOrden"></p>
                     <h5 for="" style="font-size:18px">Productos</h5>
                     <div class="table-responsive hscroll mb-3">
                         <table class="m-auto table-condensed table">
@@ -85,23 +87,26 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="mb-3">
-                        <label for="basic-url" class="form-label font-weight-normal">Número de rastreo</label>
-                        <input name="name" type="text" class="form-control border-dark border-2"
-                            style="background-color: white" id="basic-url" aria-describedby="basic-addon3"
-                            placeholder="Número de rastreo" aria-label="Nombre..." required>
-                    </div>
-                    <div class="col-12">
-                        <div class="form-group mb-3">
-                            <label for="est">Paquetería</label>
-                            <select name="state" id="est" class="form-control border-dark border-2" style="background-color: white" id="exampleFormControlTextarea1" rows="6" required>
-                                <option value="">Seleccione una</option>  
-                            </select>
+                    <form id="addRastreo" method="POST">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="basic-url" class="form-label font-weight-normal">Número de rastreo</label>
+                            <input name="name" type="text" class="form-control border-dark border-2"
+                                style="background-color: white" id="basic-url" aria-describedby="basic-addon3"
+                                placeholder="Número de rastreo" aria-label="Nombre..." required>
                         </div>
-                    </div>
-                    <button type="submit" class="btn btn-dark col-12 d-block  rounded-3 mt-3 mb-3">
-                        <h4 class="my-0 py-0">Guardar guía</h4>
-                    </button>
+                        <div class="col-12">
+                            <div class="form-group mb-3">
+                                <label for="est">Paquetería</label>
+                                <select name="state" id="est" class="form-control border-dark border-2" style="background-color: white" id="exampleFormControlTextarea1" rows="6">
+                                    <option value="">Seleccione una</option>  
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-dark col-12 d-block  rounded-3 mt-3 mb-3">
+                            <h4 class="my-0 py-0">Guardar guía</h4>
+                        </button>
+                    </form>
                     <br>
                     <h5 for="" style="font-size:18px">Precio Total</h5>
                     <p id="pago"></p>
@@ -136,6 +141,7 @@
                     url:"/detalles/"+order_id,
                     success: function(response){
                         $('#IDOrder').html(response[0].sale.user.name +' / '+response[0].sale.user.email);
+                        $('#numeroOrden').html(order_id);
                         console.log(response);
                        // $("#productos").append(<table>);
                         response.forEach(element => {
@@ -173,6 +179,35 @@
             },
         },
             } );
+        });
+    </script>
+
+    <script>
+        $(function(){
+            $("#addRastreo").on("submit",function(e){
+                e.preventDefault();
+                var id = document.getElementById('numeroOrden').textContent;
+                console.log(id);
+                var action = '/guiaRastreo/'+id;
+                var method = $(this).attr("method");
+                var form_data = new FormData($(this)[0]);
+                var form = $(this);
+                $.ajax({
+                    url:action,
+                    dataType:'json',
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: form_data,
+                    type: method,
+                    success: function(response) {
+                        
+                    },
+                    error: function(response){
+
+                    },
+                })
+            });
         });
     </script>
 @endpush

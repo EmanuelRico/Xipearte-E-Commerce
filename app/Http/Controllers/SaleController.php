@@ -129,6 +129,7 @@ class SaleController extends Controller
             $detalleOrden->status = 2;
             $detalleOrden->save();
             //Restas de stock
+
         }
         $order->user;
         
@@ -137,8 +138,13 @@ class SaleController extends Controller
 
         //Aviso al admin de nuevo pedido
         Mail::to('fejerogo.17@gmail.com')->send(new NuevoPedidoAdmin($order));
-
+        session()->forget('cart');
         return view('pagoExitoso')->with('order',$order)->with('direccion',json_decode($order->direccion));
+    }
+
+    public function guiaRastreo(Request $request, $id)
+    {
+        
     }
     
 }

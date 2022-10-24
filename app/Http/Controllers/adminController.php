@@ -17,7 +17,7 @@ class adminController extends Controller
 
     public function panelControl()
     {
-        $sales = Sale::all();
+        $sales = Sale::where('status',2)->get();
         foreach ($sales as $s) {
             $s->user;
             $s->sold_product;
