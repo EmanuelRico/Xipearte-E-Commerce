@@ -28,7 +28,15 @@ class SaleController extends Controller
     }
 
     public function Pedido () {
-        return view('addDirection');
+        $cart = session()->get('cart');
+        if($cart!==null){
+            return view('addDirection');
+        }else{
+            session()->flash('message', 'No tienes productos en el carrito');
+            session()->flash('message-type', 'success');
+            return redirect('/cart');
+        }
+        
     }
 
     public function saveAdd (Request $request) {

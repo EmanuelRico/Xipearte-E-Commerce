@@ -148,6 +148,9 @@ class ProductController extends Controller
             // Category::where('product_id', $product->id)->delete();
             
             $msg = "Creado exitosamente";
+            
+        $request->session()->flash('message', 'Producto guardado exitosamente');
+        $request->session()->flash('message-type', 'success');
             return response()->json(["status"=>true,"msg"=>$msg,"id"=>$product->id]); 
         }
         else{
