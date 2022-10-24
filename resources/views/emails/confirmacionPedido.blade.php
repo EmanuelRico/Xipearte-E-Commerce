@@ -1,7 +1,9 @@
 @component('mail::message')
 # Orden confirmada
+
+# ¡Gracias por tu compra!
  
-Tu pago ha sido exitoso y empezaremos el proceso para enviar tu paquete.
+Hola, {{$data['user']['name']}} tu pago ha sido exitoso y ya estamos preparando tu pedido para enviarlo a tu domicilio.
 En cuanto lo envimos, recibiras un nuevo correo con la información del envio.
 
 
@@ -19,6 +21,8 @@ Referencias: {{json_decode($data['direccion'],true)['Referencias']}}
 
 @endcomponent
 
+
+# Resumen del pedido
 @component('mail::table')
 | Producto      |  Talla        | Cantidad  |  Precio   |
 | ------------- |:-------------:| ---------:| ---------:|
@@ -32,7 +36,7 @@ Referencias: {{json_decode($data['direccion'],true)['Referencias']}}
 @component('mail::button', ['url' => env('APP_URL').'/pedidos'])
 Ver orden
 @endcomponent
- 
+
 Saludos,<br>
 {{ config('app.name') }}
 @endcomponent
