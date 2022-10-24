@@ -111,7 +111,7 @@ class SaleController extends Controller
 
     public function viewOrders() {
         $user_id = Auth::user()->id;
-        $orders = Sale::query()->where('user_id', '=', $user_id)->where('status',2)->get();
+        $orders = Sale::query()->where('user_id', '=', $user_id)->where('status','>',1)->get();
         return view('ordersUser')->with('orders', $orders);
     }
 

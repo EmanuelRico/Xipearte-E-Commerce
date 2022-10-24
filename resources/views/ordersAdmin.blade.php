@@ -163,7 +163,7 @@
                         console.log(response[0].sale.guiaRastreo );
                         if(response[0].sale.guiaRastreo !== null){
                             $('#addRastreo').hide();
-                            $('#mostrarGuia').html(response[0].sale.guiaRastreo +' / '+response[0].sale.paqueteria);
+                            $('#mostrarGuia').html('Guía de rastreo: '+response[0].sale.guiaRastreo +' <br> '+ 'Paquetería: ' +response[0].sale.paqueteria);
                         }else{
                             $('#addRastreo').show();
                             $('#mostrarGuia').html('');

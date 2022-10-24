@@ -80,6 +80,8 @@
                         </table>
                     </div>
                     <br>
+                    <p id="mostrarGuia"></p>
+                    <br>
                     <h5 for="" style="font-size:18px">Precio Total</h5>
                     <p id="pago"></p>
                     <br>
@@ -113,6 +115,14 @@
                             response.forEach(element => {
                                 $("#productos").append("<tr><td>"+element.product.name+"</td><td>"+element.cantidad+"</td><td>"+element.size+"</td><td>$"+element.price+"</td><td>$"+element.final_price+".00</td></tr>");
                             });
+                            console.log(response[0].sale.guiaRastreo );
+                        if(response[0].sale.guiaRastreo !== null){
+                            $('#mostrarGuia').html('Guía de rastreo: '+response[0].sale.guiaRastreo +' <br> '+ 'Paquetería: ' +response[0].sale.paqueteria);
+                        }else{
+                            $('#addRastreo').show();
+                            $('#mostrarGuia').html('ENVIO PENDIENTE');
+                        
+                        }
                             $('#pago').html('$'+response[0].sale.total+'.00');
                             $('#pedido-Modal').modal('show');
                         },
