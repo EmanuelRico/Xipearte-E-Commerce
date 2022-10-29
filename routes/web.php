@@ -23,7 +23,7 @@ use App\Http\Controllers\AdminUserController;
 |
 */
 
-Route::get('/', [HomeController::class, 'home'])->middleware('verified');
+Route::get('/', [HomeController::class, 'home']);
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     if(Auth::user()->type==2){
