@@ -12,6 +12,7 @@ use App\Models\Sale;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
+use App;
 
 use function PHPUnit\Framework\isNull;
 use ArrayObject;
@@ -173,19 +174,59 @@ class HomeController extends Controller
         $request->session()->forget('cart');
     }
 
+    public function suggestions($id) {
+        $allProducts = [];
+        $product_id = intval($id);
+        $producto = Product::find($product_id);
+
+        $products = Product::where('status', 1)->get();
+        foreach ($products as $product) {
+            $item = array ('id' => $product->id,
+            'price' => $product->price,
+            'origin' => $product->origin,
+            'category' => (string)Product_category::where('product_id', $product->id)->first(),);
+            array_push($allProducts, (object)$item);
+        }
+        // return(dd($allProducts));
+        $productSimilarity = new App\ProductSimilarity($allProducts);
+        
+        $similarityMatrix = $productSimilarity->calculateSimilarityMatrix();
+        $products = $productSimilarity->getProductsSortedBySimularity($product_id, $similarityMatrix);
+
+        return($products);
+    }
+
     public function viewProduct($id)
     {
+        $ids = [];
+        $productos = collect([]);
         $product_id = intval($id);
         $producto = Product::find($product_id);
         $sizes = Product_size::where('product_id', $product_id)->get();
         $producto->imagenes;
 
-        $productos = Product::orderBy('id', 'asc')
-            ->take(5)
-            ->get();
+        
+        $prod = $this->suggestions($id);
+
+        // dd($prod);
+
+        foreach ($prod as $p) {
+            $newId = $p->id;
+            $newProd = Product::where('id', $newId)->get();
+            $productos->push($newProd);
+            array_push($ids, $newId);
+        }
+
+        // dd($ids);
+        $productos = $productos->flatten();
+        //$productos = Product::whereIn('id', $ids)->get();
+        //dd($collection);
         foreach ($productos as $p) {
             $p->imagenes;
         }
+        //dd($collection);
+        $productos = $productos->take(5);
+
         return view('product', compact('producto', 'sizes', 'productos'));
     }
 
