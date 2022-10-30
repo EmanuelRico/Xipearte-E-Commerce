@@ -280,7 +280,7 @@
             await stripe.confirmPayment({
                 elements,
                 confirmParams: {
-                    return_url: "{{ env('STRIPE_KEY') }}" + "/pagoExitoso/"+id,
+                    return_url: "{{ env('APP_URL') }}" + "/pagoExitoso/"+id,
                 },
             });
 
