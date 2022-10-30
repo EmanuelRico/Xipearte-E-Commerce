@@ -210,7 +210,7 @@
 
     <script src="https://js.stripe.com/v3/"></script> 
     <script>
-        var stripekey = "{{ env('STRIPE_KEY') }}";
+        var stripekey = "{{ config('services.stripe.key') }}";
         var stripe = Stripe(stripekey);
         const items = { user_id: '{{ Auth::user()->id }}', direccion:'{!! json_encode($direccion) !!}', total: document.getElementById('totalEnvio').value };
         var id;
@@ -280,7 +280,7 @@
             await stripe.confirmPayment({
                 elements,
                 confirmParams: {
-                    return_url: "{{ env('APP_URL') }}" + "/pagoExitoso/"+id,
+                    return_url: "{{ config('app.url') }}" + "/pagoExitoso/"+id,
                 },
             });
 
