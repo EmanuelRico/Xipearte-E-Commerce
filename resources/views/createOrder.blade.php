@@ -280,7 +280,7 @@
             await stripe.confirmPayment({
                 elements,
                 confirmParams: {
-                    return_url: "http://xipearte-e-commerce.local/pagoExitoso/"+id,
+                    return_url: "{{ env('STRIPE_KEY') }}" + "/pagoExitoso/"+id,
                 },
             });
 
