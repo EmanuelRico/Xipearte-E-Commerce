@@ -47,7 +47,7 @@
     <div class=" mx-5 py-3 shadow-lg hscroll" style="overflow-x:scroll;">
         <div class="row flex-row flex-nowrap">
 
-            @foreach ($lastPieces as $lastPieces)
+            @foreach ($lastPieces as $lastPieces2)
                 @foreach ($lastPieces2 as $p)
                     <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
                         <a href="/producto/{{ $p->id }}" class="text-decoration-none">
