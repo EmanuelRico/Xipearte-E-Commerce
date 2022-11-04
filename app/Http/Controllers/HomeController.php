@@ -52,8 +52,21 @@ class HomeController extends Controller
                     $array_o = array($p->id, $img->route);
                     $images_carousel->append($array_o);
                 }
-
-                return view("welcome", compact('productos', 'images_carousel'));
+                //Ultimos productos agregados, máximo solo se mostrarán 10 productos
+                $lastProducts = Product::latest()
+                ->take(10)
+                ->get();
+                //Productos con precio menor a 350, máximo solo se mostrarán 10 productos
+                $lowcost = Product::where("price","<",350)->take(10)
+                ->get();
+                //Productos de los cuales quedan menos de 5 piezas, máximo solo se mostrarán 10 productos
+                $lastPiecesaux = DB::select("SELECT id FROM products INNER JOIN (SELECT product_id FROM product_sizes GROUP BY product_id HAVING (SUM(stock) < 6)  LIMIT 10) AS PROSI ON products.id = PROSI.product_id");
+                $lastPieces = array();
+                foreach ($lastPiecesaux as $lp) {
+                    $lastPieces1 = Product::where('id', $lp->id)->take(1)->get();
+                    array_push($lastPieces, $lastPieces1);
+                }
+                return view("welcome", compact('productos', 'images_carousel' , 'lastProducts','lowcost','lastPieces'));
             }
         } else {
             $productos = Product::where('status', 1)->orderBy('id', 'asc')
@@ -71,7 +84,21 @@ class HomeController extends Controller
                 $array_o = array($p->id, $img->route);
                 $images_carousel->append($array_o);
             }
-            return view("welcome", compact('productos', 'images_carousel'));
+            //Ultimos productos agregados, máximo solo se mostrarán 10 productos
+            $lastProducts = Product::latest()
+            ->take(10)
+            ->get();
+            //Productos con precio menor a 350, máximo solo se mostrarán 10 productos
+            $lowcost = Product::where("price","<",350)->take(10)
+                ->get();
+            //Productos de los cuales quedan menos de 5 piezas, máximo solo se mostrarán 10 productos
+            $lastPiecesaux = DB::select("SELECT id FROM products INNER JOIN (SELECT product_id FROM product_sizes GROUP BY product_id HAVING (SUM(stock) < 6)  LIMIT 10) AS PROSI ON products.id = PROSI.product_id");
+            $lastPieces = array();
+            foreach ($lastPiecesaux as $lp) {
+                $lastPieces1 = Product::where('id', $lp->id)->take(1)->get();
+                array_push($lastPieces, $lastPieces1);
+            }
+            return view("welcome", compact('productos', 'images_carousel','lastProducts','lowcost','lastPieces'));
         }
     }
 
