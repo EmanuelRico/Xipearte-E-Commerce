@@ -130,7 +130,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-dark col-12 d-block py-3 rounded-3 mt-3 mb-3">
+                    <button type="submit" class="btn btn-dark col-12 d-block py-3 rounded-3 mt-3 mb-3" id="edit_product_button">
                         <h4 class="my-0 py-0">Editar producto</h4>
                     </button>
                 </div>
@@ -139,7 +139,6 @@
 
     </div>
 
-    <script src="{{ asset('js/addProduct.js') }}"></script>
 @endsection
 @push('scripts')
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -268,18 +267,18 @@
                         myDropzone.processQueue();
                         myDropzone.on("success", function(file, responseText) {
                             location.reload();
-                            // location.href = "/editarProducto/"+response.id;
+                            //location.href = "/editarProducto/"+response.id;
                             // console.log('hola');
                         });
                     },
                     error: function(response){
 
                     },
-                })
+                });
+            $("#edit_product_button").prop('disabled',true)
+                return false;
             });
         });
-
-        
     </script>
 
 @endpush

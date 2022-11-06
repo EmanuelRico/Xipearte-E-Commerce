@@ -10,7 +10,7 @@
     </div>
     @endif
     <div class="container">
-        <form action="/actualizarCategoria" method="POST">
+        <form action="/actualizarCategoria" method="POST" id="updateCategory">
             @csrf
             <input type="hidden" name="id" value="{{ $c->id }}">
             <div class="row justify-content-md-center">
@@ -28,7 +28,7 @@
                             id="exampleFormControlTextarea1" rows="6">{{ $c->description }}</textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-dark col-12 d-block py-3 rounded-3 mt-3 mb-3">
+                    <button type="submit" class="btn btn-dark col-12 d-block py-3 rounded-3 mt-3 mb-3" id="edit_category_button">
                         Editar categoría
                     </button>
                 </div>
@@ -36,3 +36,38 @@
         </form>
     </div>
 @endsection
+
+@push('scripts')
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+<script>
+
+$(function(){
+    $("#updateCategory").on("submit",function(e){
+        e.preventDefault();
+        var action = $(this).attr("action");
+        var method = $(this).attr("method");
+        var form_data = new FormData($(this)[0]);
+        var form = $(this);
+        $.ajax({
+            url:action,
+            dataType:'json',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            type: method,
+            success: function(response) {
+                location.reload();
+            },
+            error: function(response){
+
+            },
+        });
+    $("#edit_category_button").prop('disabled',true)
+        return false;
+    });
+});
+
+</script>
+@endpush

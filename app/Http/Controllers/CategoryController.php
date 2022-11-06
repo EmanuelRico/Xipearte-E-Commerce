@@ -17,7 +17,10 @@ class CategoryController extends Controller
         $cat->save();
         $request->session()->flash('message', 'Categoría creada exitosamente');
         $request->session()->flash('message-type', 'success');
-        return redirect("editarCategoria/".$cat->id);
+
+        $msg = "Creado exitosamente";
+        return response()->json(["status"=>true,"msg"=>$msg,"id"=>$cat->id]); 
+        //return redirect("editarCategoria/".$cat->id);
     }
 
     //pantalla para agregar categoria
@@ -50,7 +53,8 @@ class CategoryController extends Controller
             $msg = "Actualizado exitosamente";
             $request->session()->flash('message', 'Categoría actualizada exitosamente');
             $request->session()->flash('message-type', 'success');
-            return redirect("editarCategoria/".$c->id);
+            return response()->json(["status"=>true,"msg"=>$msg,"id"=>$c->id]);
+            //return redirect("editarCategoria/".$c->id);
         }
         else{
             $msg = "No se pudo actualizar";

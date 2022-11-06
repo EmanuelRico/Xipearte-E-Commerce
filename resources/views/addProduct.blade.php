@@ -126,7 +126,7 @@
                         </div>
                     </div>
                     
-                    <button type="submit" class="btn btn-dark col-12 d-block py-3 rounded-3 mt-3 mb-3">
+                    <button type="submit" class="btn btn-dark col-12 d-block py-3 rounded-3 mt-3 mb-3" id="add_product_button">
                         <h4 class="my-0 py-0">Añadir producto</h4>
                     </button>
 
@@ -140,23 +140,23 @@
 
 @push('scripts')
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js" integrity="sha512-U2WE1ktpMTuRBPoCFDzomoIorbOyUv0sP8B+INA3EzNAhehbzED1rOJg6bCqPf/Tuposxb5ja/MAUnC8THSbLQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js" integrity="sha512-U2WE1ktpMTuRBPoCFDzomoIorbOyUv0sP8B+INA3EzNAhehbzED1rOJg6bCqPf/Tuposxb5ja/MAUnC8THSbLQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
+<script>
 
-        Dropzone.autoDiscover = false;
-        var myDropzone = new Dropzone('.dropzone',{
-            url:'/unaUrl',
-            acceptedFiles: 'image/*',
-            dictDefaultMessage:'Selecciona o arrastra las imagenes aquí',
-            maxFiles: 5, 
-            autoProcessQueue: false,
-            uploadMultiple:true,
-            parallelUploads: 10,
-            headers: {
-            'X-CSRF-TOKEN': '{{csrf_token()}}',
-            },
-        });
+    Dropzone.autoDiscover = false;
+    var myDropzone = new Dropzone('.dropzone',{
+        url:'/unaUrl',
+        acceptedFiles: 'image/*',
+        dictDefaultMessage:'Selecciona o arrastra las imagenes aquí',
+        maxFiles: 5, 
+        autoProcessQueue: false,
+        uploadMultiple:true,
+        parallelUploads: 10,
+        headers: {
+        'X-CSRF-TOKEN': '{{csrf_token()}}',
+        },
+    });
 
     var showT = false;
     var showU = false;
@@ -230,37 +230,37 @@
         });
     });
 
-        $(function(){
-            $("#addProducto").on("submit",function(e){
-                e.preventDefault();
-                var action = $(this).attr("action");
-                var method = $(this).attr("method");
-                var form_data = new FormData($(this)[0]);
-                var form = $(this);
-                $.ajax({
-                    url:action,
-                    dataType:'json',
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    data: form_data,
-                    type: method,
-                    success: function(response) {
-                        myDropzone.options.url =  '/subirImagenes/'+response.id;
-                        myDropzone.processQueue();
-                        myDropzone.on("success", function(file, responseText) {
-                            // location.reload();
-                            location.href = "/editarProducto/"+response.id;
-                            // console.log('hola');
-                        });
-                    },
-                    error: function(response){
+    $(function(){
+        $("#addProducto").on("submit",function(e){
+            e.preventDefault();
+            var action = $(this).attr("action");
+            var method = $(this).attr("method");
+            var form_data = new FormData($(this)[0]);
+            var form = $(this);
+            $.ajax({
+                url:action,
+                dataType:'json',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+                type: method,
+                success: function(response) {
+                    myDropzone.options.url =  '/subirImagenes/'+response.id;
+                    myDropzone.processQueue();
+                    myDropzone.on("success", function(file, responseText) {
+                        // location.reload();
+                        location.href = "/editarProducto/"+response.id;
+                        // console.log('hola');
+                    });
+                },
+                error: function(response){
 
-                    },
-                })
+                },
             });
+        $("#add_product_button").prop('disabled',true)
+            return false;
         });
-
-        
-    </script>
+    });
+</script>
 @endpush
