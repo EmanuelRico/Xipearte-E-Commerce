@@ -29,9 +29,24 @@ class SaleController extends Controller
 
     public function Pedido () {
         $cart = session()->get('cart');
-        if($cart!==null){
+        if($cart!=null){
+            foreach ($cart as $c) {
+                $product_id = $c['product_id'];
+                $quantity = $c['quantity'];
+                $size = $c['size'];
+                $stock = Product_size::where('product_id',$product_id)->where('size', $size)->first();
+                // return(dd($stock));
+                $name = Product::where('id',$product_id)->first();
+                $available = $stock->stock - $quantity;
+                if($available < 0) {
+                    $message = 'No existen suficientes piezas de '. $name->name.' '. $size. ' en stock';
+                    session()->flash('message', $message);
+                    session()->flash('message-type', 'success');
+                    return redirect('/cart');
+                }
+            }
             return view('addDirection');
-        }else{
+        }elseif ($cart==null){
             session()->flash('message', 'No tienes productos en el carrito');
             session()->flash('message-type', 'success');
             return redirect('/cart');

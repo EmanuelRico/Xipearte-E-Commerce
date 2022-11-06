@@ -146,6 +146,7 @@
                             </thead>
                             <tbody>
                                 @php $total = 0 @endphp
+                                @php $envio = 299 @endphp
                                 @if (session('cart'))
                                     @foreach (session('cart') as $id => $details)
                                         @php $total += $details['price'] * $details['quantity'] @endphp
@@ -174,10 +175,16 @@
                     </div>
                     <div class="row text-right" id="total">
                         <div class="col-8" id="total">
-                            @php $total += 299; @endphp
+                        @if ($total != 0)
+                            @php $total += $envio; @endphp
                             <input type="hidden" id="totalEnvio" name="total" value="{{ $total }}">
                             <h5><strong id="total2" name="total " class="text-right">Total:
                                     ${{ $total }}</strong></h5>
+                        @elseif ($total == 0 )
+                            <input type="hidden" id="totalEnvio" name="total" value="{{ $total }}">
+                            <h5><strong id="total2" name="total " class="text-right">Total:
+                                    ${{ $total }}</strong></h5>
+                        @endif
                         </div>
                     </div>
                 </div>
@@ -187,17 +194,26 @@
         <div class="row justify-content-md-center">
             <div class="col col-lg-8">
 
+                @if ($total != 0)
                 <form id="payment-form">
                     <div id="payment-element">
                         <!--Stripe.js injects the Payment Element-->
-                      </div>
-                      <button id="submit" class="btn btn-dark col-12 d-block py-3 rounded-3 mt-3 mb-3">
+                    </div>
+                    <!-- @if ($total != 0) -->
+                    <button id="submit" class="btn btn-dark col-12 d-block py-3 rounded-3 mt-3 mb-3">
                         <div class="spinner hidden" id="spinner"></div>
-                        <span id="button-text">Pagar ahora</span>
-                      </button>
-                      <div id="payment-message" class="hidden"></div>
+                            <span id="button-text">Pagar ahora</span>
+                    </button>
+                    <div id="payment-message" class="hidden"></div>
+                    <!-- @elseif ($total == 0) -->
+                    <button id="submit" class="btn btn-dark col-12 d-block py-3 rounded-3 mt-3 mb-3" disabled>
+                        <div class="spinner hidden" id="spinner"></div>
+                            <span id="button-text">Pagar ahora</span>
+                    </button>
+                    <div id="payment-message" class="hidden"></div>
+                    <!-- @endif -->
                 </form>
-
+                @endif
             </div>
             
         </div>

@@ -42,31 +42,28 @@
         </button>
     </div>
 
-    <h4 class="d-flex justify-content-center my-4 fw-bold">Últimas piezas</h4>
+    <h4 class="d-flex justify-content-center my-4 fw-bold">Recién agregados</h4>
 
     <div class=" mx-5 py-3 shadow-lg hscroll" style="overflow-x:scroll;">
         <div class="row flex-row flex-nowrap">
-
-            @foreach ($lastPieces as $lastPieces2)
-                @foreach ($lastPieces2 as $p)
-                    <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
-                        <a href="/producto/{{ $p->id }}" class="text-decoration-none">
-                            <div class="card shadow" style="max-width: 20rem;">
-                                <img src="{{ asset('assets/' . $p->imagenes->first()->route) }}" class="img-fluid "
-                                    style="min-height: 430px;min-width:200px">
-                                <div class="card-body">
-                                    <p class="card-title text-center fw-bold h5 text-truncate">{{ $p->name }}</p>
-                                    <h3 class=" card-text d-flex justify-content-center">${{ $p->price }}</h3>
-                                </div>
+            @foreach ($lastProducts as $p)
+                <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
+                    <a href="/producto/{{ $p->id }}" class="text-decoration-none">
+                        <div class="card shadow" style="max-width: 20rem;">
+                            <img src="{{ asset('assets/' . $p->imagenes->first()->route) }}" class="img-fluid "
+                                style="min-height: 430px;min-width:200px">
+                            <div class="card-body">
+                                <p class="card-title text-center fw-bold h5 text-truncate">{{ $p->name }}</p>
+                                <h3 class=" card-text d-flex justify-content-center">${{ $p->price }}</h3>
                             </div>
-                        </a>
-                    </div>
-                @endforeach
+                        </div>
+                    </a>
+                </div>
             @endforeach
         </div>
     </div>
 
-    <h4 class="d-flex justify-content-center my-4 fw-bold">Menores a 350</h4>
+    <h4 class="d-flex justify-content-center my-4 fw-bold">Menores a $350</h4>
 
     <div class=" mx-5 py-3 shadow-lg hscroll" style="overflow-x:scroll;">
         <div class="row flex-row flex-nowrap">
@@ -88,23 +85,26 @@
         </div>
     </div>
 
-    <h4 class="d-flex justify-content-center my-4 fw-bold">Recien agregados</h4>
+    <h4 class="d-flex justify-content-center my-4 fw-bold">Últimas piezas</h4>
 
     <div class=" mx-5 py-3 shadow-lg hscroll" style="overflow-x:scroll;">
         <div class="row flex-row flex-nowrap">
-            @foreach ($lastProducts as $p)
-                <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
-                    <a href="/producto/{{ $p->id }}" class="text-decoration-none">
-                        <div class="card shadow" style="max-width: 20rem;">
-                            <img src="{{ asset('assets/' . $p->imagenes->first()->route) }}" class="img-fluid "
-                                style="min-height: 430px;min-width:200px">
-                            <div class="card-body">
-                                <p class="card-title text-center fw-bold h5 text-truncate">{{ $p->name }}</p>
-                                <h3 class=" card-text d-flex justify-content-center">${{ $p->price }}</h3>
+
+            @foreach ($lastPieces as $lastPieces2)
+                @foreach ($lastPieces2 as $p)
+                    <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
+                        <a href="/producto/{{ $p->id }}" class="text-decoration-none">
+                            <div class="card shadow" style="max-width: 20rem;">
+                                <img src="{{ asset('assets/' . $p->imagenes->first()->route) }}" class="img-fluid "
+                                    style="min-height: 430px;min-width:200px">
+                                <div class="card-body">
+                                    <p class="card-title text-center fw-bold h5 text-truncate">{{ $p->name }}</p>
+                                    <h3 class=" card-text d-flex justify-content-center">${{ $p->price }}</h3>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
+                @endforeach
             @endforeach
         </div>
     </div>
