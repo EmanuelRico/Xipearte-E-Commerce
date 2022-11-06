@@ -247,7 +247,6 @@ class ProductController extends Controller
 
     public function viewProductsEdit($id)
     {
-        
         $p = Product::findOrFail($id);
         $p->imagenes;
         $categories = Category::where('status',1)->get();
