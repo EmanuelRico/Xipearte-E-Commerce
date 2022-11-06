@@ -236,18 +236,21 @@ class ProductController extends Controller
 
     public function manageProductsScreen()
     {
-        $product = Product::orderBy('name')->where('status',1)->paginate(15);
-        foreach($product as $p){
-            $p->imagenes;
+        try{
+            $product = Product::where('status',1)->orderBy('name')->paginate(15);
+            foreach($product as $p){
+                $p->imagenes;
+            }
+            return view('manageProducts', compact('product'));
+        }catch (\Throwable$th) {
+            return $th->getMessage();
         }
-        return view('manageProducts', compact('product'));
     }
 
     
 
     public function viewProductsEdit($id)
     {
-        
         $p = Product::findOrFail($id);
         $p->imagenes;
         $categories = Category::where('status',1)->get();
