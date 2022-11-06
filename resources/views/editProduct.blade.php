@@ -267,9 +267,9 @@
                         myDropzone.processQueue();
                         myDropzone.on("success", function(file, responseText) {
                             location.reload();
-                            //location.href = "/editarProducto/"+response.id;
-                            // console.log('hola');
+                            return false;
                         });
+                        location.reload();
                     },
                     error: function(response){
 
