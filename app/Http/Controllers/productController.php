@@ -236,7 +236,7 @@ class ProductController extends Controller
 
     public function manageProductsScreen()
     {
-        $product = Product::orderBy('name')->where('status',1)->paginate(15);
+        $product = Product::where('status',1)->orderBy('name')->paginate(15);
         foreach($product as $p){
             $p->imagenes;
         }
