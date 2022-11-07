@@ -11,14 +11,18 @@
                 <p>
                     Empezaremos a preparar el pedido para enviarlo y te haremos llegar tu guía de rastreo
                 </p>
-                {{$order->user->name}} <br>
-                {{$order->user->email}} <br>
-
-                Total de la orden: ${{number_format($order->total,2)}} (Con envío)
+                Usuario: {{$order->user->name}} <br>
+                Correo electrónico: {{$order->user->email}} <br>
                 
                 <h2 class="fw-bold pt-4 pb-4">Dirección</h2>
                 @foreach ($direccion as $d)
-                    {{$d}}
+                    @if ($d)
+                        @if ($direccion->Estado == $d)
+                            {{ $d }}
+                        @else
+                            {{ $d }},
+                        @endif
+                    @endif
                 @endforeach
                 <h2 class="fw-bold pt-4 pb-4">Productos</h2>
                 <table id="cart" class="table table-condensed">
@@ -54,7 +58,7 @@
                             </tfoot>
                     </tbody>
                 </table>
-
+                <h5 class="fw-bold px-3 pt-4 pb-4 text-end ">Total: ${{number_format($order->total,2)}} (Con envío)</h5>
                 <form action="/">
                     <button type="submit" class="btn btn-dark col-12 d-block py-3 rounded-3 mt-3 mb-3">
                         <h4 class="my-0 py-0">Seguir comprando</h4>
