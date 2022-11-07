@@ -112,7 +112,7 @@ $c_dropdown = Category::all();
 
                                 <ul class="dropdown-menu dropdown-menu-lg-end" style="width: 275px"
                                     aria-labelledby="navbarDropdown">
-                                    <div class="container">
+                                    <div class="container overflow-auto" style="height: 305px">
                                         <div class="row total-header-section">
                                             <div class="col">
                                                 <a class="px-0 text-white"><i
