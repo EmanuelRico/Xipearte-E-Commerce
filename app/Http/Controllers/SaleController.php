@@ -73,7 +73,8 @@ class SaleController extends Controller
     }
 
     public function createOrder(Request $request) {
-        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        
+        \Stripe\Stripe::setApiKey(config('services.stripe.secret') );
         header('Content-Type: application/json');
 
         try {
