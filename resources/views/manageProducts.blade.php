@@ -19,20 +19,20 @@
             @if ($name != $p->name)
                 <div class="card mt-3 shadow" style="width: 18rem;">
                     <div class="d-flex justify-content-center">
-                        @if($p->imagenes->count()>0)
-                            <img src='{{ asset("assets/".$p->imagenes->first()->route) }}' class="img-fluid mt-3 rounded"
-                            style="max-width: 200px; max-height: 207px" alt="...">
-                        @else
-                            <img src='https://kangsblackbeltacademy.com/wp-content/uploads/2017/04/default-image.jpg' class="img-fluid mt-3 rounded"
-                            style="max-width: 200px; max-height: 207px" alt="...">
-                        @endif
+                    @if($p->imagenes->count()>0)
+                        <img src='{{ asset("assets/".$p->imagenes->first()->route) }}' class="img-fluid mt-0 rounded"
+                            style="min-height: 380px;min-width:200px" alt="...">
+                    @else
+                        <img src='https://kangsblackbeltacademy.com/wp-content/uploads/2017/04/default-image.jpg' class="img-fluid mt-0 rounded"
+                            style="min-height: 380px;min-width:200px" alt="...">
+                    @endif
                         
                     </div>
                     <div class="card-body ">
                         <h5 class="card-title text-center">{{ $p->name }}</h5>
                         <h6 class="card-subtitle text-center">$ {{ $p->price }}</h6>
                             <p class="card-text mb-5 text-center">{{ $p->description }}</p>
-                            <div class="position-absolute d-flex justify-content-center bottom-0 mb-2 w-100 ">
+                            <div class="position-absolute d-flex justify-content-center bottom-0 mb-3 w-100 ">
                                 <a href="/editarProducto/{{ $p->id }}" class="btn btn-primary me-3">Editar</a>
                                 <button type="button" class="btn me-3" style="background-color: rgb(192, 192, 192)"
                                     data-bs-toggle="modal" data-bs-target="#exampleModal{{ $p->id }}">

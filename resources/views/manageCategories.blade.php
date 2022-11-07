@@ -14,7 +14,8 @@
         @foreach ($category as $c)
             <div class="card mt-3 shadow" style="width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title text-center">{{ $c->name }}</h5>
+                    <h5 class="card-title fw-bold text-center">{{ $c->name }}</h5>
+                    <hr>
                     <p class="card-text mb-5 text-center">{{ $c->description }}</p>
                     <div class="position-absolute d-flex justify-content-center bottom-0 mb-2 w-100">
                         <a href="/editarCategoria/{{ $c->id }}" class="btn btn-primary me-3">Editar</a>

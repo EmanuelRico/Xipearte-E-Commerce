@@ -8,7 +8,8 @@
             <div class="card mt-3 shadow" style="width: 18rem;">
                 <a href="/categoria/{{$c->id}}" style="text-decoration:none">
                     <div class="card-body">
-                        <h5 class="card-title d-flex justify-content-center">{{ $c->name }}</h5>
+                        <h5 class="card-title fw-bold d-flex justify-content-center">{{ $c->name }}</h5>
+                        <hr>
                         <p class="card-text text-center">{{ $c->description }}</p>
                     </div>
                 </a>
