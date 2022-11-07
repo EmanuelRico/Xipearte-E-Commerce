@@ -140,7 +140,7 @@
 @push('scripts')
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
-    <script src="{{asset('dataTables/dataTables.min.js')}}"></script>
+    <script src="{{asset('DataTables/datatables.min.js')}}"></script>
 
     <script>
         $(document).ready(function() {
@@ -182,6 +182,7 @@
         });
     
     </script>
+
     <script>
         $(document).ready(function () {
             $('#tablaPedidos').DataTable( {
