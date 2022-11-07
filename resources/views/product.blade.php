@@ -101,16 +101,19 @@
             <div class="container-fluid  shadow-lg hscroll rounded" style="overflow-x:scroll;">
                 <div class="row flex-row flex-nowrap">
                     @foreach ($productos as $lastView)
-                        <div class="col col-md-5 col-lg-3 d-flex justify-content-center ">
+                        <div class="col col-md-5 col-lg-3 d-flex justify-content-center my-3">
                             <a href="/producto/{{ $lastView->id }}" class="text-decoration-none">
-                                <div class="card text-center">
-                                    @foreach ($lastView->imagenes as $ia)
-                                            <img src="{{ asset('assets/' . $ia->route) }}"
-                                                class="card-img-top img-fluid mx-auto d-block rounded" style="min-height:300px;max-height: 300px;max-width:225px;min-width:225px" alt="...">
-                                    @endforeach
+                                <div class="card shadow text-center">
+                                @if($lastView->imagenes->count()>0)
+                                    <img src='{{ asset("assets/".$lastView->imagenes->first()->route) }}' class="card-img-top img-fluid mx-auto d-block rounded" 
+                                        style="min-height:380px;max-height: 380px;max-width:285px;min-width:285px" alt="...">
+                                @else
+                                    <img src='https://kangsblackbeltacademy.com/wp-content/uploads/2017/04/default-image.jpg' class="card-img-top img-fluid mx-auto d-block rounded" 
+                                        style="min-height:380px;max-height: 380px;max-width:285px;min-width:285px" alt="...">
+                                @endif
                                     <div class="card-body">
-                                        <h5 class="fw-bold card-text text-center text-truncate">{{ $lastView->name }}</h5>
-                                        <h4 class="fw-bold card-text text-center"> ${{ $lastView->price }}</h4>
+                                        <h5 class="fw-bold card-text text-center text-truncate" style="max-width:285px">{{ $lastView->name }}</h5>
+                                        <h4 class="fw-bold card-text text-center" style="max-width:285px"> ${{ $lastView->price }}</h4>
                                     </div>
                                 </div>
                             </a>
@@ -120,6 +123,19 @@
             </div>
         </div>
 
+        <!-- <div class="card shadow">
+            @if($lastView->imagenes->count()>0)
+                <img src='{{ asset("assets/".$lastView->imagenes->first()->route) }}' class="img-fluid mt-0 rounded"
+                    style="min-height: 380px;min-width:185px;" alt="...">
+            @else
+                <img src='https://kangsblackbeltacademy.com/wp-content/uploads/2017/04/default-image.jpg' class="img-fluid mt-0 rounded"
+                    style="min-height: 380px;min-width:1850px" alt="...">
+            @endif
+            <div class="card-body">
+                <p class="card-title text-center fw-bold h5 text-truncate">{{ $lastView->name }}</p>
+                <h3 class=" card-text d-flex justify-content-center">${{ $lastView->price }}</h3>
+            </div>
+        </div> -->
     @endsection
 
     @push('scripts')
