@@ -10,26 +10,23 @@
 
     @foreach ($category as $p)
         @if ($name != $p->product->name)
-        <div class="card mt-3 shadow" style="width: 18rem;">
-            <a href="/producto/{{$p->product->id}}"  class="text-decoration-none">
-
-                <div class="d-flex justify-content-center">
+        <div class="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center mb-4">
+            <a href="/producto/{{ $p->product->id }}" class="text-decoration-none">
+                <div class="card shadow" style="max-width: 20rem;">
                     @if($p->product->imagenes->count()>0)
-                        <img src='{{ asset("assets/".$p->product->imagenes->first()->route) }}' class="img-fluid rounded mt-3"
-                            style="max-width: 200px; max-height: 207px" alt="...">
+                        <img src='{{ asset("assets/".$p->product->imagenes->first()->route) }}' class="img-fluid mt-0 rounded"
+                            style="min-height: 430px;min-width:200px" alt="...">
                     @else
-                        <img src='https://kangsblackbeltacademy.com/wp-content/uploads/2017/04/default-image.jpg' class="img-fluid rounded mt-3"
-                            style="max-width: 200px; max-height: 207px" alt="...">
+                        <img src='https://kangsblackbeltacademy.com/wp-content/uploads/2017/04/default-image.jpg' class="img-fluid mt-0 rounded"
+                            style="min-height: 430px;min-width:200px" alt="...">
                     @endif
-
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title text-center">{{ $p->product->name }}</h5>
-                    <p class="card-text mb-3 text-center">{{ $p->product->description }}</p>
-                    <h6 class="card-subtitle d-flex justify-content-center">${{ $p->product->price }}</h5>  
+                    <div class="card-body">
+                        <p class="card-title text-center fw-bold h5 text-truncate">{{ $p->product->name }}</p>
+                        <h3 class=" card-text d-flex justify-content-center">${{ $p->product->price }}</h3>
                     </div>
-                </a>
-            </div>
+                </div>
+            </a>
+        </div>
         @endif
         @php
             $name = $p->product->name;
