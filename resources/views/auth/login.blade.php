@@ -24,7 +24,7 @@
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="mb-3">
-                        <x-jet-label value="{{ __('Correo electronico') }}" />
+                        <x-jet-label value="{{ __('Correo electrónico') }}" />
     
                         <x-jet-input class="{{ $errors->has('email') ? 'is-invalid' : '' }}" type="email"
                                      name="email" :value="old('email')" required />
@@ -43,7 +43,7 @@
                         <div class="custom-control custom-checkbox">
                             <x-jet-checkbox id="remember_me" name="remember" />
                             <label class="custom-control-label" for="remember_me">
-                                {{ __('Recuerdame') }}
+                                {{ __('Recuérdame') }}
                             </label>
                         </div>
                     </div>

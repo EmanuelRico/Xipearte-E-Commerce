@@ -164,7 +164,7 @@
                                         </tr>
                                     @endforeach
                                     <tfoot>
-                                        <td>Envio</td>
+                                        <td>Envío</td>
                                         <td>$299</td>
                                         <td></td>
                                         <td class="text-center">$299</td>

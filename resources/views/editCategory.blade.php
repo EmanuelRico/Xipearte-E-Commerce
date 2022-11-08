@@ -23,7 +23,7 @@
                             placeholder="Nombre..." aria-label="Nombre...">
                     </div>
                     <div class="form-group mb-3">
-                        <label for="exampleFormControlTextarea1">Descripción de la categoria</label>
+                        <label for="exampleFormControlTextarea1">Descripción de la categoría</label>
                         <textarea id="categoryDescription" required name="description" class="form-control border-dark border-2"
                             id="exampleFormControlTextarea1" rows="6">{{ $c->description }}</textarea>
                     </div>

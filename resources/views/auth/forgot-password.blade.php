@@ -13,7 +13,7 @@
         <div class="card-body">
 
             <div class="mb-3">
-                {{ __('¿Olvidaste tu contraseña? No hay problema. Solo dejanos saber tu correo electronico y te enviaremos un link a tu correo que te permitirá cambiarla.') }}
+                {{ __('¿Olvidaste tu contraseña? No hay problema. Solo déjanos saber tu correo electrónico y te enviaremos un link a tu correo que te permitirá cambiarla.') }}
             </div>
 
             @if (session('status'))

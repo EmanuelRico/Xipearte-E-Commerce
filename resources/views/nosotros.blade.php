@@ -15,7 +15,7 @@
             <br>
             Ubicados en la ciudad de San Luis Potosí.
             <br>
-            Hacemos envios a todo México.
+            Hacemos envíos a todo México.
             <h2 class="fw-bold pt-4 pb-2">Contacto:</h2>
             <div>
                         <a href="https://www.instagram.com/xipearte" target="_blank" class="btn" type="submit"><i

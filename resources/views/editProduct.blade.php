@@ -49,7 +49,7 @@
                         </div>
                     </div> -->
                     <div class="form-row mb-3">
-                        <label for="basic-url" class="form-label">Escoga las categorias</label>
+                        <label for="basic-url" class="form-label">Escoja las categorías</label>
                         <div class="form-group">
                             @foreach ($categories as $c)
                             <div class="form-check">
@@ -111,7 +111,7 @@
                     </div>
 
                     <div class="form-group mb-3">
-                        <label for="exampleFormControlTextarea1">Imagenes asignadas al producto</label>
+                        <label for="exampleFormControlTextarea1">Imágenes asignadas al producto</label>
                         <div class="row">
                             @foreach($p->imagenes as $foto)
                             <div class="col-md-4">
@@ -124,7 +124,7 @@
                     </div>
 
                     <div class="form-group mb-3">
-                        <label for="exampleFormControlTextarea1">Agregar imagenes al producto</label>
+                        <label for="exampleFormControlTextarea1">Agregar imágenes al producto</label>
                         <div class="dropzone" id="my-awesome-dropzone">
             
                         </div>
@@ -165,7 +165,7 @@
         var myDropzone = new Dropzone('.dropzone',{
             url:'/unaUrl',
             acceptedFiles: 'image/*',
-            dictDefaultMessage:'Selecciona o arrastra las imagenes aquí',
+            dictDefaultMessage:'Selecciona o arrastra las imágenes aquí',
             maxFiles: 5, 
             autoProcessQueue: false,
             uploadMultiple:true,

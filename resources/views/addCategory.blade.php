@@ -17,7 +17,7 @@
                     <input id="categoryName" name="categoryName" required type="text" class="form-control border-dark border-2" id="basic-url" aria-describedby="basic-addon3" placeholder="Nombre..." aria-label="Nombre...">
                 </div>
                 <div class="form-group mb-3">
-                    <label for="exampleFormControlTextarea1">Descripción de la categoria</label>
+                    <label for="exampleFormControlTextarea1">Descripción de la categoría</label>
                     <textarea  id="categoryDescription"  required name="categoryDescription" class="form-control border-dark border-2" id="exampleFormControlTextarea1" rows="6"></textarea>
                 </div>
                 

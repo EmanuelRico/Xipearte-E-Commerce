@@ -4,7 +4,7 @@
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Actualiza la información de tu cuenta y tu correo electronico.') }}
+        {{ __('Actualiza la información de tu cuenta y tu correo electrónico.') }}
     </x-slot>
 
     <x-slot name="form">
@@ -69,7 +69,7 @@
 
             <!-- Email -->
             <div class="mb-3">
-                <x-jet-label for="email" value="{{ __('Correo electronico') }}" />
+                <x-jet-label for="email" value="{{ __('Correo electrónico') }}" />
                 <x-jet-input id="email" type="email" class="{{ $errors->has('email') ? 'is-invalid' : '' }}" wire:model.defer="state.email" />
                 <x-jet-input-error for="email" />
             </div>

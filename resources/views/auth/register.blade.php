@@ -26,7 +26,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <x-jet-label value="{{ __('Correo electronico') }}" />
+                        <x-jet-label value="{{ __('Correo electrónico') }}" />
 
                         <x-jet-input class="{{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email"
                                     :value="old('email')" required />
@@ -53,8 +53,8 @@
                                 <x-jet-checkbox id="terms" name="terms" />
                                 <label class="custom-control-label" for="terms">
                                     {!! __('De acuerdo con :terms_of_service y :privacy_policy', [
-                                                'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'">'.__('Terminos').'</a>',
-                                                'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'">'.__('Politica de privacidad').'</a>',
+                                                'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'">'.__('Términos').'</a>',
+                                                'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'">'.__('Política de privacidad').'</a>',
                                         ]) !!}
                                 </label>
                             </div>

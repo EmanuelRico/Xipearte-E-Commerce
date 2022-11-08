@@ -72,7 +72,7 @@ $c_dropdown = Category::all();
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="/categorias">Todas las categorias</a></li>
+                                <li><a class="dropdown-item" href="/categorias">Todas las categorías</a></li>
                             </ul>
                         </div>
                     </li>
