@@ -21,7 +21,7 @@
 
                     <div>
                         <img class="w-100  mx-auto d-block pro-img rounded"
-                            src="{{ asset('assets/' . $producto->imagenes->first()->route) }} " style="max-width:400px">
+                            src="{{ asset($producto->imagenes->first()->route) }} " style="max-width:400px">
                     </div>
 
                     <div class="container-fluid pt-4 hscroll" style="overflow-x:scroll;">
@@ -31,13 +31,13 @@
                                 @if ($i->id == $producto->imagenes->first()->id)
                                     <div class="box active col-4 col-md-5 col-lg-3 col-xl-4 col-xxl-3 d-flex justify-content-center mx-3 rounded"
                                         onclick="changeImage(this)">
-                                        <img src="{{ asset('assets/' . $i->route) }}"
+                                        <img src="{{ asset($i->route) }}"
                                             class="card-img-top rounded img-fluid">
                                     </div>
                                 @else
                                     <div class="box col-4 col-md-5 col-lg-3 col-xl-4 col-xxl-3 d-flex justify-content-center mx-3 rounded"
                                         onclick="changeImage(this)">
-                                        <img src="{{ asset('assets/' . $i->route) }}"
+                                        <img src="{{ asset($i->route) }}"
                                             class="card-img-top rounded img-fluid">
                                     </div>
                                 @endif
@@ -105,7 +105,7 @@
                             <a href="/producto/{{ $lastView->id }}" class="text-decoration-none">
                                 <div class="card shadow text-center">
                                 @if($lastView->imagenes->count()>0)
-                                    <img src='{{ asset("assets/".$lastView->imagenes->first()->route) }}' class="card-img-top img-fluid mx-auto d-block rounded" 
+                                    <img src='{{ asset($lastView->imagenes->first()->route) }}' class="card-img-top img-fluid mx-auto d-block rounded" 
                                         style="min-height:380px;max-height: 380px;max-width:285px;min-width:285px" alt="...">
                                 @else
                                     <img src='https://kangsblackbeltacademy.com/wp-content/uploads/2017/04/default-image.jpg' class="card-img-top img-fluid mx-auto d-block rounded" 
@@ -125,7 +125,7 @@
 
         <!-- <div class="card shadow">
             @if($lastView->imagenes->count()>0)
-                <img src='{{ asset("assets/".$lastView->imagenes->first()->route) }}' class="img-fluid mt-0 rounded"
+                <img src='{{ asset($lastView->imagenes->first()->route) }}' class="img-fluid mt-0 rounded"
                     style="min-height: 380px;min-width:185px;" alt="...">
             @else
                 <img src='https://kangsblackbeltacademy.com/wp-content/uploads/2017/04/default-image.jpg' class="img-fluid mt-0 rounded"

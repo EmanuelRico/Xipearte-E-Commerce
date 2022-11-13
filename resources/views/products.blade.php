@@ -15,7 +15,7 @@
                     <a href="/producto/{{ $p->id }}" class="text-decoration-none">
                         <div class="card shadow" style="max-width: 20rem;">
                             @if($p->imagenes->count()>0)
-                                <img src='{{ asset("assets/".$p->imagenes->first()->route) }}' class="img-fluid mt-0 rounded"
+                                <img src='{{ asset($p->imagenes->first()->route) }}' class="img-fluid mt-0 rounded"
                                     style="min-height: 430px;min-width:200px" alt="...">
                             @else
                                 <img src='https://kangsblackbeltacademy.com/wp-content/uploads/2017/04/default-image.jpg' class="img-fluid mt-0 rounded"
@@ -32,7 +32,7 @@
                     <a href="producto/{{ $p->id }}" class="text-decoration-none">
                         <div class="d-flex justify-content-center">
                             @if($p->imagenes->count()>0)
-                                <img src='{{ asset("assets/".$p->imagenes->first()->route) }}' class="img-fluid mt-3 rounded"
+                                <img src='{{ asset($p->imagenes->first()->route) }}' class="img-fluid mt-3 rounded"
                                     style="max-width: 200px; max-height: 207px" alt="...">
                             @else
                                 <img src='https://kangsblackbeltacademy.com/wp-content/uploads/2017/04/default-image.jpg' class="img-fluid mt-3 rounded"

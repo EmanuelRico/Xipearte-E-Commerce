@@ -108,7 +108,7 @@ class HomeController extends Controller
         if (isset($id)) {
             $product_id = intval($id);
             $p = Product::find($product_id);
-            if (!is_null($p)) { //verify if the product exist
+            if ($p !== null) { //verify if the product exist
                 $images = Image::where("product_id", $product_id)->get(); //obtain product images
                 $sizes = Product_size::where("product_id", $product_id)->get(); //otain product sizes info
                 return view("product", compact('p', 'images', 'sizes'));
@@ -229,32 +229,36 @@ class HomeController extends Controller
         $productos = collect([]);
         $product_id = intval($id);
         $producto = Product::find($product_id);
-        $sizes = Product_size::where('product_id', $product_id)->get();
-        $producto->imagenes;
-
-        
-        $prod = $this->suggestions($id);
-
-        // dd($prod);
-
-        foreach ($prod as $p) {
-            $newId = $p->id;
-            $newProd = Product::where('id', $newId)->get();
-            $productos->push($newProd);
-            array_push($ids, $newId);
+        if($producto !== null){
+            $sizes = Product_size::where('product_id', $product_id)->get();
+            $producto->imagenes;
+    
+            
+            $prod = $this->suggestions($id);
+    
+            // dd($prod);
+    
+            foreach ($prod as $p) {
+                $newId = $p->id;
+                $newProd = Product::where('id', $newId)->get();
+                $productos->push($newProd);
+                array_push($ids, $newId);
+            }
+    
+            // dd($ids);
+            $productos = $productos->flatten();
+            //$productos = Product::whereIn('id', $ids)->get();
+            //dd($collection);
+            foreach ($productos as $p) {
+                $p->imagenes;
+            }
+            //dd($collection);
+            $productos = $productos->take(5);
+    
+            return view('product', compact('producto', 'sizes', 'productos'));
+        }else{
+            return view("error_views/product_not_found");
         }
-
-        // dd($ids);
-        $productos = $productos->flatten();
-        //$productos = Product::whereIn('id', $ids)->get();
-        //dd($collection);
-        foreach ($productos as $p) {
-            $p->imagenes;
-        }
-        //dd($collection);
-        $productos = $productos->take(5);
-
-        return view('product', compact('producto', 'sizes', 'productos'));
     }
 
     public function viewCategories()
@@ -265,16 +269,21 @@ class HomeController extends Controller
     //Ver categoria en especifico
     public function viewCategory($id)
     {
-        $category = Product_category::where('category_id', '=', $id)->paginate(15);
-        $categoryName = Category::where('id', $id)->first()->name;
-        foreach ($category as $pc) {
-            $pc->product;
-            $pc->product->imagenes;
-            $pc->category;
+        $c = Category::find($id);
+        if($c !== null){
+            $categoryName = $c->name;
+            $category = Product_category::where('category_id', '=', $id)->paginate(15);
+            foreach ($category as $pc) {
+                $pc->product;
+                $pc->product->imagenes;
+                $pc->category;
+            }
+            // return dd($category);
+    
+            return view('category_view', compact('category', 'categoryName'));
+        }else{
+            return view("error_views/category_not_found");
         }
-        // return dd($category);
-
-        return view('category_view', compact('category', 'categoryName'));
     }
 
     public function aboutUs()

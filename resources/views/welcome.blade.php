@@ -26,7 +26,7 @@
                     $isFirst = false;
                 @endphp @endif img-fluid"
                     style="max-height: 400px;" data-bs-interval="3000">
-                    <img src="{{ asset('assets/' . $item[1]) }}" class="d-block w-100" alt="...">
+                    <img src="{{ asset($item[1]) }}" class="d-block w-100" alt="...">
 
                 </a>
             @endforeach
@@ -50,7 +50,7 @@
                 <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
                     <a href="/producto/{{ $p->id }}" class="text-decoration-none">
                         <div class="card shadow" style="max-width: 20rem;">
-                            <img src="{{ asset('assets/' . $p->imagenes->first()->route) }}" class="img-fluid "
+                            <img src="{{ asset($p->imagenes->first()->route) }}" class="img-fluid "
                                 style="min-height: 430px;min-width:200px">
                             <div class="card-body">
                                 <p class="card-title text-center fw-bold h5 text-truncate">{{ $p->name }}</p>
@@ -72,7 +72,7 @@
                 <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
                     <a href="/producto/{{ $lw->id }}" class="text-decoration-none">
                         <div class="card shadow" style="max-width: 20rem;">
-                            <img src="{{ asset('assets/' . $lw->imagenes->first()->route) }}" class="img-fluid "
+                            <img src="{{ asset($lw->imagenes->first()->route) }}" class="img-fluid "
                                 style="min-height: 430px;min-width:200px">
                             <div class="card-body">
                                 <p class="card-title text-center fw-bold h5 text-truncate">{{ $lw->name }}</p>
@@ -95,7 +95,7 @@
                     <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
                         <a href="/producto/{{ $p->id }}" class="text-decoration-none">
                             <div class="card shadow" style="max-width: 20rem;">
-                                <img src="{{ asset('assets/' . $p->imagenes->first()->route) }}" class="img-fluid "
+                                <img src="{{ asset($p->imagenes->first()->route) }}" class="img-fluid "
                                     style="min-height: 430px;min-width:200px">
                                 <div class="card-body">
                                     <p class="card-title text-center fw-bold h5 text-truncate">{{ $p->name }}</p>

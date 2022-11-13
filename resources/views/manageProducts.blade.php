@@ -20,7 +20,7 @@
                 <div class="card mt-3 shadow" style="width: 18rem;">
                     <div class="d-flex justify-content-center">
                     @if($p->imagenes->count()>0)
-                        <img src='{{ asset("assets/".$p->imagenes->first()->route) }}' class="img-fluid mt-0 rounded"
+                        <img src='{{ asset($p->imagenes->first()->route) }}' class="img-fluid mt-0 rounded"
                             style="min-height: 380px;min-width:200px" alt="...">
                     @else
                         <img src='https://kangsblackbeltacademy.com/wp-content/uploads/2017/04/default-image.jpg' class="img-fluid mt-0 rounded"

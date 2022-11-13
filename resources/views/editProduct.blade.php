@@ -116,7 +116,7 @@
                             @foreach($p->imagenes as $foto)
                             <div class="col-md-4">
                                 <button type="button" class="btn btn-danger btn btn-sm eliminaFoto" id="{{$foto->id}}" style="position:absolute"><i class="fa fa-remove"></i></button>
-                                <img class="img-fluid" src="{{asset('assets/'.$foto->route)}}">
+                                <img class="img-fluid" src="{{asset($foto->route)}}">
                             </div>
                             @endforeach
                         </div>

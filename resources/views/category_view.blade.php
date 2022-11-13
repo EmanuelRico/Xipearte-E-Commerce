@@ -14,7 +14,7 @@
             <a href="/producto/{{ $p->product->id }}" class="text-decoration-none">
                 <div class="card shadow" style="max-width: 20rem;">
                     @if($p->product->imagenes->count()>0)
-                        <img src='{{ asset("assets/".$p->product->imagenes->first()->route) }}' class="img-fluid mt-0 rounded"
+                        <img src='{{ asset($p->product->imagenes->first()->route) }}' class="img-fluid mt-0 rounded"
                             style="min-height: 430px;min-width:200px" alt="...">
                     @else
                         <img src='https://kangsblackbeltacademy.com/wp-content/uploads/2017/04/default-image.jpg' class="img-fluid mt-0 rounded"

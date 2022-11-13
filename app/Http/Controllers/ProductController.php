@@ -70,11 +70,8 @@ class ProductController extends Controller
         $files = $request->file('file');
         foreach($files as $img){
             $imagen = new Image();
-            $name = $img->getClientOriginalName();
-            $dest = 'assets/img';
-            $img->move($dest,$name);
-            $r = 'img';
-            $imagen->route = $r.'/'.$name;
+            $photo = $img->store('public/products/' . $id);
+            $imagen->route = Storage::url($photo);
             $imagen->product_id = $id;
             $imagen->save();
         }
