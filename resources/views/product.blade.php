@@ -68,12 +68,14 @@
                         <div class="d-flex justify-content-between mt-3">
                             <h5>Selecciona la talla</h5>
                             @foreach ($sizes as $s)
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="size"
-                                        id="radio-{{ $s->size }}" value="{{ $s->size }}" required>
-                                    <label class="form-check-label text-uppercase"
-                                        for="radio-{{ $s->size }}">{{ $s->size }}</label>
-                                </div>
+                                @if ($s->stock > 0)
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="size"
+                                            id="radio-{{ $s->size }}" value="{{ $s->size }}" required>
+                                        <label class="form-check-label text-uppercase"
+                                            for="radio-{{ $s->size }}">{{ $s->size }}</label>
+                                    </div>
+                                @endif
                             @endforeach
                         </div>
                         <h1 id="price" class="mt-3">${{ $producto->price }}</h1>
