@@ -61,6 +61,8 @@
                     <h4 id="placeOrigin"> {{ $producto->origin }}</h4>
                     <h1 id="nameProduct" class="fw-bold">{{ $producto->name }}</h1>
                     <h4 id="descriptionProduct" class="fw-bold">{{ $producto->description }}</h4>
+
+                    @if($producto->stock > 0 )
                     <form action="/add-to-cart" method="get">
                         <input type="hidden" name="id" value="{{ $producto->id}}">
                         <div class="d-flex justify-content-between mt-3">
@@ -86,6 +88,13 @@
                             </button>
                             @endif
                         </form>
+                    @else
+                    <h5>
+
+                        Producto no disponible
+                    </h5>
+                    @endif
+
                         <div class=" border border-3 rounded-3 border-dark p-2 mt-5">
                             <p class="fw-bold">Acerca del lugar de origen</p>
                             <p>{{ $producto->originDescription }}</p>
