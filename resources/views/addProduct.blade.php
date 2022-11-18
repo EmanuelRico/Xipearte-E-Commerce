@@ -263,7 +263,7 @@
             }else{
                 console.log('No arhcivos');
                 document.getElementById("errorImg").innerHTML = 'Por favor añade imagenes al producto para continuar';
-                $("#add_product_button").prop('disabled',false);
+                $("#add_product_button").prop('disabled',false) return false;
             }
             
         $("#add_product_button").prop('disabled',true)
