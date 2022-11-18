@@ -264,6 +264,7 @@
                     type: method,
                     success: function(response) {
                         console.log(response);
+                        console.log(myDropzone.files.length)
                         myDropzone.options.url =  '/subirImagenes/'+response.id;
                         myDropzone.processQueue();
                         myDropzone.on("success", function(file, responseText) {
