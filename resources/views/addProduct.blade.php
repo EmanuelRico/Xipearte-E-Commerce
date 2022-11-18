@@ -121,6 +121,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="exampleFormControlTextarea1">Agregar imágenes al producto</label>
+                        <div id="errorImg" class="errorImagenes" style="color: red"></div>
                         <div class="dropzone" id="my-awesome-dropzone">
             
                         </div>
@@ -261,6 +262,8 @@
             });
             }else{
                 console.log('No arhcivos');
+                document.getElementById("errorImg").innerHTML = 'Por favor añade imagenes al producto para continuar';
+                $("#add_product_button").prop('disabled',false);
             }
             
         $("#add_product_button").prop('disabled',true)
