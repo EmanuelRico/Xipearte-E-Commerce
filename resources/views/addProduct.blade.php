@@ -237,7 +237,8 @@
             var method = $(this).attr("method");
             var form_data = new FormData($(this)[0]);
             var form = $(this);
-            $.ajax({
+            if(myDropzone.files.length > 0){
+                $.ajax({
                 url:action,
                 dataType:'json',
                 cache: false,
@@ -258,6 +259,10 @@
 
                 },
             });
+            }else{
+                console.log('No arhcivos');
+            }
+            
         $("#add_product_button").prop('disabled',true)
             return false;
         });
