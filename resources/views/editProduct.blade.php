@@ -264,14 +264,18 @@
                     type: method,
                     success: function(response) {
                         console.log(response);
-                        console.log(myDropzone.files.length)
-                        myDropzone.options.url =  '/subirImagenes/'+response.id;
-                        myDropzone.processQueue();
-                        myDropzone.on("success", function(file, responseText) {
+                        if(myDropzone.files.length > 0){
+                            myDropzone.options.url =  '/subirImagenes/'+response.id;
+                            myDropzone.processQueue();
+                            myDropzone.on("success", function(file, responseText) {
+                                location.reload();
+                                return false;
+                            });
+                        }else{
                             location.reload();
-                            return false;
-                        });
-                        // location.reload();
+                        }
+                        
+                        
                     },
                     error: function(response){
 
