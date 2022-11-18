@@ -270,7 +270,7 @@
                             location.reload();
                             return false;
                         });
-                        location.reload();
+                        // location.reload();
                     },
                     error: function(response){
 
