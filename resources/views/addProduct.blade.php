@@ -233,6 +233,7 @@
 
     $(function(){
         $("#addProducto").on("submit",function(e){
+            $("#add_product_button").prop('disabled',true)
             e.preventDefault();
             var action = $(this).attr("action");
             var method = $(this).attr("method");
@@ -266,7 +267,7 @@
                 $("#add_product_button").prop('disabled',false);
             }
             
-        $("#add_product_button").prop('disabled',true)
+        
             return false;
         });
     });
