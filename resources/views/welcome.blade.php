@@ -72,7 +72,7 @@
                 <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center">
                     <a href="/producto/{{ $lw->id }}" class="text-decoration-none">
                         <div class="card shadow" style="max-width: 20rem;">
-                            <img src="{{ asset($lw->imagenes->first()->route) }}" class="img-fluid "
+                            <img src="{{ asset($lw->imagenes[0]->route) }}" class="img-fluid "
                                 style="min-height: 430px;min-width:200px">
                             <div class="card-body">
                                 <p class="card-title text-center fw-bold h5 text-truncate">{{ $lw->name }}</p>
