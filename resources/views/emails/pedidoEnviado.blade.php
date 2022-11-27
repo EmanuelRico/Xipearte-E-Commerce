@@ -9,7 +9,7 @@ Paquetería: {{$data['paqueteria']}}
 @endcomponent
 
 @component('mail::panel')
-Dirección de envio:
+Dirección de envío:
 Calle {{json_decode($data['direccion'],true)['Calle']}}, 
 #{{json_decode($data['direccion'],true)['Numero Exterior']}},
 @if (json_decode($data['direccion'],true)['Numero Interior'] !== null)
@@ -28,7 +28,7 @@ Referencias: {{json_decode($data['direccion'],true)['Referencias']}}
 @foreach($data['sold_product'] as $product)
 | {{$product['product']['name']}} | {{$product['size']}} | {{$product['cantidad']}} | ${{$product['product']['price']}}.00 | 
 @endforeach
-| Envio |  |  | $299.00 |
+| Envío |  |  | $299.00 |
 | Total |  |  | ${{$data['total']}}.00 |
 @endcomponent
 

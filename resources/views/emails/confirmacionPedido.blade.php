@@ -4,11 +4,11 @@
 # ¡Gracias por tu compra!
  
 Hola, {{$data['user']['name']}} tu pago ha sido exitoso y ya estamos preparando tu pedido para enviarlo a tu domicilio.
-En cuanto lo envimos, recibiras un nuevo correo con la información del envio.
+En cuanto lo enviemos, recibirás un nuevo correo con la información del envío.
 
 
 @component('mail::panel')
-Dirección de envio:
+Dirección de envío:
 Calle {{json_decode($data['direccion'],true)['Calle']}}, 
 #{{json_decode($data['direccion'],true)['Numero Exterior']}},
 @if (json_decode($data['direccion'],true)['Numero Interior'] !== null)
@@ -29,7 +29,7 @@ Referencias: {{json_decode($data['direccion'],true)['Referencias']}}
 @foreach($data['sold_product'] as $product)
 | {{$product['product']['name']}} | {{$product['size']}} | {{$product['cantidad']}} | ${{$product['product']['price']}}.00 | 
 @endforeach
-| Envio |  |  | $299.00 |
+| Envío |  |  | $299.00 |
 | Total |  |  | ${{$data['total']}}.00 |
 @endcomponent
 

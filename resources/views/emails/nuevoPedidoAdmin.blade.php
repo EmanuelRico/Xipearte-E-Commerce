@@ -2,7 +2,7 @@
 # Nueva orden confirmada
  
 Se ha confirmado un pago y hay un nuevo paquete por enviar.
-Aquí te proporcionamos un resumen, pero entra a tu cuenta para ver más detalle del pedido
+Aquí te proporcionamos un resumen, pero entra a tu cuenta para ver más detalle del pedido.
 
 @component('mail::panel')
 Dirección de envio:
@@ -26,7 +26,7 @@ Productos seleccionados:
 @foreach($data['sold_product'] as $product)
 | {{$product['product']['name']}} | {{$product['size']}} | {{$product['cantidad']}} | ${{$product['product']['price']}}.00 | 
 @endforeach
-| Envio |  |  | $299.00 |
+| Envío |  |  | $299.00 |
 | Total |  |  | ${{$data['total']}}.00 |
 @endcomponent
 

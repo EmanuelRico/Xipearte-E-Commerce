@@ -154,7 +154,7 @@ $c_dropdown = Category::all();
                                             <div class="dropdown-divider"></div>
                                             <div class="row mx-3">
                                                 <a href="{{ route('cart') }}" class="btn btn-primary m-auto"
-                                                    id="checkout">Checkout</a>
+                                                    id="checkout">Ir al carrito</a>
                                             </div>
                                         </div>
                                     </div>
