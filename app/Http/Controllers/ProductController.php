@@ -83,11 +83,22 @@ class ProductController extends Controller
     }
     public function eliminaFoto(Request $request, $id)
     {
+        
         $imagen = Image::findOrFail($id);
-        $imagen->delete();
-        $request->session()->flash('message', 'Imagen eliminada exitosamente');
-        $request->session()->flash('message-type', 'success');
+        $producto = Product::where('id',$imagen->product_id)->first(); 
+        if($producto->imagenes->count() > 1){
 
+            $imagen->delete();
+            $request->session()->flash('message', 'Imagen eliminada exitosamente');
+            $request->session()->flash('message-type', 'success');
+    
+            return response()->json(['status'=>'Hooray']);
+        }else{
+            $request->session()->flash('message', 'No puedes dejar el producto sin imagenes');
+            $request->session()->flash('message-type', 'success');
+    
+            return response()->json(['status'=>'Hooray']);
+        }
         return response()->json(['status'=>'Hooray']);
     }
 
