@@ -120,7 +120,7 @@
                             $('#mostrarGuia').html('Guía de rastreo: '+response[0].sale.guiaRastreo +' <br> '+ 'Paquetería: ' +response[0].sale.paqueteria);
                         }else{
                             $('#addRastreo').show();
-                            $('#mostrarGuia').html('ENVIO PENDIENTE');
+                            $('#mostrarGuia').html('ENVÍO PENDIENTE');
                         
                         }
                             $('#pago').html('$'+response[0].sale.total+'.00');
