@@ -53,17 +53,17 @@ class HomeController extends Controller
                     $images_carousel->append($array_o);
                 }
                 //Ultimos productos agregados, máximo solo se mostrarán 10 productos
-                $lastProducts = Product::latest()
+                $lastProducts = Product::latest()->where('status', 1)
                 ->take(10)
                 ->get();
                 //Productos con precio menor a 350, máximo solo se mostrarán 10 productos
-                $lowcost = Product::where("price","<",350)->take(10)
+                $lowcost = Product::where("price","<",350)->where('status', 1)->take(10)
                 ->get();
                 //Productos de los cuales quedan menos de 5 piezas, máximo solo se mostrarán 10 productos
                 $lastPiecesaux = DB::select("SELECT id FROM products INNER JOIN (SELECT product_id FROM product_sizes GROUP BY product_id HAVING (SUM(stock) < 6)  LIMIT 10) AS PROSI ON products.id = PROSI.product_id");
                 $lastPieces = array();
                 foreach ($lastPiecesaux as $lp) {
-                    $lastPieces1 = Product::where('id', $lp->id)->take(1)->get();
+                    $lastPieces1 = Product::where('id', $lp->id)->where('status', 1)->take(1)->get();
                     array_push($lastPieces, $lastPieces1);
                 }
                 return view("welcome", compact('productos', 'images_carousel' , 'lastProducts','lowcost','lastPieces'));
@@ -85,17 +85,17 @@ class HomeController extends Controller
                 $images_carousel->append($array_o);
             }
             //Ultimos productos agregados, máximo solo se mostrarán 10 productos
-            $lastProducts = Product::latest()
+            $lastProducts = Product::latest()->where('status', 1)
             ->take(10)
             ->get();
             //Productos con precio menor a 350, máximo solo se mostrarán 10 productos
-            $lowcost = Product::where("price","<",350)->take(10)
+            $lowcost = Product::where("price","<",350)->take(10)->where('status', 1)
                 ->get();
             //Productos de los cuales quedan menos de 5 piezas, máximo solo se mostrarán 10 productos
             $lastPiecesaux = DB::select("SELECT id FROM products INNER JOIN (SELECT product_id FROM product_sizes GROUP BY product_id HAVING (SUM(stock) < 6)  LIMIT 10) AS PROSI ON products.id = PROSI.product_id");
             $lastPieces = array();
             foreach ($lastPiecesaux as $lp) {
-                $lastPieces1 = Product::where('id', $lp->id)->take(1)->get();
+                $lastPieces1 = Product::where('id', $lp->id)->where('status', 1)->take(1)->get();
                 array_push($lastPieces, $lastPieces1);
             }
             return view("welcome", compact('productos', 'images_carousel','lastProducts','lowcost','lastPieces'));
@@ -108,7 +108,7 @@ class HomeController extends Controller
         if (isset($id)) {
             $product_id = intval($id);
             $p = Product::find($product_id);
-            if ($p !== null) { //verify if the product exist
+            if ($p !== null && $p->status === 1) { //verify if the product exist
                 $images = Image::where("product_id", $product_id)->get(); //obtain product images
                 $sizes = Product_size::where("product_id", $product_id)->get(); //otain product sizes info
                 return view("product", compact('p', 'images', 'sizes'));
@@ -123,11 +123,11 @@ class HomeController extends Controller
     {
         if (isset($categorie)) {
             $c = Category::where('name', $categorie)->first();
-            if (!is_null($c)) {
+            if ($c !== null && $c->status === 1) {
                 $products_id = Product_category::where('category_id', $c->id)->get(); //obtain all the products with that categorie
                 $products = []; //array to save the products with the category
                 foreach ($products_id as $id) {
-                    array_push($products, Product::where('id', $id->product_id)->first());
+                    array_push($products, Product::where('id', $id->product_id)->where('status', 1)->first());
                 }
                 return view("category", compact("c", "products"));
             } else
@@ -147,7 +147,7 @@ class HomeController extends Controller
         $id = $request->id;
         $size = $request->size;
         $producto = Product::findOrFail($id);
-        if ($producto) {
+        if ($producto && $producto->status === 1) {
             $cart = session()->get('cart', []);
             $img = DB::table('images')->where('product_id', $producto->id)->first();
             $this_size = Product_size::where([['product_id', $producto->id], ['size', $size]])->first();
@@ -205,23 +205,25 @@ class HomeController extends Controller
         $allProducts = [];
         $product_id = intval($id);
         $producto = Product::find($product_id);
-
-        $products = Product::where('status', 1)->get();
-        foreach ($products as $product) {
-            $item = array ('id' => $product->id,
-            'price' => $product->price,
-            'origin' => $product->origin,
-            'category' => (string)Product_category::where('product_id', $product->id)->first(),);
-            array_push($allProducts, (object)$item);
-        }
-        // return(dd($allProducts));
-        $productSimilarity = new App\ProductSimilarity($allProducts);
         
-        $similarityMatrix = $productSimilarity->calculateSimilarityMatrix();
-        $products = $productSimilarity->getProductsSortedBySimularity($product_id, $similarityMatrix);
-
-        return($products);
+            $products = Product::where('status', 1)->get();
+            foreach ($products as $product) {
+                $item = array ('id' => $product->id,
+                'price' => $product->price,
+                'origin' => $product->origin,
+                'category' => (string)Product_category::where('product_id', $product->id)->first(),);
+                array_push($allProducts, (object)$item);
+            }
+            // return(dd($allProducts));
+            $productSimilarity = new App\ProductSimilarity($allProducts);
+            
+            $similarityMatrix = $productSimilarity->calculateSimilarityMatrix();
+            $products = $productSimilarity->getProductsSortedBySimularity($product_id, $similarityMatrix);
+    
+            return($products);
+        
     }
+
 
     public function viewProduct($id)
     {
@@ -229,7 +231,7 @@ class HomeController extends Controller
         $productos = collect([]);
         $product_id = intval($id);
         $producto = Product::find($product_id);
-        if($producto !== null){
+        if($producto !== null && $producto->status === 1){
             $sizes = Product_size::where('product_id', $product_id)->get();
             $producto->imagenes;
     
@@ -240,7 +242,7 @@ class HomeController extends Controller
     
             foreach ($prod as $p) {
                 $newId = $p->id;
-                $newProd = Product::where('id', $newId)->get();
+                $newProd = Product::where('id', $newId)->where('status', 1)->get();
                 $productos->push($newProd);
                 array_push($ids, $newId);
             }
@@ -270,7 +272,7 @@ class HomeController extends Controller
     public function viewCategory($id)
     {
         $c = Category::find($id);
-        if($c !== null){
+        if($c !== null && $c->status === 1){
             $categoryName = $c->name;
             $category = Product_category::where('category_id', '=', $id)->paginate(15);
             foreach ($category as $pc) {

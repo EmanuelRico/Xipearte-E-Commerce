@@ -135,16 +135,16 @@
         </div>
 
         <!-- <div class="card shadow">
-            @if($lastView->imagenes->count()>0)
-                <img src='{{ asset($lastView->imagenes->first()->route) }}' class="img-fluid mt-0 rounded"
+            {{-- @if($lastView->imagenes->count()>0) --}}
+                {{-- <img src='{{ asset($lastView->imagenes->first()->route) }}' class="img-fluid mt-0 rounded" --}}
                     style="min-height: 380px;min-width:185px;" alt="...">
-            @else
+            {{-- @else --}}
                 <img src='https://kangsblackbeltacademy.com/wp-content/uploads/2017/04/default-image.jpg' class="img-fluid mt-0 rounded"
                     style="min-height: 380px;min-width:1850px" alt="...">
-            @endif
+            {{-- @endif --}}
             <div class="card-body">
-                <p class="card-title text-center fw-bold h5 text-truncate">{{ $lastView->name }}</p>
-                <h3 class=" card-text d-flex justify-content-center">${{ $lastView->price }}</h3>
+                {{-- <p class="card-title text-center fw-bold h5 text-truncate">{{ $lastView->name }}</p> --}}
+                {{-- <h3 class=" card-text d-flex justify-content-center">${{ $lastView->price }}</h3> --}}
             </div>
         </div> -->
     @endsection

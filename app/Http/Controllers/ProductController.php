@@ -97,7 +97,7 @@ class ProductController extends Controller
         $uni = "Unitalla";
         $mSizes = "vTallas";
         //si encuentra el producto mandando por medio del id, crea un nuevo producto
-        if($product){
+        if($product && $product->status === 1){
             $product->name = $request->name;
             $product->description = $request->description;
             $product->price = (float)$request->price;

@@ -46,7 +46,7 @@ class CategoryController extends Controller
     //Actualizar categoria
     public function update(Request $request){
         $c = Category::find((int)$request->id);
-        if($c){
+        if($c && $c->status === 1){
             $c->name = $request->name;
             $c->description = $request->description;
             $c->save();
