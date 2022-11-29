@@ -7,7 +7,7 @@
     @php
         $name = '';
     @endphp
-    @if($productos === [])
+    @if($productos->count() < 1)
         <h3>No se encontraron resultados para su búsqueda</h3>
     @else
 

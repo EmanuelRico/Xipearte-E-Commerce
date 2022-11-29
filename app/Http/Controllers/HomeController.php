@@ -306,10 +306,10 @@ class HomeController extends Controller
     {
         $search = $request->input('search');
         $productos = Product::where('status', 1)->where('name', 'LIKE', "%{$search}%")->orWhere('description', 'LIKE', "%{$search}%")->paginate(15);
-        if ($productos->isEmpty()) {
-            $productos = [];
-            return view('search')->with('productos', $productos)->with('coinci', $search);
-        }
+        // if ($productos->isEmpty()) {
+        //     $productos = [];
+        //     return view('search')->with('productos', $productos)->with('coinci', $search);
+        // }
         $images = [];
         foreach ($productos as $p) {
             $p->imagenes;

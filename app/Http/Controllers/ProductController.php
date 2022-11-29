@@ -143,7 +143,15 @@ class ProductController extends Controller
                 }
             }
             if($categories){
-                $this->deleteProdCategory($request->id);
+                $count = 0;
+                foreach ($categories as $c) {
+                    if(isset($_POST["categorie".$c->id])){
+                        $count++;
+                    }
+                }
+                if($count > 0){
+                    $this->deleteProdCategory($request->id);
+                }
                 foreach ($categories as $c) {
                     if(isset($_POST["categorie".$c->id])){
                         $new_c = new Product_category();
