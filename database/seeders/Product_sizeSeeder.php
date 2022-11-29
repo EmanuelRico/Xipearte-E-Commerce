@@ -54,7 +54,7 @@ class Product_sizeSeeder extends Seeder
 
         $p = new Product_size();
         $p -> product_id = 2;
-        $p -> size = "S" ;
+        $p -> size = "CH" ;
         $p -> stock = 0;
         $p->save();
         unset($p);
@@ -75,7 +75,7 @@ class Product_sizeSeeder extends Seeder
 
         $p = new Product_size();
         $p -> product_id = 3;
-        $p -> size = "S" ;
+        $p -> size = "CH" ;
         $p -> stock = 4;
         $p->save();
         unset($p);
@@ -103,7 +103,7 @@ class Product_sizeSeeder extends Seeder
 
         $p = new Product_size();
         $p -> product_id = 4;
-        $p -> size = "S" ;
+        $p -> size = "CH" ;
         $p -> stock = 4;
         $p->save();
         unset($p);
