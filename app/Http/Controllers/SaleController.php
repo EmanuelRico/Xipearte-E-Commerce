@@ -144,6 +144,19 @@ class SaleController extends Controller
         return view('ordersUser')->with('orders', $orders);
     }
 
+    public function subInventory($id, $quant, $size){
+        #return dd($id);
+        $product = Product_size::where('product_id',$id)->where('size', $size)->first();
+        $current = $product->stock;
+        $product->stock = $current - $quant;
+        $product->save();
+
+        $product2 = Product::findOrFail($id);
+        $stock2 = $product2->stock;
+        $product2->stock = $stock2 - $quant;
+        $product2->save();
+    }
+
     public function pagoExitoso($id)
     {
         $order = Sale::findOrFail($id);
@@ -151,10 +164,12 @@ class SaleController extends Controller
         $order->save();
         foreach($order->sold_product as $detalleOrden){
             $detalleOrden->product;
+            $id = $detalleOrden->product_id;
+            $quant = $detalleOrden->cantidad;
+            $size = $detalleOrden->size;
+            $this -> subInventory($id, $quant, $size);
             $detalleOrden->status = 2;
             $detalleOrden->save();
-            //Restas de stock
-
         }
         $order->user;
         

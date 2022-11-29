@@ -21,7 +21,7 @@ class ProductSeeder extends Seeder
         $p->price = 150.0;
         $p->origin = "Tenango de Doria Hidalgo";
         $p->originDescription = "Tenango de Doria, Hidalgo";
-        $p->stock = 7;
+        $p->stock = 17;
         $p->save();
         unset($p);
 
@@ -32,7 +32,7 @@ class ProductSeeder extends Seeder
         $p->price = 335.0;
         $p->origin = "Hueyapan Puebla";
         $p->originDescription = "Hueyapan, Puebla";
-        $p->stock = 4;
+        $p->stock = 26;
         $p->save();
         unset($p);
 
@@ -43,7 +43,7 @@ class ProductSeeder extends Seeder
         $p->price = 285.0;
         $p->origin = "Xochistlahuaca Guerrero";
         $p->originDescription = "Xochistlahuaca Guerrero";
-        $p->stock = 4;
+        $p->stock = 8;
         $p->save();
         unset($p);
         
@@ -54,7 +54,7 @@ class ProductSeeder extends Seeder
         $p->price = 235.0;
         $p->origin = "Zinacantan Chiapas";
         $p->originDescription = "Zinacantan Chiapas";
-        $p->stock = 4;
+        $p->stock = 12;
         $p->save();
         unset($p);
 
@@ -65,7 +65,7 @@ class ProductSeeder extends Seeder
         $p->price = 235.0;
         $p->origin = "Chiapas";
         $p->originDescription = "Chiapas";
-        $p->stock = 4;
+        $p->stock = 8;
         $p->save();
         unset($p);
 
@@ -76,7 +76,7 @@ class ProductSeeder extends Seeder
         $p->price = 435.0;
         $p->origin = "Chiapas";
         $p->originDescription = "Chiapas";
-        $p->stock = 4;
+        $p->stock = 8;
         $p->save();
         unset($p);
 
@@ -87,7 +87,7 @@ class ProductSeeder extends Seeder
         $p->price = 135.0;
         $p->origin = "Chiapas";
         $p->originDescription = "Chiapas";
-        $p->stock = 4;
+        $p->stock = 8;
         $p->save();
         unset($p);
 
@@ -97,7 +97,7 @@ class ProductSeeder extends Seeder
         $p->description = "Realizado en manta con tejido en telar, bordado a mano";
         $p->price = 535.0;
         $p->origin = "Zinacantan Chiapas";
-        $p->stock = 4;
+        $p->stock = 12;
         $p->originDescription = "Zinacantan Chiapas";
         $p->save();
         unset($p);

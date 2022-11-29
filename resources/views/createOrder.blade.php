@@ -322,6 +322,7 @@
             }, 4000);
         }
 
+        window.history.forward();
         
         function setLoading(isLoading) {
             if (isLoading) {
