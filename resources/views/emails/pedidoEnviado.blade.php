@@ -32,7 +32,7 @@ Referencias: {{json_decode($data['direccion'],true)['Referencias']}}
 | Total |  |  | ${{$data['total']}}.00 |
 @endcomponent
 
-@component('mail::button', ['url' => env('APP_URL').'/pedidos'])
+@component('mail::button', ['url' => config('app.url').'/pedidos'])
 Ver orden
 @endcomponent
  

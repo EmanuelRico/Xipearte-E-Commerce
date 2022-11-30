@@ -85,7 +85,7 @@
                             </button>
                         @else
                             <button type="button" class="btn btn-dark col-12 d-block py-3 rounded-3 mt-3"
-                                onclick="location.href='{{ route('login') }}'">
+                                onclick="location.href='{{ route('register') }}'">
                                 <h4 class="my-0 py-0">Añadir al carrito</h4>
                             </button>
                             @endif
