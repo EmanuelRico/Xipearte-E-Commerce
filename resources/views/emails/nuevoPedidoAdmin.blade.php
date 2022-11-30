@@ -30,7 +30,7 @@ Productos seleccionados:
 | Total |  |  | ${{$data['total']}}.00 |
 @endcomponent
 
-@component('mail::button', ['url' => env('APP_URL').'/pedidosA'])
+@component('mail::button', ['url' => config('app.url').'/pedidosA'])
 Ver orden
 @endcomponent
  
